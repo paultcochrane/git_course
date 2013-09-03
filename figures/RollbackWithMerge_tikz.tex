@@ -1,0 +1,29 @@
+\begin{tikzpicture}
+[rev/.style = {circle,
+		draw=green!80!black,
+		minimum size=10mm,
+		fill=green!20!white},
+ op/.style  = {fill=blue!20},
+ trans/.style = {->,very thick,>=stealth}]
+% line of development
+\node[rev] at (0,0) (rev1) [] {1};
+\node[rev] at (2,0) (rev2) [] {2};
+\draw [trans] (rev1.east) -- (rev2.west);
+\node[rev] at (4,0) (rev3) [] {3};
+\draw [trans] (rev2.east) -- (rev3.west);
+\node[rev] at (6,0) (rev4) [] {4};
+\draw [trans] (rev3.east) -- (rev4.west);
+\node[rev] at (8,0) (rev5) [] {5};
+\draw [trans] (rev4.east) -- (rev5.west);
+\node[rev] at (10,0) (rev6) [] {6};
+\draw [trans] (rev5.east) -- (rev6.west);
+% merge from change 5 into commit to revision 7
+\node[op] at (7, 2) (merge) {\footnotesize\texttt{svn merge -c -5}};
+\draw [->,>=stealth,dashed,shorten >=2pt] (rev4.north east) -- (merge.south);
+\draw [->,>=stealth,dashed,shorten >=2pt] (rev5.north west) -- (merge.south);
+% revision 7
+\node[rev] at (12,0) (rev7) [] {7};
+\draw [trans] (rev6.east) -- (rev7.west);
+% merge between commits 6 and 7
+\draw [->,>=stealth,dashed,shorten >=2pt,out=60,in=90] (merge.north) to (11,0);
+\end{tikzpicture}

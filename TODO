@@ -1,0 +1,72 @@
+# The students of the first course had good ideas what could be done extra
+# and what one could improve.  Here is a summary of these ideas
+ - why does one do staging in Git?  Why does one always run 'git add' and not
+   just the once?  What is the concept behind this?
+ - how does one change Git logs if one wants to?
+   - it goes like this (sort of) but should be explained better:
+     git rebase -i <commit>
+     --> pick -> edit
+     git commit --amend
+     git rebase --continue
+ - how do conflicts occur in Git and how does one correct them?
+ - more in-depth discussion of SHA hashes
+ - explain blobs, trees, commits and tags better
+ - discuss the used of 'git bisect'
+ - discuss and explain tags in Git and Subversion.  Especially necessary
+   is the explanation of the difference in concepts between the two version
+   control systems
+ - set up a Git server and use it for some of the examples
+ - on the 3rd day of the course one could explain admin-related topics
+   (e.g. svnadmin, git administration, etc.)
+ - how does one follow running projects?  e.g. phpMyadmin.  How can one have
+   a checked out version of the software and obtain the newest changes via
+   Git/Subversion and also have the config (in the checked out version)
+   also locally administered with Git/Subversion?
+ - what are the concepts behind head, branches and tags in Git?
+ - how does one check out tags/heads in Git?
+ - explain staging btter
+
+Windows specific todo items
+ - Tortoise SVN installation
+ - PuTTY installation
+ - Pageant setup
+ - checkout KIVA-trunk
+
+http://stackoverflow.com/questions/6188780/git-latex-workflow
+
+
+Here are some further recommendations:
+
+     o Am Anfang war es vielleicht etwas zu früh Detail (branches,
+       gerichteter Graph kommt natürlich auch wieder sehr auf das
+       Klientel an, sicherlich für Mathematiker, Informatiker, Physiker
+       kein Problem und anschaulich). Kommt auch sehr darauf an, ob die
+       Zielgruppe schon generell Versionsverwaltung kennt und nur
+       umsteigt oder ganz neu.
+
+     o Dieses Prinzip, dass erst Dateien gestaged und dann committed
+       werden: da hat sich mir der Sinn noch nicht ganz erschlossen,
+       gerade wenn man mit anderen Versionsverwaltungen gearbeitet hat,
+       ist das ja erstmal etwas ungewohnt und mir ist nicht ganz klar
+       geworden, warum das bei git so gemacht wird.
+
+     o git-svn würde ich eher weglassen, dann lieber noch mehr
+       best-pracises und wie ist der typische Arbeitsablauf, wie das
+       Übungsbeispiel, wo mehrere auf einem git-repo gearbeitet haben
+       und es Konflikte gab. Da wäre es vielleicht gut, noch mehr
+       Arbeitsabläufe mit Teamentwicklung durchzuspielen. Was sind
+       typische Befehle und Szenarien?
+
+     o für die Übungen wäre so eine Art "cheat sheet" auf Din A4 ganz
+       gut (ja, ich weiß, die Leute sollen selber schauen mit man usw.
+       aber im Kurs ist ja nicht so die Zeit und wenn man ganz neu
+       einsteigt wäre das hilfreich. Wenn sie nicht erst rumsuchen
+       müssen, haben sie mehr Zeit zum "rumspielen".)
+
+     o welche Programmiersprache genommen wird, vielleicht auch sehr
+       abhängig vom Klientel. Reine Programmierer, die nicht Sysad
+       Aufgaben machen, kennen eventull perl gar nicht. C ist wieder
+       für jüngere Leute nicht unbedingt bekannt (ich habe damit
+       angefangen, aber das hat sich ja stark gewandelt). Da das
+       Progrämmchen ja sehr einfach war, sollte das aber kein Problem
+       sein.

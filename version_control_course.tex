@@ -1,0 +1,107 @@
+\documentclass[10pt]{vcs_beamer}
+\usepackage{textpos}
+\usepackage{xspace}
+\usepackage{tabto}
+
+\newcommand{\linuxframe}[0]{%
+    \begin{textblock}{0}(13.5,-1.3)%
+        \includegraphics[width=10mm]{images/Tux.pdf}%
+    \end{textblock}%
+}
+\newcommand{\windowsframe}[0]{%
+    \begin{textblock}{0}(13.5,-1.2)%
+        \includegraphics[width=10mm]{images/Windows-logo.png}%
+    \end{textblock}%
+}
+
+% vertically aligns images to the top in tabular environments
+% Solution found here:
+% http://tex.stackexchange.com/questions/23521/tabular-vertical-alignment-to-top
+\newcommand{\imagetop}[1]{\vtop{\null\hbox{#1}}}
+
+\newcommand{\notepad}{\texttt{Notepad++}\xspace}
+
+\begin{document}
+\CourseDates{}
+
+\author{Paul Cochrane}
+\title[Version control with Subversion and Git]
+        {Version control\\[0.2em]with Subversion and Git}
+\Email{cochrane@}
+\date{17.05.2013--17.05.2013}
+
+\beamertitlepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\vspace*{-5mm}
+\small
+\begin{multicols}{2}
+\begin{spacing}{0.8}
+\tableofcontents
+\end{spacing}
+\vspace*{20mm}
+\end{multicols}
+\end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{About the course}
+
+\subsection{Introduction and goals}
+\begin{frame}{Introduction}
+\begin{itemize}
+    \item Any and all feedback is good
+    \item Linux-focus; concepts are however usable everywhere
+\end{itemize}
+
+\onslide<2->{
+{\Large \alert{Flow of course}}
+\begin{itemize}
+\item Version control in general
+\item Subversion
+\item Git
+\item Server administration
+\end{itemize}
+}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Course goals}
+that \ldots
+\begin{itemize}
+    \item more people use version control
+    \item version control is used better
+    \item one learns the basics of Subversion and Git
+    \item one gets an impression of what is possible with these tools
+    \item one obtains some experience in using the tools
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{cygwin_install}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Using the secure shell}
+
+\input{ssh_concepts}
+\input{ssh_on_windows}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{concepts}
+\input{subversion.tex}
+\input{git.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}{Danke!}
+\begin{center}
+\huge
+Many thanks for your attention!  \ttt{:-)}
+\end{center}
+\end{frame}
+
+\end{document}
+
+% vim: expandtab shiftwidth=4:

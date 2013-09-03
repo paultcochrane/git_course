@@ -1,0 +1,77 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Install PuTTY}
+
+    \begin{itemize}
+        \item Download PuTTY from
+            \url{http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html}
+        \item Use the link under:
+            \enquote{A Windows installer for everything except PuTTYtel}
+        \item Double click on the installer and choose the default options
+            in each window which appears when installing the software.
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+    \frametitle{Configure PuTTY}
+
+    \begin{itemize}
+        \item PuTTY Key Generator from Windows \enquote{Start Menu}
+        \item Click on \enquote{Generate}
+        \item Enter the passphrase and confirm
+        \item Click on \enquote{Save private key}; save key as \ttt{host.ppk}
+        \item Send the \enquote{Public key for pasting into OpenSSH
+            authorized\_keys file} to \url{cochrane@}
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+    \frametitle{Configure PuTTY (cont.)}
+
+    \begin{itemize}
+        \item Start PuTTY from the Windows \enquote{Start Menu}
+        \item Session $\rightarrow$
+            Host name: \ttt{host.name}
+        \item Connection $\rightarrow$ Data $\rightarrow$ Auto-login
+            username: \ttt{your username}
+        \item Connection $\rightarrow$ SSH $\rightarrow$ Auth $\rightarrow$
+            Private key for authentication: \ttt{host.ppk}
+        \item Session: Save
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}[fragile]
+    \frametitle{Configure PuTTY (cont.)}
+
+    \begin{itemize}
+        \item Start \enquote{Pageant}
+        \item Pageant can also be started at login time by adding a link to
+            it in the user's \enquote{Startup} folder.
+        \item Right-click on the Pageant icon $\rightarrow$ Add key
+        \item Select \ttt{host.ppk} and type your passphrase (you only need
+            to do this once every time you log on to Windows)
+        \item Right-click on the Pageant icon $\rightarrow$ Saved sessions
+            $\rightarrow$ \ttt{host.name}
+        \item A console should appear with a prompt with your username and
+            the name of the subversion server in it.
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+    \frametitle{Notepad++ installation}
+    \begin{itemize}
+	\item Download Notepad++ from \url{http://notepad-plus-plus.org}
+	\item Click on Agree, Next ... Install
+    \end{itemize}
+
+    \begin{itemize}
+        \item We now have enough infrastructure in place that we can start
+            talking about version control
+    \end{itemize}
+\end{frame}
+
+% vim: expandtab shiftwidth=4:
