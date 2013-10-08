@@ -53,15 +53,10 @@
 
 % \ttalert[1]      -> highlight #1 in typewriter text
 % \T               -> textbackslash
-% \Email[1]        -> #1 is the email address
 % \CourseDates[1]  -> #1 from when to when the course runs
 \newcommand{\ttalert}[1]{\alert{\texttt{#1}}}
 
 \newcommand{\T}{\textbackslash}
-
-\renewcommand*{\Email}[1]{\def\myEmail{#1}}
-
-\newcommand*{\CourseDates}[1][\mbox{}]{\def\myCourseDates{#1}}
 
 % colours
 \definecolor{uniblue}{cmyk}{0.80,0.55,0,0}
