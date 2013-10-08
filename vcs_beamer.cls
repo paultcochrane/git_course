@@ -38,7 +38,8 @@
             calc,
             textcomp}
             
-\useinnertheme{rectangles}
+\usetheme{Boadilla}
+\usecolortheme{beaver}
 
 % font changes
 \def\UrlFont{\color{dnblue}\tt} % URL-Font auf Typewriter
@@ -54,43 +55,13 @@
 % \T               -> textbackslash
 % \Email[1]        -> #1 is the email address
 % \CourseDates[1]  -> #1 from when to when the course runs
-% \beamertitlepage -> make the title page at this place
 \newcommand{\ttalert}[1]{\alert{\texttt{#1}}}
 
 \newcommand{\T}{\textbackslash}
 
-\renewcommand\insertshorttitle[1][]{%
-  \beamer@setupshort{#1}%
-  \let\thanks=\@gobble%
-  \ifnum\c@page=1%
-    \hyperlinkpresentationend{\beamer@insertshort{\beamer@shorttitle}}%
-  \else%
-    \hyperlinkpresentationstart{\beamer@insertshort{\beamer@shorttitle}}%
-  \fi}
-
 \renewcommand*{\Email}[1]{\def\myEmail{#1}}
 
 \newcommand*{\CourseDates}[1][\mbox{}]{\def\myCourseDates{#1}}
-
-\newcommand{\beamertitlepage}{%
-\begin{frame}
-\AddToShipoutPicture*{%
-  \unitlength 1mm
-  \begin{picture}(128,96)
-    \fboxsep 0pt
-    % background image
-    %\put(0,5){\pgfuseimage{CPU}}
-  \end{picture}}
-  \centering
-  \bfseries
-  \textcolor{dnblue}{\Huge\inserttitle}
-  \color{gray}
-  \vskip 5mm
-  \insertauthor\par
-  \myEmail
-  \vskip 5mm
-  \myCourseDates\par
-\end{frame}}
 
 % colours
 \definecolor{uniblue}{cmyk}{0.80,0.55,0,0}
@@ -115,59 +86,7 @@
 \pgfdeclareimage[height=5mm]{LEFT_LOGO}{logo_left}
 \pgfdeclareimage[height=5mm]{RIGHT_LOGO}{logo_right}
 
-% Changes to beamer template
-% header:
-\setbeamertemplate{headline}{%
-\vspace{3mm}\hspace{3mm}%
-%\pgfuseimage{LEFT_LOGO}\hfill\pgfuseimage{RIGHT_LOGO}%
-\hspace{3mm}\mbox{}%
-}
-% footer:
-\setbeamertemplate{footline}{%
-\begin{beamercolorbox}[ht=1mm]{colorbox}
-\color{dnorange}%
-\hspace{107.5mm}\rule{17.5mm}{1mm}
-\end{beamercolorbox}
-\begin{beamercolorbox}[leftskip=3mm,rightskip=3mm,ht=4mm]{colorbox}
-\textbf{\insertshorttitle{}} \qquad \insertauthor \qquad  | \quad \insertdate \hfill{} \insertframenumber%
-\vspace{1.5mm}\vbox{}%
-\end{beamercolorbox}
-}
-% slide title
-\setbeamertemplate{frametitle}{%
-  \begin{beamercolorbox}%
-        [wd=\paperwidth,leftskip=5mm,%
-         rightskip=5mm,vmode]{frametitle}%
-     \usebeamerfont*{frametitle}%
-     \textbf{\insertframetitle}%
-   \end{beamercolorbox}}
-
-\setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{enumerate items}[square]
-\setbeamertemplate{itemize items}{%
-  \scriptsize\vrule width2.25ex height1.85ex depth.4ex}
-\setbeamertemplate{itemize subitem}{%
-  \scriptsize\fboxsep0pt\fboxrule1pt\fbox{%
-  \color{white}\raisebox{-.4pt}{\rule{2.25ex-2pt}{2.25ex-2pt}}}}
-
-% beamer colours
-\setbeamercolor{colorbox}{fg=dnblue,bg=lightgrey}
-\setbeamercolor{frametitle}{fg=dnblue}
-\setbeamercolor{title}{fg=dnblue}
-\setbeamercolor{item}{fg=dnorange}
-\setbeamercolor{subitem}{fg=dnorange}
-\setbeamercolor{description item}{fg=dnblue}
-\setbeamercolor{background canvas}{bg=}
-\setbeamercolor{alerted text}{fg=dnblue}
-\setbeamercolor{block body}{bg=lightgrey}
-\setbeamercolor{block title}{bg=dngrey}
-
 \hypersetup{colorlinks=true,linkcolor=dnblue, citecolor=black, urlcolor=dnblue}
-
-% sizes in beamer
-\setbeamersize{description width=5mm}
-\setbeamersize{text margin left=5mm}
-\setbeamersize{text margin right=5mm}
 
 % various extensions
 \usepackage{verbatim}
