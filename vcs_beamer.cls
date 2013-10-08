@@ -110,6 +110,10 @@
 \definecolor{dngrey}{HTML}{999999}
 \definecolor{dnolive}{HTML}{CBAF41}
 \definecolor{dnblue}{HTML}{5599FF}
+\definecolor{dndarkorange}{HTML}{C87137}
+\definecolor{dnred}{HTML}{D35F5F}
+\definecolor{dnpurple}{HTML}{BC5FD3}
+\definecolor{dngreen}{HTML}{37C871}
 
 % image and logo definitions
 \pgfdeclareimage[height=5mm]{LEFT_LOGO}{logo_left}
