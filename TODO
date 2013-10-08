@@ -70,3 +70,43 @@ Here are some further recommendations:
        angefangen, aber das hat sich ja stark gewandelt). Da das
        Progrämmchen ja sehr einfach war, sollte das aber kein Problem
        sein.
+
+The explanation about commit messages from the perlhack documentation
+(http://perldoc.perl.org/perlhack.html) is very good (here is a paraphrased
+version):
+
+As a general rule of thumb, your commit message should help a programmer who
+knows the code quickly understand what you were trying to do, how you were
+trying to do it, and why the change matters.
+
+Why
+
+    Your commit message should describe why the change you are making is
+    important. When someone looks at your change in six months or six years,
+    your intent should be clear.
+
+    If you're deprecating a feature with the intent of later simplifying
+    another bit of code, say so. If you're fixing a performance problem or
+    adding a new feature to support some other bit of the core, mention that.
+
+What
+
+    Your commit message should describe what part of the code you're
+    changing and what you expect your patch to do.
+
+How
+
+    While it's not necessary for documentation changes, new tests or trivial
+    patches, it's often worth explaining how your change works. Even if it's
+    clear to you today, it may not be clear to someone else next month or next
+    year.
+
+A commit message isn't intended to take the place of comments in your code.
+Commit messages should describe the change you made, while code comments
+should describe the current state of the code.
+
+If you've just implemented a new feature, complete with doc, tests and
+well-commented code, a brief commit message will often suffice. If, however,
+you've just changed a single character deep within a complex piece of code,
+you might need to write a small novel to ensure that future readers
+understand what you did and why you did it.
