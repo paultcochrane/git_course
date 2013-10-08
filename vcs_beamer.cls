@@ -97,7 +97,6 @@
 \end{frame}}
 
 % colours
-\definecolor{unigreen}{cmyk}{0.30,0,0.94,0}
 \definecolor{uniblue}{cmyk}{0.80,0.55,0,0}
 \definecolor{unigray}{cmyk}{0.40,0.31,0.29,0}
 \definecolor{linkcolor}{cmyk}{0.80,0.55,0,0}
@@ -108,6 +107,7 @@
 \definecolor{yellow}{rgb}{1,1,0}
 \definecolor{darkyellow}{rgb}{.6,.6,0}
 \definecolor{lightgray}{rgb}{0.937,0.937,0.937}
+\definecolor{dnorange}{HTML}{FF6600}
 
 % image and logo definitions
 \pgfdeclareimage[height=5mm]{LEFT_LOGO}{logo_left}
@@ -123,7 +123,7 @@
 % footer:
 \setbeamertemplate{footline}{%
 \begin{beamercolorbox}[ht=1mm]{colorbox}
-\color{unigreen}%
+\color{dnorange}%
 \hspace{107.5mm}\rule{17.5mm}{1mm}
 \end{beamercolorbox}
 \begin{beamercolorbox}[leftskip=3mm,rightskip=3mm,ht=4mm]{colorbox}
@@ -152,8 +152,8 @@
 \setbeamercolor{colorbox}{fg=uniblue,bg=lightgray}
 \setbeamercolor{frametitle}{fg=uniblue}
 \setbeamercolor{title}{fg=uniblue}
-\setbeamercolor{item}{fg=unigreen}
-\setbeamercolor{subitem}{fg=unigreen}
+\setbeamercolor{item}{fg=dnorange}
+\setbeamercolor{subitem}{fg=dnorange}
 \setbeamercolor{description item}{fg=uniblue}
 \setbeamercolor{background canvas}{bg=}
 \setbeamercolor{alerted text}{fg=uniblue}
