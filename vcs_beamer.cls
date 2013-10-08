@@ -45,7 +45,7 @@
 \useinnertheme{rectangles}
 
 % font changes
-\def\UrlFont{\color{uniblue}\tt} % URL-Font auf Typewriter
+\def\UrlFont{\color{dnblue}\tt} % URL-Font auf Typewriter
 \usefonttheme[onlymath]{serif}   % Mathetext in Serifen
 
 % length changes
@@ -87,7 +87,7 @@
   \end{picture}}
   \centering
   \bfseries
-  \textcolor{uniblue}{\Huge\inserttitle}
+  \textcolor{dnblue}{\Huge\inserttitle}
   \color{gray}
   \vskip 5mm
   \insertauthor\par
@@ -98,7 +98,6 @@
 
 % colours
 \definecolor{uniblue}{cmyk}{0.80,0.55,0,0}
-\definecolor{unigray}{cmyk}{0.40,0.31,0.29,0}
 \definecolor{linkcolor}{cmyk}{0.80,0.55,0,0}
 \definecolor{urlcolor}{cmyk}{0.80,0.55,0,0}
 \definecolor{citecolor}{cmyk}{0.80,0.55,0,0}
@@ -106,8 +105,11 @@
 \definecolor{lightgreen}{rgb}{.467,.621,.176}
 \definecolor{yellow}{rgb}{1,1,0}
 \definecolor{darkyellow}{rgb}{.6,.6,0}
-\definecolor{lightgray}{rgb}{0.937,0.937,0.937}
+\definecolor{lightgrey}{rgb}{0.937,0.937,0.937}
 \definecolor{dnorange}{HTML}{FF6600}
+\definecolor{dngrey}{HTML}{999999}
+\definecolor{dnolive}{HTML}{CBAF41}
+\definecolor{dnblue}{HTML}{5599FF}
 
 % image and logo definitions
 \pgfdeclareimage[height=5mm]{LEFT_LOGO}{logo_left}
@@ -149,19 +151,18 @@
   \color{white}\raisebox{-.4pt}{\rule{2.25ex-2pt}{2.25ex-2pt}}}}
 
 % beamer colours
-\setbeamercolor{colorbox}{fg=uniblue,bg=lightgray}
-\setbeamercolor{frametitle}{fg=uniblue}
-\setbeamercolor{title}{fg=uniblue}
+\setbeamercolor{colorbox}{fg=dnblue,bg=lightgrey}
+\setbeamercolor{frametitle}{fg=dnblue}
+\setbeamercolor{title}{fg=dnblue}
 \setbeamercolor{item}{fg=dnorange}
 \setbeamercolor{subitem}{fg=dnorange}
-\setbeamercolor{description item}{fg=uniblue}
+\setbeamercolor{description item}{fg=dnblue}
 \setbeamercolor{background canvas}{bg=}
-\setbeamercolor{alerted text}{fg=uniblue}
-\setbeamercolor{block body}{bg=lightgray}
-\setbeamercolor{block title}{bg=unigray}
+\setbeamercolor{alerted text}{fg=dnblue}
+\setbeamercolor{block body}{bg=lightgrey}
+\setbeamercolor{block title}{bg=dngrey}
 
-% set link colours in tableofcontents to be uniblue
-\hypersetup{colorlinks=true,linkcolor=uniblue, citecolor=black, urlcolor=uniblue}
+\hypersetup{colorlinks=true,linkcolor=dnblue, citecolor=black, urlcolor=dnblue}
 
 % sizes in beamer
 \setbeamersize{description width=5mm}
@@ -179,7 +180,7 @@
 \usepackage{setspace}
 \usepackage{tikz}
 
-\lstset{backgroundcolor=\color{lightgray},
+\lstset{backgroundcolor=\color{lightgrey},
         basicstyle=\scriptsize\ttfamily\color{black},
         commentstyle=\scriptsize\ttfamily\color{blue},
         stringstyle=\scriptsize\ttfamily\color{red},
