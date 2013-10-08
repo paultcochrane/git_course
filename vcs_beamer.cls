@@ -28,10 +28,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage[british]{babel}
 \usepackage{csquotes}
-\DeclareQuoteStyle{house}
-  {\textquotedblleft}{\textquotedblright}
-  {\textquoteleft}{\textquoteright}
-\setquotestyle{house}
 \usepackage{lmodern,
             url,
             multicol,
