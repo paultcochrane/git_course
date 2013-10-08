@@ -123,4 +123,30 @@
 \usepgfplotslibrary{dateplot}
 \pgfplotsset{compat=1.3}
 
+\usepackage{textpos}
+\usepackage{xspace}
+\usepackage{tabto}
+
+\newcommand{\linuxframe}[0]{%
+    \AddToShipoutPictureFG*{
+        \put(\LenToUnit{0.95\textwidth},\LenToUnit{0.95\textheight}){
+            \includegraphics[width=10mm]{images/Tux.pdf}%
+        }
+    }
+}
+\newcommand{\windowsframe}[0]{%
+    \AddToShipoutPictureFG*{
+        \put(\LenToUnit{0.95\textwidth},\LenToUnit{0.95\textheight}){
+            \includegraphics[width=10mm]{images/Windows-logo.png}%
+        }
+    }
+}
+
+% vertically aligns images to the top in tabular environments
+% Solution found here:
+% http://tex.stackexchange.com/questions/23521/tabular-vertical-alignment-to-top
+\newcommand{\imagetop}[1]{\vtop{\null\hbox{#1}}}
+
+\newcommand{\notepad}{\texttt{Notepad++}\xspace}
+
 % vim: expandtab shiftwidth=4
