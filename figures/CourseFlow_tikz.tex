@@ -42,16 +42,25 @@
 %     -> Linux
 
 % SSH
-\node (ssh-linux)   [ssh,right=of concepts]    { SSH on Linux };
+\node (linux) at (100mm,0mm)  [ssh]   { Linux };
+\node (linux-ssh)   [ssh,below=of linux]   { ssh };
 
-\node (ssh-windows) [ssh,right=of ssh-linux]   { SSH on Windows };
-\node (putty)       [ssh,below=of ssh-windows] { Install PuTTY };
-\node (tortoise)    [ssh,below=of putty]       { Tortoise GIT };
-\node (notepad)     [ssh,below=of tortoise]    { Notepad++ };
+\draw [link] (linux) -- (linux-ssh);
 
-\draw [link] (ssh-windows) -- (putty);
-\draw [link] (putty)       -- (tortoise);
-\draw [link] (tortoise)    -- (notepad);
+\node (windows)     [ssh,right=of linux]   { Windows };
+\node (putty)       [ssh,below=of windows] { PuTTY };
+\node (tortoise)    [ssh,below=of putty]   { Tortoise GIT };
+
+\draw [link] (windows) -- (putty);
+\draw [link] (putty)   -- (tortoise);
+
+\begin{pgfonlayer}{background}
+    \node [
+        fill=gray!30,
+        fit=(linux) (windows) (tortoise),
+        rounded corners,
+    ]{};
+\end{pgfonlayer}
 
 % GIT
 \node (git-history)     [git,below=of concepts]        { History };
