@@ -2,6 +2,7 @@
 
 TEX_FILES = \
 	CentralRepo.tex\
+	CourseFlow.tex\
 	DistributedRepos.tex\
 	DistributedReposMainRepo.tex\
 	BranchConcepts.tex\
