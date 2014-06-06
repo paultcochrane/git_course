@@ -1,0 +1,801 @@
+\documentclass{gittalk}
+%\documentclass[handout,notes]{gittalk}
+
+\title{Introduction to Git}
+\author{Andreas Gerdes}
+\date{}
+\usepackage{tcolorbox}
+\usepackage{upquote}
+
+% Exercises should a have a different background color to
+% highlight the hands-on nature of the slide:
+\newenvironment{exerciseframe}
+{
+\setbeamercolor{background canvas}{bg=orange!20}
+\begin{frame}
+}
+{
+\end{frame}
+}
+
+% Commands could be highlighted by a different background color:
+\newcommand{\hlcommand}[1]{ %
+\colorbox{base3}{\small \texttt{#1}}
+}
+
+\begin{document}
+%============================================================================
+% Titlepage
+
+\begin{frame}
+  \titlepage
+  %\begin{textblock}{10}(0,-5)
+  %  \includegraphics[height=40mm]{./logo.pdf}
+  %\end{textblock}  
+\end{frame}
+%============================================================================
+
+\section*{Motivation}
+
+\begin{frame}[fragile]
+\frametitle{Motivation - Why use version control?}
+Versions in file names: does this look familiar?
+\begin{lstlisting}
+$ ls
+file    file.2         file.keep  file.old.2
+file~   file.20090803  file.new   file.save
+file.1  file.bak       file.old
+\end{lstlisting}
+This is better than nothing, however what happened between the different
+versions?  Which file is actually the most current?\\[1em]
+\textbf{Version control is a way to}
+\begin{itemize}
+  \item keep a backup of changing files
+  \item store a history of those changes
+  \item and manage merging of changes in versions\\
+        with different change sets.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Use of version control}
+%{\large \alert{Who uses version control?}}
+\textbf{Who uses version control?}\\[0.5em]
+Everyone who would like to access an old version of a document.  Or everyone
+to whom such things have happened:
+\begin{itemize}
+    \item It would be nice to have the version from 2 hours ago \ldots
+    \item I wrote that really well three days ago.  How did that go
+        again?
+    \item Oh no!  I deleted the file!
+\end{itemize}
+\vspace*{1em}
+%{\large \alert{Where is version control used?}}
+\textbf{Where is version control used?}\\[0.5em]
+\begin{itemize}
+\item Software development
+\item Text and document processing/writing
+\item Graphic design
+\item System administration
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Use of version control (cont.)}
+%{\large \alert{What kinds of files should be kept under version control?}}
+\textbf{What kinds of files should be kept under version control?}\\[0.5em]
+\begin{itemize}
+\item Any kind of file which will be changed
+\item Mainly text files
+    \begin{itemize}
+    \item Program code, documentation
+    \item Theses, dissertations
+    \item Configuration files
+    \end{itemize}
+\item Binary files also possible
+    \begin{itemize}
+    \item Graphics files: \texttt{.png}, \texttt{.tiff}
+    \item Documents: \texttt{.odt}, (\texttt{.pdf})
+    \end{itemize}
+\end{itemize}
+\vspace*{1em}
+%{\large \alert{What shouldn't be kept under version control?}}
+\textbf{What shouldn't be kept under version control?}\\[0.5em]
+\begin{itemize}
+\item Automatically generated files, e.g.: \texttt{.o}, \texttt{.log},
+    \texttt{.pdf}
+\item Editor backup files, e.g.: \texttt{file\~}, \texttt{file.bak}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Course prerequisites}
+\begin{tcolorbox}
+Bash
+\end{tcolorbox}
+\vspace*{1em}
+\begin{tcolorbox}[title=Text editor]
+\textbf{Mac:} Text Wrangler or Text Mate 2\\
+\textbf{Windows}: Notepad++\\
+\textbf{Linux}: gedit, leafpad, kate, nano, vim \dots
+\end{tcolorbox}
+\vspace*{1em}
+\begin{tcolorbox}
+Git
+\end{tcolorbox}
+\end{frame}
+
+%============================================================================
+% Table of contents
+
+\begin{frame}
+  \frametitle{Agenda}
+  \tableofcontents
+\end{frame}
+
+%============================================================================
+\section{Git history and design}
+
+\begin{frame}
+\frametitle{Git history and concept}
+\begin{itemize}
+  \item Originally written for Linux kernel development.
+  \item All Linux kernel developers used to be able to use the proprietary
+        \emph{Bitkeeper} version control system for free.
+  \item In 2005 there were further restrictions put on Bitkeeper so that
+        it wasn't as free as it used to be.
+  \item Linus Torvalds was uneasy with the situation and decided to write his
+        own tool.
+\end{itemize}
+\vspace*{1em}
+\begin{itemize}
+  \item Basically a versioned file system
+  \item The version control system is developed on top of this
+  \item More than 130 commands
+  \item \emph{porcelain} and \emph{plumbing} commands
+  \item Distributed repository model can be used centrally
+  \item Very fast!
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Git design}
+\begin{itemize}
+  \item Distributed development
+  \item Scalable up to thousands of developers
+  \item Fast and efficient
+  \item Maintain integrity and privacy
+  \item Enforced responsibility
+  \item Immutable objects
+  \item Atomic operations
+  \item Support and promote development with branches
+  \item Complete repositories
+  \item Clean design
+  \item Free as in freedom
+\end{itemize}
+\end{frame}
+
+%============================================================================
+\section{Warm up (configuration and getting help)}
+
+\begin{frame}[fragile]
+\frametitle{Get help}
+
+\begin{tcolorbox}[title=git -{}-help]
+Also possible: \hlcommand{man git}, \hlcommand{git help}
+\end{tcolorbox}
+
+\begin{lstlisting}[basicstyle=\tiny\ttfamily\color{black}]
+$ git --help
+usage: git [--version] [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           [-c name=value] [--help] <command> [<args>]
+
+The most commonly used git commands are:
+   add        Add file contents to the index
+   bisect     Find by binary search the change that introduced a bug
+   branch     List, create, or delete branches
+   checkout   Checkout a branch or paths to the working tree
+   clone      Clone a repository into a new directory
+   commit     Record changes to the repository
+   diff       Show changes between commits, commit and working tree, etc
+   fetch      Download objects and refs from another repository
+   grep       Print lines matching a pattern
+   init       Create an empty git repository or reinitialize an existing one
+   log        Show commit logs
+   merge      Join two or more development histories together
+   mv         Move or rename a file, a directory, or a symlink
+   [...]
+
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Configure Git}
+\begin{tcolorbox}[title=git config]
+Important for the history of a file:\\
+Who made a change and when?
+\end{tcolorbox}
+\vspace*{2em}
+\begin{lstlisting}
+git config --global user.name "Jon Doe"
+git config --global user.email "jon.doe@email.com"
+git config --global core.editor "vim"
+git config --global color.ui True
+\end{lstlisting}
+\end{frame}
+
+%============================================================================
+\section{Basic commands (init, status, add, commit)}
+
+\begin{frame}[fragile]
+\frametitle{Create a (local) repository}
+\begin{tcolorbox}[title=git init]
+Initialize an empty Git repository
+\end{tcolorbox}
+\vspace*{0.5em}
+\begin{lstlisting}
+$ mkdir myDir
+$ cd myDir/
+$ git init
+Initialized empty Git repository in /home/dog/myDir/.git/
+$ ls -la
+total 36
+drwxr-xr-x  3 dog dog  4096 Jan 30 02:27 .
+drwx------ 57 dog dog 24576 Jan 30 02:27 ..
+drwxr-xr-x  7 dog dog  4096 Jan 30 02:27 .git
+$ git status
+# On branch master
+#
+# Initial commit
+#
+nothing to commit (create/copy files and use "git add" to track)
+$
+\end{lstlisting}
+\end{frame}
+
+
+\begin{exerciseframe}
+\frametitle{Exercise: help, config, init (10 minutes)}
+\begin{itemize}
+  \item Explore \hlcommand{git help}
+  \item Configure Git with your name and e-mail
+  \item Create a folder
+  \item Initialize a Git repository
+  \item Explore the \hlcommand{.git} subdirectory
+  \item Tell me some interesting thing you find
+\end{itemize}
+\vspace*{0.5em}
+\pause
+\begin{itemize}
+  \item What happens when you rename the directory where you called \hlcommand{git init}?
+  \item What happens when you delete the \hlcommand{.git} subdirectory?
+  \item What happens when you call \hlcommand{git init} a second time in a Git directory?
+  \item Type \hlcommand{git config -{}-list} in your \texttt{\$HOME} directory!
+  \item Type \hlcommand{git config -{}-list} in your Git directory!
+\end{itemize}
+\end{exerciseframe}
+
+\begin{frame}
+\frametitle{Good to know}
+\begin{itemize}
+  \item Git help works also for specific operations:
+  \begin{itemize}
+    \item \hlcommand{git help add} = \hlcommand{man git-add}
+    \item \hlcommand{git help config} = \hlcommand{man git-config}
+    \item \hlcommand{git help init} = \hlcommand{man git-init}
+  \end{itemize}
+  \qquad \dots
+  \item You can either use \hlcommand{git config <parameter>}\\
+        or edit the \hlcommand{.gitconfig} or \hlcommand{./.git/config} text files.\\
+        \begin{itemize}
+        \item The same is true for many other operations
+        \item Not every configuration option has (yet)\\
+        a command line tool to change it
+        \item Git is still being developed.
+        \end{itemize}
+\end{itemize}
+\end{frame}
+
+%============================================================================
+
+\begin{frame}
+\frametitle{How Git views content}
+% Picture from Katy
+\begin{center}
+    %\resizebox{\textwidth}{!}{
+        \input{./img/file-types.tex}
+    %}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{State of a repository}
+\begin{tcolorbox}[title=git status]
+Shows if you have untracked, modified\\ or staged (= to be committed)
+files.\\[0.5em]
+In case of a cloned repository \hlcommand{git status} also shows if you are
+ahead of your remote (compared to last sync).
+\end{tcolorbox}
+\vspace*{0.5em}
+See also: \hlcommand{git help status}
+\end{frame}
+
+\begin{frame}
+\frametitle{Add files to the next commit}
+\begin{tcolorbox}[title=git add]
+Adds files to the staging area.\\[0.5em]
+If a file is added once, Git is aware of it and will show it as \emph{modified}
+instead of \emph{untracked} if you have made a modification.\\[0.5em]
+A modified file is not automatically staged. You have to call\\
+\hlcommand{git add} every time you want to commit the changes.
+\end{tcolorbox}
+\vspace*{0.5em}
+In Git \emph{add} has a different meaning compared to Subversion.\\[0.5em]
+Here it means: Mark this file to be committed in my next snapshot.\\[0.5em]
+In Subversion \emph{add} means: Add this file to version control.
+\end{frame}
+
+\begin{frame}
+\frametitle{Make a snapshot}
+\begin{tcolorbox}[title=git commit]
+Put files from staging area into the repository.\\[0.5em]
+This command does not care about the state\\
+of the working directory!\\[0.5em]
+You could delete all files and still commit them\\
+as long as they were staged.
+\end{tcolorbox}
+\vspace*{0.5em}
+In Git \emph{commit} is a local operation.\\[0.5em]
+In Subversion \emph{commit} alias \emph{ci} always connects to the (central) server.
+\end{frame}
+
+\begin{exerciseframe}
+\frametitle{Exercise: status, add, commit (10 minutes)}
+\begin{itemize}
+  \item Create files in your Git repository
+  \item Add them to the staging area
+  \item Make one or more commits
+  \item Create two files, stage and commit only one of them.
+  \begin{itemize}
+    \item Modify the committed file
+    \item Call \hlcommand{git status}\\
+          (one file should be modified, the other one still untracked)
+    \item Now: Run \hlcommand{git commit -a} without staging anything first!
+    \item What happens? 
+  \end{itemize}
+\end{itemize}
+\pause
+\begin{itemize}
+  \item Can you unstage a file that was added with \hlcommand{git add}?
+  \item Make some changes to one of your files and stage it.
+  \begin{itemize}
+    \item Now: Make some more changes
+    \item Call \hlcommand{git status}
+    \item What do you see?
+    \item What version of the file is put into the repository when 
+          you call \hlcommand{git commit} now without staging the file
+          a second time?
+  \end{itemize}
+\end{itemize}
+\end{exerciseframe}
+
+
+\begin{frame}
+\frametitle{Recommendations for commits}
+\begin{itemize}
+  \item A commit should contain a single, self contained idea.
+  \item The commit message should contain a short description of the
+    idea or change being made in this commit.
+    \begin{itemize}
+	  \item A one line \emph{subject line}
+	  \item An optional text describing more details of the change.
+	  \item The \emph{Why} of the change is important.
+	  \item Remember: this is a communication exercise.
+    \end{itemize}
+  \item Commits should be as small as possible (\emph{atomic
+    commits}).
+\end{itemize}
+\pause
+\vspace*{0.5em}
+\textbf{After the git commit command}
+\begin{itemize}
+  \item The first line of the commit message is shown
+  \item There are no revision numbers. Commits are
+        specified via SHA1 hashes. The first part of the SHA1 hash is also
+        shown. This can be used as a reference to the commit.
+  \item What else is shown?
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Good to know}
+\textbf{Extensions to bash make life easier}
+\vspace*{0.5em}
+\begin{lstlisting}[basicstyle=\tiny\ttfamily]
+export VISUAL=vim
+
+GIT_PS1_SHOWDIRTYSTATE="true"
+GIT_PS1_SHOWSTASHSTATE="true"
+GIT_PS1_SHOWUNTRACKEDFILES="true"
+
+if [ -e /etc/bash_completion.d/git ]
+then
+. /etc/bash_completion.d/git
+export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[0;31m\]$(__git_ps1 "\[\033[0;31m\] (%s)\[\033[0;31m\]")\[\033[00m\]\$ '
+else
+export PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+fi
+\end{lstlisting}
+\end{frame}
+
+%============================================================================
+\section{Explore history and changes (log, diff, show)}
+
+\begin{frame}[fragile]
+\frametitle{Browse the history}
+\begin{tcolorbox}[title=git log]
+Shows previous commits (message, author, date)
+\end{tcolorbox}
+\vspace*{1em}
+There is also a \hlcommand{tig} command that provides a nice ncurses interface
+(has to be installed separately).\\[1em]
+Summary view with
+\begin{lstlisting}[basicstyle=\normalsize\ttfamily]
+git log --oneline
+\end{lstlisting}
+\vspace*{1em}
+See diffs for a specific file:
+\begin{lstlisting}[basicstyle=\normalsize\ttfamily]
+git log -p <file>
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Compare versions}
+\begin{tcolorbox}[title=git diff]
+Compares different versions of (text) files.\\[0.5em]
+Default:\\Version in current working directory vs. last committed version.\\
+(other modes possible, see git help diff)
+\end{tcolorbox}
+\vspace*{1em}
+Show the diff between staging area and last commit:
+\begin{lstlisting}[basicstyle=\normalsize\ttfamily]
+git diff --cached [<path>...]
+\end{lstlisting}
+\textbf{In other words:}\\
+\hlcommand{git diff -{}-cached} \textbf{shows you what will be committed next.}\\[1em]
+Show the diff between two arbitrary commits:
+\begin{lstlisting}[basicstyle=\normalsize\ttfamily]
+git diff  <commit> <commit> [<path>...]
+\end{lstlisting}
+
+\vspace*{1em}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Show versions from the past}
+\begin{tcolorbox}[title=git show]
+Shows Git objects (not only commits)
+\begin{lstlisting}
+SYNOPSIS
+       git show [options] <object>...
+\end{lstlisting}
+\end{tcolorbox}
+\vspace*{1em}
+\textbf{Example:}
+\begin{lstlisting}[basicstyle=\normalsize\ttfamily]
+git show 9f529a:myfile.txt
+\end{lstlisting}
+\end{frame}
+
+\begin{exerciseframe}
+\frametitle{Exercise: log, diff, show (5 minutes)}
+\begin{itemize}
+  \item Add some more files and make more commits.
+  \item Use \hlcommand{git log} to view the history.
+  \item Use \hlcommand{git log -p <path>} to see differences in history\\
+        for one of your files.
+  \item Make changes to one file and show the difference with git diff
+  \item Add the file and use \hlcommand{git diff -{}-cached} to see what will be
+        committed.
+  \item Commit the change and and use the  \hlcommand{-v} switch to see what's to
+        be committed in your editor.
+  \item Use \hlcommand{git show} to inspect a version of the file from a previous
+        commit.
+\end{itemize}
+\end{exerciseframe}
+
+%============================================================================
+\section{Going back in time (checkout, reset)}
+
+\begin{frame}[fragile]
+\frametitle{Get older versions of a file back}
+\begin{tcolorbox}[title=git checkout]
+Checkout a branch or paths to the working tree
+\end{tcolorbox}
+\vspace*{1em}
+\textbf{Example 1:}\\
+You have unstaged changes and want to discard them:\\[0.5em]
+\begin{lstlisting}[basicstyle=\normalsize\ttfamily]
+git checkout myfile.txt
+\end{lstlisting}
+\vspace*{1em}
+\textbf{Example 2:}\\
+You want a file back from a certain commit\\[0.5em]
+\begin{lstlisting}[basicstyle=\normalsize\ttfamily]
+git checkout 9f529a:myfile.txt
+\end{lstlisting}
+\vspace*{1em}
+More on \hlcommand{git checkout} in Part II when we discuss branching.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Reset the history}
+\begin{tcolorbox}[title=git reset]
+Reset current HEAD to the specified state
+\begin{lstlisting}
+SYNOPSIS
+       git reset [-q] [<commit>] [--] <paths>...
+\end{lstlisting}
+\end{tcolorbox}
+\vspace*{0.2em}
+\textbf{Example 1:}\\ 
+You have staged changes and want to unstage them:
+\begin{lstlisting}
+git reset <file>
+\end{lstlisting}
+\textbf{Example 2:}\\
+You want the state of your repository back, i.e. from yesterday evening:
+\begin{lstlisting}
+git reset [-- hard] 9f529a
+\end{lstlisting}
+{\small \textbf{Warning}: When you do a reset like this, your history is lost
+(all commit messages). You can rewrite history by this.\\
+\textbf{When you use the (optional) \texttt{-{}-hard} switch your working tree is also reset!}}
+\end{frame}
+
+\begin{exerciseframe}
+\frametitle{Exercise: checkout, reset (5 minutes)}
+\begin{itemize}
+\item Step 1: Create 5 files in your directory with\\
+      one line of content in each file.
+\item Step 2: Commit the files to the repository
+\item Step 3: Change 2 of the 5 files and commit them.
+\item Step 4: Undo the changes in step 3 using \hlcommand{git reset}.
+\item Step 5: Print out the last entry in the log.
+\end{itemize}
+\end{exerciseframe}
+
+
+%============================================================================
+\section{Ignore, move and remove files}
+
+\begin{frame}[fragile]
+\frametitle{Ignore files}
+\begin{tcolorbox}[title=The .gitignore file]
+Can be in the root or any sub directory of your Git repository.
+\end{tcolorbox}
+\vspace*{0.5em}
+Example:
+\begin{lstlisting}
+$ cat .gitignore
+*.aux
+*.log
+*.nav
+*.out
+*.snm
+*.toc
+*.vrb
+git_intro.pdf
+$
+\end{lstlisting}
+\vspace*{0.5em}
+We have already seen another file that we could use!\\
+(\texttt{./.git/info/exclude})
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Move files within your repository}
+\begin{tcolorbox}[title=git mv]
+Put \texttt{git} in front of the mv command to make Git aware of the name change.
+\end{tcolorbox}
+\vspace*{0.5em}
+Example:
+\begin{lstlisting}
+$ git mv file3 file5
+$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	renamed:    file3 -> file5
+#
+$ git commit -m "Renamed the file, because ..."
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Remove files from version control}
+\begin{tcolorbox}[title=git rm]
+Put \texttt{git} in front of the rm command to make Git aware of the removal.\\[0.5em]
+The command will remove the file from the working directory!\\
+For \hlcommand{-{}-cached} option, see: \hlcommand{git help rm} 
+\end{tcolorbox}
+Example:
+\begin{lstlisting}
+$ git rm file5
+rm 'file5'
+$ git status
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	deleted:    file5
+#
+$ git commit -m "Deleted old file. Not needed by the project any more."
+
+\end{lstlisting}
+\end{frame}
+
+
+\begin{exerciseframe}
+\frametitle{Exercise: ignore, rename and remove (5 minutes)}
+\begin{itemize}
+  \item Add some files with extension \texttt{.log}. Do not stage them
+  \item Add a \texttt{.gitignore} file to ignore these files.
+  \item Git will not care about logfiles any more.
+  \item The content of \texttt{.gitignore} may change over time.
+  \item Why not put it into version control, too?\\
+        $\rightarrow$ \hlcommand{git add .gitignore; git commit}
+  \item Rename and remove some of your files.\\
+        Do it with Git and without Git.
+\end{itemize}
+\end{exerciseframe}
+
+%============================================================================
+\section{Clone a project}
+
+\begin{frame}[fragile]
+\frametitle{Clone a project}
+\begin{tcolorbox}[title=git clone]
+Clones a repository from some other location.\\
+Many protocols are supported. Despite to \hlcommand{git init} the cloned repo
+may not be empty. Use \hlcommand{git log} to see the history.
+\end{tcolorbox}
+\vspace*{1em}
+\textbf{Example:}\\
+From Github\\[0.5em]
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily]
+git clone https://github.com/purepitch/git_course.git
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Pull changes from a remote}
+\begin{tcolorbox}[title=git pull]
+Fetch from and integrate with another repository or a local 
+branch.\\[0.5em]
+Incorporates changes from a remote repository into the current branch. 
+In its default mode, git pull is shorthand for \hlcommand{git fetch} 
+followed by \hlcommand{git merge}.
+\end{tcolorbox}
+\vspace*{0.5em}
+If you don't have much experience with branches (see Part II of this 
+course) and just work on one branch (default: \texttt{master}) with 
+one remote (default: \texttt{origin}), you can use \hlcommand{git pull}
+for your convenience.\\[0.5em]
+Sometimes after a pull Git will throw you into an editor with a merge 
+commit message already prepared. Just save this one and commit the 
+change locally. If there is a conflict Git cannot resolve itself, it 
+will inform you about it and tell you what to do.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Push changes to a remote}
+\begin{tcolorbox}[title=git push]
+Update the remote server with changes you have made to your local 
+repository.\\[0.5em]
+You should always do a  \hlcommand{git pull} first, before you try to 
+push. Make this a habit!
+\end{tcolorbox}
+
+At some point you might experience that your push gets rejected by the 
+server. Don't worry! Try a \hlcommand{git pull} and read what Git 
+tries to tell you. When all conflicts are resolved, the push should 
+work.\\[0.5em]
+If not: Contact your Git server administrator to check if you have 
+indeed write permission to the repository. 
+
+\end{frame}
+
+\begin{exerciseframe}
+\frametitle{Exercise: clone, pull and push \hfill (10 minutes)}
+\begin{itemize}
+  \item Create an account on Github
+  \item Fork the repository: \\
+  \url{https://github.com/purepitch/git_course.git} \\
+  (online via the web interface)
+  \item Clone your fork to your local hard drive
+  \item Make some changes and push them
+  \item (optional) Give your neighbor write access to your repo
+  \item (optional) Make changes, push and pull them.
+  \item (optional) Create merge conflicts that will reject a push and 
+  have to be resolved with a pull.
+\end{itemize}
+\end{exerciseframe}
+
+%============================================================================
+\section{References, Part II and Thank You}
+
+\begin{frame}
+\frametitle{Git commands covered today}
+\begin{center}
+    %\resizebox{\textwidth}{!}{
+        \input{./img/git-commands.tex}
+    %}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{For further study}
+\begin{itemize}
+  \item Git reference site:\\
+  \url{http://gitref.org}
+  \item Website of the Git project:\\
+  \url{http://git-scm.com}\\
+  Here you can find the very good Pro Git book (PDF):\\
+  \url{http://git-scm.com/book}
+  \item Git introduction (Katy Huff)\\
+        \url{http://www.youtube.com/watch?v=T0BE9ApIegc}
+  % Many ideas for this talk were taken from Katy. Give credit!
+  \item More advanced Git introduction (Scott Chacon)\\
+        \url{http://www.youtube.com/watch?v=ZDR433b0HJY}\\
+        (Scott explains the SHA1 hashes in more detail. Furthermore he shows
+        how Git 'thinks' about version control compared to Subversion. He
+        introduces branching very early - a must see talk!)
+  % Scott Chacons Railsconf Git Talk: http://vimeo.com/1099027
+  \item Tech Talk: Linus Torvalds on Git (very funny)\\
+        \url{http://www.youtube.com/watch?v=4XpnKHJAok8}
+  % Discussion on staged vs indexed vs cached:
+  % http://git.661346.n2.nabble.com/Consistent-terminology-cached-staged-index-td6021438.html
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Part II: Advanced Git knowledge}
+\begin{itemize}
+  \item Git objects and hashes in detail
+  \item Stage only parts of a file: patch mode for \texttt{git add} \\
+  \hlcommand{git add -p}
+  \item Work with (local) branches: create, delete and merge
+  \item Resolve (merge) conflicts
+  \item More on remotes: What happens when you clone?
+  \item Fetch and merge remote branches, \hlcommand{git pull}
+  \item \hlcommand{git stash}
+  \item \hlcommand{git tag}
+  \item \hlcommand{git rebase}
+  \item Workflows in version control: distributed vs.~central
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Thank you}
+\begin{textblock}{10}(3,-0.2)
+  \includegraphics[width=0.75\textwidth]{./img/git-bingo.jpg}
+\end{textblock}
+\begin{textblock}{6}(10.2,1)
+  \footnotesize
+  \texttt{Comic source:}\\
+  \url{http://geek-and-poke.com}
+\end{textblock}
+\end{frame}
+
+%============================================================================
+
+\end{document}
+
+%% vim: shiftwidth=4 expandtab:

@@ -1,0 +1,30 @@
+\usetikzlibrary{positioning}
+
+\begin{tikzpicture}
+[
+gitcommand/.style={rectangle, minimum width=6em, minimum height=2em, 
+fill=blue!20, 
+draw=blue, thick},
+]
+
+\node (git) at (0,0) {\texttt{git}};
+\node [gitcommand, below of = git] (config) {\texttt{config}};
+\node [gitcommand, left = of config] (help) {\texttt{help}};
+\node [gitcommand, right = of config] (init) {\texttt{init}};
+\node [gitcommand, below of = help] (status) {\texttt{status}};
+\node [gitcommand, below of = config] (add) {\texttt{add}};
+\node [gitcommand, below of = init] (commit) {\texttt{commit}};
+\node [gitcommand, below of = status] (log) {\texttt{log}};
+\node [gitcommand, below of = add] (diff) {\texttt{diff}};
+\node [gitcommand, below of = commit] (show) {\texttt{show}};
+\node [gitcommand, below of = log] (clone) {\texttt{clone}};
+\node [gitcommand, below of = diff] (pull) {\texttt{pull}};
+\node [gitcommand, below of = show] (push) {\texttt{push}};
+\node [gitcommand, below of = clone] (checkout) {\texttt{checkout}};
+\node [gitcommand, below of = pull] (reset) {\texttt{reset}};
+\node [gitcommand, below of = checkout] (mv) {\texttt{mv}};
+\node [gitcommand, below of = reset] (rm) {\texttt{rm}};
+
+%  \item \texttt{clone}
+
+\end{tikzpicture}
