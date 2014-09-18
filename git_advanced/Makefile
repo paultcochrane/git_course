@@ -11,6 +11,9 @@ default: $(BASENAME).pdf clean
 arara: git_advanced.tex
 	arara $<
 
+show: $(BASENAME).pdf
+	evince $(BASENAME).pdf &
+
 clean:
 	rm -f *.log *.nav *.snm *.toc *.aux *.out *.dvi *.vrb
 
