@@ -258,22 +258,24 @@ $
 
 
 \begin{exerciseframe}
-\frametitle{Exercise: help, config, init (10 minutes)}
+\frametitle{Exercise: help, config, init \hfill (10 minutes)}
 \begin{itemize}
-  \item Explore \hlcommand{git help}
-  \item Configure Git with your name and e-mail
-  \item Create a folder
-  \item Initialize a Git repository
-  \item Explore the \hlcommand{.git} subdirectory
-  \item Tell me some interesting thing you find
+  \item Explore \hlcommand{git help}.
+  \item Configure Git with your name and e-mail.
+  \item Create a folder named 'git\_intro' in your \$HOME.
+  \item Initialize a Git repository in 'git\_intro'.
+  \item Explore the \hlcommand{.git} subdirectory.
+  \item Tell me some interesting thing you find.
 \end{itemize}
 \vspace*{0.5em}
 \pause
 \begin{itemize}
-  \item What happens when you rename the directory where you called \hlcommand{git init}?
+  \item What happens when you rename 'git\_intro' to something else?
   \item What happens when you delete the \hlcommand{.git} subdirectory?
-  \item What happens when you call \hlcommand{git init} a second time in a Git directory?
-  \item Type \hlcommand{git config -{}-list} in your \texttt{\$HOME} directory!
+  \item What happens when you call \hlcommand{git init} a second time 
+  in a Git directory?
+  \item Type \hlcommand{git config -{}-list} in your \texttt{\$HOME} 
+  directory!
   \item Type \hlcommand{git config -{}-list} in your Git directory!
 \end{itemize}
 \end{exerciseframe}
@@ -353,32 +355,30 @@ In Subversion \emph{commit} alias \emph{ci} always connects to the (central) ser
 \end{frame}
 
 \begin{exerciseframe}
-\frametitle{Exercise: status, add, commit (10 minutes)}
+\frametitle{Exercise: status, add, commit \hfill (10 minutes)}
 \begin{itemize}
-  \item Create files in your Git repository
-  \item Add them to the staging area
-  \item Make one or more commits
-  \item Create two files, stage and commit only one of them.
+  \item Create two files in your Git repository:
   \begin{itemize}
-    \item Modify the committed file
+    \item \texttt{echo 'Red is a nice color.' > red.txt}
+    \item \texttt{echo 'Blue is a nice color.' > blue.txt}
+  \end{itemize}
+  \item Add \texttt{red.txt} to the staging area
+  \item Make an initial commit that contains content of 
+  \texttt{red.txt}.
+  \begin{itemize}
+    \item Now modify \texttt{red.txt} again (add a second line: 'It is 
+    the color of a rose.')
     \item Call \hlcommand{git status}\\
           (one file should be modified, the other one still untracked)
-    \item Now: Run \hlcommand{git commit -a} without staging anything first!
+    \item Now: Run \hlcommand{git commit -a} without staging anything 
+    first!
     \item What happens? 
   \end{itemize}
-\end{itemize}
-\pause
-\begin{itemize}
+  \item Add \texttt{blue.txt} to the staging area.
   \item Can you unstage a file that was added with \hlcommand{git add}?
-  \item Make some changes to one of your files and stage it.
-  \begin{itemize}
-    \item Now: Make some more changes
-    \item Call \hlcommand{git status}
-    \item What do you see?
-    \item What version of the file is put into the repository when 
-          you call \hlcommand{git commit} now without staging the file
-          a second time?
-  \end{itemize}
+  \item Stage and commit \texttt{blue.txt} using:\\
+        \hlcommand{git add blue.txt}\\
+        \hlcommand{git commit -m 'Adds blue.txt to the project.'}
 \end{itemize}
 \end{exerciseframe}
 
@@ -493,19 +493,29 @@ git show 9f529a:myfile.txt
 \end{frame}
 
 \begin{exerciseframe}
-\frametitle{Exercise: log, diff, show (5 minutes)}
+\frametitle{Exercise: log, diff, show \hfill (5 minutes)}
 \begin{itemize}
-  \item Add some more files and make more commits.
-  \item Use \hlcommand{git log} to view the history.
-  \item Use \hlcommand{git log -p <path>} to see differences in history\\
-        for one of your files.
-  \item Make changes to one file and show the difference with git diff
-  \item Add the file and use \hlcommand{git diff -{}-cached} to see what will be
+  \item Create \texttt{green.txt} and \texttt{black.txt} similar to the 
+  first two files.
+  \item Add and commit them.
+  \item Add a file \texttt{README} that describes the content of the 
+  directory.
+  \item Make changes to \texttt{red.txt} (remove the second line) and 
+  show the difference with git diff.
+  \item Add \texttt{red.txt} to the staging area and use \hlcommand{git 
+  diff -{}-cached} to see what will be
         committed.
-  \item Commit the change and and use the  \hlcommand{-v} switch to see what's to
+  \item Commit the change and and use the  \hlcommand{-v} switch to see 
+  what's to
         be committed in your editor.
-  \item Use \hlcommand{git show} to inspect a version of the file from a previous
+  \item Use \hlcommand{git log} to view the history.
+  \item Use \hlcommand{git log -p red.txt} to see differences in 
+  history\\
+        for that particular file.
+  \item Use \hlcommand{git show} to inspect a version of 
+  \texttt{red.txt} from a previous
         commit.
+  \item Use \hlcommand{git show} to get the old version back.
 \end{itemize}
 \end{exerciseframe}
 
@@ -517,20 +527,42 @@ git show 9f529a:myfile.txt
 \begin{tcolorbox}[title=git checkout]
 Checkout a branch or paths to the working tree
 \end{tcolorbox}
-\vspace*{1em}
+\vspace*{0.5em}
 \textbf{Example 1:}\\
 You have unstaged changes and want to discard them:\\[0.5em]
 \begin{lstlisting}[basicstyle=\normalsize\ttfamily]
 git checkout myfile.txt
 \end{lstlisting}
-\vspace*{1em}
-\textbf{Example 2:}\\
-You want a file back from a certain commit\\[0.5em]
+\vspace*{0.5em}
+\textbf{Example 2: (only in emergency cases)}\\
+Change the whole repository back to a certain commit\\[0.5em]
 \begin{lstlisting}[basicstyle=\normalsize\ttfamily]
-git checkout 9f529a:myfile.txt
+git checkout 9f529a
 \end{lstlisting}
-\vspace*{1em}
+Warning: The command above leaves repo in 'detached HEAD' state!\\
 More on \hlcommand{git checkout} in Part II when we discuss branching.
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Revert changes from a single commit}
+\begin{tcolorbox}[title=git revert]
+Revert an existing commit and make a new commit for this.
+\begin{lstlisting}
+SYNOPSIS
+       git revert <commit>
+\end{lstlisting}
+\end{tcolorbox}
+
+\vspace*{1em}
+\texttt{git revert} undoes a single commit -- it does not go
+back to the previous state of a project by removing all subsequent 
+commits.
+In Git, this is actually called a reset (see next slide), not a revert.
+\begin{center}
+\includegraphics[width=0.3\textwidth]{./img/git-tutorial_changes-revert}
+\end{center}
+{\footnotesize \textbf{Picture taken from the very good Git tutorial from Atlassian: \url{https://www.atlassian.com/git/tutorials}}}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -559,14 +591,23 @@ git reset [-- hard] 9f529a
 \end{frame}
 
 \begin{exerciseframe}
-\frametitle{Exercise: checkout, reset (5 minutes)}
+\frametitle{Exercise: checkout, reset, revert \hfill (5 minutes)}
 \begin{itemize}
-\item Step 1: Create 5 files in your directory with\\
-      one line of content in each file.
+\item Step 1: Create two more files in your directory:\\
+      \texttt{orange.txt} and \texttt{purple.txt}
 \item Step 2: Commit the files to the repository
-\item Step 3: Change 2 of the 5 files and commit them.
+\item Step 3: Add second lines in \texttt{orange.txt} and 
+\texttt{green.txt}\\
+      (think about things that have these colors).
 \item Step 4: Undo the changes in step 3 using \hlcommand{git reset}.
 \item Step 5: Print out the last entry in the log.
+\end{itemize}
+\vspace*{0.5em}
+\textbf{Alternative:}
+\begin{itemize}
+\item Redo step 3.
+\item Use \hlcommand{git revert} to undo the changes instead of 
+\hlcommand{git reset}.
 \end{itemize}
 \end{exerciseframe}
 
@@ -643,16 +684,19 @@ $ git commit -m "Deleted old file. Not needed by the project any more."
 
 
 \begin{exerciseframe}
-\frametitle{Exercise: ignore, rename and remove (5 minutes)}
+\frametitle{Exercise: ignore, rename and remove \hfill (5 minutes)}
 \begin{itemize}
-  \item Add some files with extension \texttt{.log}. Do not stage them
-  \item Add a \texttt{.gitignore} file to ignore these files.
-  \item Git will not care about logfiles any more.
+  \item Add a file \texttt{colors.log}. Do not stage it.
+  \item Add a \texttt{.gitignore} file to ignore logfiles.
+  \item Git will not care about \texttt{colors.log} any more\\
+        (check with \hlcommand{git status}).
   \item The content of \texttt{.gitignore} may change over time.
   \item Why not put it into version control, too?\\
-        $\rightarrow$ \hlcommand{git add .gitignore; git commit}
-  \item Rename and remove some of your files.\\
-        Do it with Git and without Git.
+        \hlcommand{git add .gitignore; git commit -m 'Ignore logfiles.'}
+  \item Rename and remove some of your (color) files.\\
+        Do it with and without 'git' in front of the\\
+       'mv' and 'rm' commands.\\
+        What difference does \hlcommand{git status} show?
 \end{itemize}
 \end{exerciseframe}
 
@@ -708,7 +752,8 @@ server. Don't worry! Try a \hlcommand{git pull} and read what Git
 tries to tell you. When all conflicts are resolved, the push should 
 work.\\[0.5em]
 If not: Contact your Git server administrator to check if you have 
-indeed write permission to the repository. 
+indeed write permission to the repository.\\[0.5em]
+More on \hlcommand{git pull} and \hlcommand{git push} in Part II.
 
 \end{frame}
 
