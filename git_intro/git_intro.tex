@@ -1,5 +1,5 @@
-\documentclass{gittalk}
-%\documentclass[handout,notes]{gittalk}
+%\documentclass{gittalk}
+\documentclass[handout,notes]{gittalk}
 
 \title{Introduction to Git}
 \author{Andreas Gerdes}
@@ -517,20 +517,41 @@ git show 9f529a:myfile.txt
 \begin{tcolorbox}[title=git checkout]
 Checkout a branch or paths to the working tree
 \end{tcolorbox}
-\vspace*{1em}
+\vspace*{0.5em}
 \textbf{Example 1:}\\
 You have unstaged changes and want to discard them:\\[0.5em]
 \begin{lstlisting}[basicstyle=\normalsize\ttfamily]
 git checkout myfile.txt
 \end{lstlisting}
-\vspace*{1em}
+\vspace*{0.5em}
 \textbf{Example 2:}\\
 You want a file back from a certain commit\\[0.5em]
 \begin{lstlisting}[basicstyle=\normalsize\ttfamily]
 git checkout 9f529a:myfile.txt
 \end{lstlisting}
-\vspace*{1em}
+Warning: The command above leaves repo in 'detached HEAD' state!\\
 More on \hlcommand{git checkout} in Part II when we discuss branching.
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Revert changes from a single commit}
+\begin{tcolorbox}[title=git revert]
+Revert an existing commit and make a new commit for this.
+\begin{lstlisting}
+SYNOPSIS
+       git revert <commit>
+\end{lstlisting}
+\end{tcolorbox}
+
+\vspace*{1em}
+\texttt{git revert} undoes a single commit -- it does not go
+back to the previous state of a project by removing all subsequent 
+commits.
+In Git, this is actually called a reset (see next slide), not a revert.
+\begin{center}
+\includegraphics[width=0.3\textwidth]{./img/git-tutorial_changes-revert}
+\end{center}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -559,14 +580,23 @@ git reset [-- hard] 9f529a
 \end{frame}
 
 \begin{exerciseframe}
-\frametitle{Exercise: checkout, reset (5 minutes)}
+\frametitle{Exercise: checkout, reset, revert \hfill (5 minutes)}
 \begin{itemize}
-\item Step 1: Create 5 files in your directory with\\
-      one line of content in each file.
+\item Step 1: Create two more files in your directory:\\
+      \texttt{orange.txt} and \texttt{purple.txt}
 \item Step 2: Commit the files to the repository
-\item Step 3: Change 2 of the 5 files and commit them.
+\item Step 3: Add second lines in \texttt{orange.txt} and 
+\texttt{green.txt}\\
+      (think about things that have these colors).
 \item Step 4: Undo the changes in step 3 using \hlcommand{git reset}.
 \item Step 5: Print out the last entry in the log.
+\end{itemize}
+\vspace*{0.5em}
+\textbf{Alternative:}
+\begin{itemize}
+\item Redo step 3.
+\item Use \hlcommand{git revert} to undo the changes instead of 
+\hlcommand{git reset}.
 \end{itemize}
 \end{exerciseframe}
 
