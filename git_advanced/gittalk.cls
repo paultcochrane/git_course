@@ -96,12 +96,12 @@
 % Handout for workshops
 \RequirePackage{pgfpages}
 
-\pgfpagesdeclarelayout{1 on 1 with notes}{
+\pgfpagesdeclarelayout{1 on 1 with notes}{%
     \edef\pgfpageoptionheight{\the\paperwidth}
     \edef\pgfpageoptionwidth{\the\paperheight}
     \edef\pgfpageoptionborder{0pt}
 }
-{
+{%
 \pgfpagesphysicalpageoptions{%
     logical pages=2,%
     physical height=\pgfpageoptionheight,%
@@ -118,12 +118,12 @@
     resized height=\pgfphysicalheight,%
     center=\pgfpoint{.5\pgfphysicalwidth}{.25\pgfphysicalheight},%
     copy from=2
-}%    
-\AtBeginDocument{
+}%
+\AtBeginDocument{%
     \newbox\notesbox
-    \setbox\notesbox=\vbox{
+    \setbox\notesbox=\vbox{%
         \hsize=.85\paperwidth
-        \vskip-1in\hskip-1in\vbox{
+        \vskip-1in\hskip-1in\vbox{%
             \vskip1cm
             Notes\vskip5mm
             \hrule width\paperwidth\vskip5mm
@@ -146,6 +146,5 @@
     \pgfpagesshipoutlogicalpage{2}\copy\notesbox
 }
 }
-\DeclareOption{notes}{\pgfpagesuselayout{1 on 1 with 
-notes}[a4paper,border shrink=15mm]}
+\DeclareOption{notes}{\pgfpagesuselayout{1 on 1 with notes}[a4paper,border shrink=15mm]}
 \ProcessOptions\relax
