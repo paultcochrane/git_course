@@ -1,4 +1,4 @@
-.PHONY: clean cleanall 
+.PHONY: clean cleanall
 
 BASENAME = git_advanced
 
