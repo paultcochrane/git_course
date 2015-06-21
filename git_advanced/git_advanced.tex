@@ -213,19 +213,21 @@ snapshots are possible.
 \frametitle{Exercise: branch, checkout \hfill (10 minutes)}
 \begin{itemize}
   \item \texttt{cd \$HOME/Git/git\_advanced}
-  \item Create a new branch 'yellow' and checkout that branch.
+  \item Create a new branch \enquote{yellow} and checkout that branch.
   \item You can do it with\\
         \hlcommand{git branch yellow}\\
         \hlcommand{git checkout yellow}\\
         or in one step:
         \hlcommand{git checkout -b yellow}
-  \item Create a file 'yellow.txt' in your yellow branch (you know the content).
+  \item Create a file \enquote{yellow.txt} in your yellow branch (you know the content).
         Stage and commit the changes.
-  \item Checkout master. Create and checkout a 'red' branch and change the content of 'red.txt' to:\\
+  \item Checkout master. Create and checkout a \enquote{red} branch and
+        change the content of \enquote{red.txt} to:\\
         \texttt{red is my favorite color}
-  \item Checkout master. Create and checkout a 'blue' branch and change the content of 'blue.txt' to:\\
+  \item Checkout master. Create and checkout a \enquote{blue} branch and
+        change the content of \enquote{blue.txt} to:\\
        \texttt{blue is a cool color}
-  \item Check out master and change the content of 'blue.txt' to:\\
+  \item Check out master and change the content of \enquote{blue.txt} to:\\
        \texttt{I am feeling blue.}
 \end{itemize}
 \end{exerciseframe}
@@ -241,7 +243,7 @@ Merges changes from another branch into the one your are currently in.
 git checkout master
 git merge yellow
 \end{lstlisting}
-(merges branch 'yellow' into master)
+(merges branch \enquote{yellow} into master)
 \end{frame}
 
 \begin{frame}
@@ -315,7 +317,7 @@ git remote
 git remote add andreas \
     https://github.com/purepitch/git_course.git
 \end{lstlisting}
-(adds a remote with the symbolic name 'andreas')
+(adds a remote with the symbolic name \enquote{andreas})
 \end{frame}
 
 %============================================================================
@@ -382,7 +384,7 @@ followed by \hlcommand{git merge}.
   \item \texttt{cd \$HOME/Git/git\_course}
   \item I have made changes on the server. Pull them.
   \item How do you see what has changed?
-  \item Remove the first line in 'green.txt', stage and commit the change.
+  \item Remove the first line in \enquote{green.txt}, stage and commit the change.
 \pause
   \item Again some changes. Pull them.\\
         (You should have a conflict now. Why?)
