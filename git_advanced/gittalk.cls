@@ -10,7 +10,7 @@
 \RequirePackage[ngerman]{babel}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
-\RequirePackage[babel,german=guillemets]{csquotes}
+\RequirePackage[babel]{csquotes}
 \RequirePackage{textpos}
 \RequirePackage{graphicx}
 \RequirePackage{tabularx}
