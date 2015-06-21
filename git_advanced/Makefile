@@ -4,7 +4,7 @@ BASENAME = git_advanced
 
 default: $(BASENAME).pdf clean
 
-%.pdf: %.tex
+%.pdf: %.tex gittalk.cls
 	pdflatex $<
 	pdflatex $<
 
