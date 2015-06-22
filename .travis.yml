@@ -1,7 +1,7 @@
 sudo: true
 
 before_install:
-    sudo aptitude install texlive
+    sudo apt-get install texlive
 
 install:
     cd git_advanced
