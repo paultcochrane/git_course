@@ -1,8 +1,8 @@
 sudo: true
 
-before_install:
+install:
     sudo apt-get install texlive
 
-install:
+script:
     cd git_advanced
     make
