@@ -398,6 +398,21 @@ followed by \hlcommand{git merge}.
 \end{itemize}
 \end{exerciseframe}
 
+\section{Deleting a remote branch}
+
+\begin{frame}
+    \frametitle{Deleting a remote branch once you are finished with it}
+
+\begin{lstlisting}
+    # as of git 1.7.0
+    git push origin --delete <branch_name>
+    # previously
+    git push origin :<branch_name>
+\end{listlisting}
+\end{frame}
+
+\section{Topics not discussed}
+
 \begin{frame}
 \frametitle{What we did not discuss}
 \begin{itemize}
