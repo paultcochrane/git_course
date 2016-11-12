@@ -411,6 +411,24 @@ followed by \hlcommand{git merge}.
 \end{listlisting}
 \end{frame}
 
+\section{Deleting a remote tag}
+
+\begin{frame}
+    \frametitle{Deleting a remote tag}
+
+    \begin{lstlisting}
+    # as of git 1.7.0
+    git push --delete origin tagname
+    # previously
+    git push origin :tagname
+    \end{listlisting}
+
+    Delete a local tag via \texttt{git tag}:
+    \begin{listlisting}
+    git tag -d tagname
+    \end{listlisting}
+\end{frame}
+
 \section{Topics not discussed}
 
 \begin{frame}
