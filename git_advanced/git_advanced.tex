@@ -400,20 +400,20 @@ followed by \hlcommand{git merge}.
 
 \section{Deleting a remote branch}
 
-\begin{frame}
+\begin{frame}[fragile]
     \frametitle{Deleting a remote branch once you are finished with it}
 
 \begin{lstlisting}
     # as of git 1.7.0
-    git push origin --delete <branch_name>
+    git push origin --delete <branch-name>
     # previously
-    git push origin :<branch_name>
-\end{listlisting}
+    git push origin :<branch-name>
+\end{lstlisting}
 \end{frame}
 
 \section{Deleting a remote tag}
 
-\begin{frame}
+\begin{frame}[fragile]
     \frametitle{Deleting a remote tag}
 
     \begin{lstlisting}
@@ -421,12 +421,12 @@ followed by \hlcommand{git merge}.
     git push --delete origin tagname
     # previously
     git push origin :tagname
-    \end{listlisting}
+    \end{lstlisting}
 
     Delete a local tag via \texttt{git tag}:
-    \begin{listlisting}
+    \begin{lstlisting}
     git tag -d tagname
-    \end{listlisting}
+    \end{lstlisting}
 \end{frame}
 
 \section{Topics not discussed}
