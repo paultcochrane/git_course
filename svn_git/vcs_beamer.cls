@@ -121,7 +121,7 @@
 \usepackage{pgflibraryshapes}
 \usepackage{pgfplots}
 \usepgfplotslibrary{dateplot}
-\pgfplotsset{compat=1.3}
+\pgfplotsset{compat=1.14}
 
 \usepackage{textpos}
 \usepackage{xspace}
