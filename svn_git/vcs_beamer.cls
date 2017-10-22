@@ -37,9 +37,9 @@
             pifont,
             calc,
             textcomp}
-            
-\usetheme{Boadilla}
-\usecolortheme{beaver}
+
+\usetheme{Montpellier}
+\usecolortheme{orchid}
 
 % font changes
 \def\UrlFont{\color{dnblue}\tt} % URL-Font auf Typewriter
