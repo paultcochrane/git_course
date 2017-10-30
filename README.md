@@ -10,6 +10,13 @@ In the `git_intro` directory.
 The most up to date of our version control courses.  This is a completely
 reworked version of the Git part of the "Subversion and Git" course.
 
+## Git Advanced
+
+In the `git_advanced` directory.
+
+This is an extension of the "Git Intro" course and discusses working with
+remote repositories.
+
 ## Version Control with Subversion and Git
 
 In the `svn_git` directory.
