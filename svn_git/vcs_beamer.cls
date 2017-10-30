@@ -36,6 +36,10 @@
         BoldFont    = *-Bold
         ]{FiraMono}
 
+% for use in handout mode
+% \usepackage{pgfpages}
+% \pgfpagesuselayout{2 on 1}[a4paper,border shrink=5mm]
+
 \usepackage{multicol}
 \usepackage{setspace}
 \usepackage{listings}
