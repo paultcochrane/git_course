@@ -16,8 +16,8 @@ default: all
 slides: $(BASENAME).pdf
 
 $(BASENAME).pdf: $(TEXNAME) $(TEXFILES) vcs_beamer.cls
-	pdflatex $(TEXNAME)
-	#pdflatex $(TEXNAME)
+	xelatex $(TEXNAME)
+	xelatex $(TEXNAME)
 
 all: slides
 
