@@ -1,8 +1,9 @@
 sudo: true
 
 install:
-    sudo apt-get install texlive
+    sudo apt-get install texlive texlive-fonts-extra
 
 script:
-    cd git_advanced
-    make
+    - cd svn_git; make; cd -
+    - cd git_intro; make; cd -
+    - cd git_advanced; make; cd -
