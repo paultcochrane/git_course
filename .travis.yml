@@ -1,5 +1,5 @@
 env:
-    - PATH=$PATH:~/bin
+    - PATH=$PATH:~/texlive/2017/bin/x86_64-linux
 
 install:
     - wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
