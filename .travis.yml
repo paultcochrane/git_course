@@ -1,7 +1,7 @@
 sudo: true
 
 install:
-    sudo apt-get install texlive texlive-fonts-extra texlive-lang-german
+    sudo apt-get install texlive texlive-fonts-extra texlive-lang-german texlive-latex-extra
 
 script:
     - cd svn_git; make; cd -
