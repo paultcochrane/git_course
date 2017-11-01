@@ -7,7 +7,7 @@ install:
     - cd install-tl-*
     - ./install-tl --profile=$TRAVIS_BUILD_DIR/texlive.profile
     - tlmgr install csquotes
-    - tlmgr install beamerthememetropolis
+    - tlmgr install beamertheme-metropolis
 
 script:
     - cd $TRAVIS_BUILD_DIR/svn_git && make
