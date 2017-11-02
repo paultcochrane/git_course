@@ -6,7 +6,7 @@ install:
     - tar -xvzf install-tl-unx.tar.gz
     - cd install-tl-*
     - ./install-tl --profile=$TRAVIS_BUILD_DIR/texlive.profile
-    - tlmgr install csquotes pgfopts beamertheme-metropolis fira textpos tabto-ltx mathabx tcolorbox
+    - tlmgr install csquotes pgfopts beamertheme-metropolis fira textpos tabto-ltx mathabx tcolorbox environ
 
 script:
     - cd $TRAVIS_BUILD_DIR/svn_git && make
