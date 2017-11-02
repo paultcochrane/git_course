@@ -18,8 +18,8 @@ deploy:
     provider: releases
     api_key:
         secure: EuXJrYhEreRxPNFHFsOfIsjtOurIt+xjfm5UfgVWvzvby33SzPMOTfVp4LWLHJ6NRY6rMyMwEm6tNaeOyFIMSaDDCkXC0Lrt4iJ9Z0OzDjxSD2RqvnonM7aosFIPEt5ukiV8D7HEceGNCoxu9CoOg4vb6G0xDzNYJTX7Ur5kbGs=
-    file: svn_git/version_control_course.pdf
+    file:
+        - "svn_git/version_control_course.pdf"
     skip_cleanup: true
     on:
-        repo: paultcochrane/version_control_course
         tags: true
