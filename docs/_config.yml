@@ -1,10 +1,10 @@
 # Site settings
 # theme: jekyll-theme-slate
 title: Version Control with Git
-email: paul@liekut.dee
+email: paul@liekut.de
 description: > # this means to ignore newlines until "baseurl:"
     A course in learning how to use the version control system "git".
-baseurl: "version_control_course/" # the subpath of your site, e.g. /blog
+baseurl: "/version_control_course" # the subpath of your site, e.g. /blog
 url: "https://paultcochrane.github.io"
 twitter_username: peateasea
 github_username:  paultcochrane
