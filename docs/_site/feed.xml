@@ -4,10 +4,10 @@
     <title>Version Control with Git</title>
     <description>A course in learning how to use the version control system &quot;git&quot;.
 </description>
-    <link>https://paultcochrane.github.io/version_control_course//</link>
-    <atom:link href="https://paultcochrane.github.io/version_control_course//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 02 Nov 2017 18:06:37 +0100</pubDate>
-    <lastBuildDate>Thu, 02 Nov 2017 18:06:37 +0100</lastBuildDate>
+    <link>https://paultcochrane.github.ioversion_control_course//</link>
+    <atom:link href="https://paultcochrane.github.ioversion_control_course//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 02 Nov 2017 18:11:45 +0100</pubDate>
+    <lastBuildDate>Thu, 02 Nov 2017 18:11:45 +0100</lastBuildDate>
     <generator>Jekyll v3.1.6</generator>
     
       <item>
@@ -28,8 +28,8 @@
 
 </description>
         <pubDate>Thu, 02 Nov 2017 17:50:39 +0100</pubDate>
-        <link>https://paultcochrane.github.io/version_control_course//jekyll/update/2017/11/02/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">https://paultcochrane.github.io/version_control_course//jekyll/update/2017/11/02/welcome-to-jekyll.html</guid>
+        <link>https://paultcochrane.github.ioversion_control_course//jekyll/update/2017/11/02/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">https://paultcochrane.github.ioversion_control_course//jekyll/update/2017/11/02/welcome-to-jekyll.html</guid>
         
         
         <category>jekyll</category>
