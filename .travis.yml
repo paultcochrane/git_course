@@ -5,7 +5,7 @@ install:
     - wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
     - tar -xvzf install-tl-unx.tar.gz
     - cd install-tl-*
-    - ./install-tl --profile=$TRAVIS_BUILD_DIR/texlive.profile
+    - "./install-tl --profile=$TRAVIS_BUILD_DIR/texlive.profile"
     - tlmgr install csquotes pgfopts beamertheme-metropolis fira textpos tabto-ltx mathabx tcolorbox environ trimspaces upquote
 
 script:
@@ -13,3 +13,12 @@ script:
     - cd $TRAVIS_BUILD_DIR/git_intro && make
     - cd $TRAVIS_BUILD_DIR/git_advanced && make
     - cd $TRAVIS_BUILD_DIR/git && make
+
+deploy:
+    provider: releases
+    api_key:
+        secure: EuXJrYhEreRxPNFHFsOfIsjtOurIt+xjfm5UfgVWvzvby33SzPMOTfVp4LWLHJ6NRY6rMyMwEm6tNaeOyFIMSaDDCkXC0Lrt4iJ9Z0OzDjxSD2RqvnonM7aosFIPEt5ukiV8D7HEceGNCoxu9CoOg4vb6G0xDzNYJTX7Ur5kbGs=
+    file: svn_git/version_control_course.pdf
+    skip_cleanup: true
+    on:
+        repo: paultcochrane/version_control_course
