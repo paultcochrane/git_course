@@ -6,7 +6,7 @@ install:
     - tar -xvzf install-tl-unx.tar.gz
     - cd install-tl-*
     - ./install-tl --profile=$TRAVIS_BUILD_DIR/texlive.profile
-    - tlmgr install csquotes
+    - tlmgr install csquotes pgfopts
     - tlmgr install beamertheme-metropolis
 
 script:
