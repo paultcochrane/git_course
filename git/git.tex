@@ -170,6 +170,81 @@ that \ldots
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Using Git on your own}
 
+\begin{frame}
+\frametitle{Using Git on your own}
+\begin{itemize}
+    \item Why?
+    \item Get benefits of version control
+    \item Get even more benefits when working with others; we'll discuss
+        this in more detail later in the course
+    \item Use Git on your local computer
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Starting a new repository from scratch}
+\begin{itemize}
+    \item mkdir something
+    \item cd something
+    \item git init  (also ls -la)
+    \item git status
+    \item create file
+    \item git status (untracked)
+    \item git add
+    \item git status (staged)
+    \item git commit
+    \item git status (clean)
+    \item git config user.name; git config user.email
+    \item master is default branch
+    \item (normally don't have to run git status all the time)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Starting a new repository (conceptual steps)}
+\begin{itemize}
+    \item To create a repository, need to \ttt{init}ialise it
+        \begin{itemize}
+            \item git init
+        \end{itemize}
+    \item Repository is just a directory, with a .git directory
+        \begin{itemize}
+            \item ls -la
+        \end{itemize}
+    \item Things that go into a repository are just files
+        \begin{itemize}
+            \item touch file
+        \end{itemize}
+    \item To tell Git to track a file, need to \ttt{add} it
+        \begin{itemize}
+            \item git add
+        \end{itemize}
+    \item Tracked files and \emph{changes to tracked files} are put in
+        the \emph{staging area}
+        \begin{itemize}
+            \item git status (see staged)
+        \end{itemize}
+    \item To record files and \emph{changes to files}, one \ttt{commit}s
+        them to the repository
+        \begin{itemize}
+            \item git commit
+        \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Exercise: Start a new repository}
+\begin{itemize}
+    \item Repeat the previous steps on your own computer
+    \item Create a directory and change into it
+    \item Initialise the repository
+    \item Run git status to see the current repository state
+    \item Create a file (untracked); see the repository state
+    \item Add the file to the repository (track it); see the repository state
+    \item Commit the file to the repository; see the repository state
+\end{itemize}
+\end{frame}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Using Git with others}
