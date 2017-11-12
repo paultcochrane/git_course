@@ -42,5 +42,6 @@
 \newcommand{\ttt}[1]{\texttt{#1}}
 \newcommand{\tbf}[1]{\textbf{#1}}
 \newcommand{\tit}[1]{\textit{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
 
 % vim: expandtab shiftwidth=4
