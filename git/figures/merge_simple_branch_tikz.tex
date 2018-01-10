@@ -1,0 +1,14 @@
+\begin{tikzpicture}
+    [link/.style={->, >=stealth, thick}]
+
+\draw [link] (0, 0) -- (0, 1);  % master
+\draw [link] (0, 1) -- (0.5, 1.5);
+\draw [link] (0.5, 1.5) -- (0.5, 2.5);  % branch
+\draw [link] (0.5, 2.5) -- (0, 3);  % merge commit
+\draw [link] (0, 3) -- (0, 4);
+
+\draw [link] (0, 1) -- (0, 1.5);
+\draw [link] (0, 1.5) -- (0, 2.5);
+\draw [link] (0, 2.5) -- (0, 3);
+
+\end{tikzpicture}

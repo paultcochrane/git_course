@@ -3,7 +3,9 @@
 BASENAME = git
 TEXNAME = $(BASENAME).tex
 
-TEXFILES = figures/CentralRepo_tikz.tex
+TEXFILES = figures/CentralRepo_tikz.tex \
+	   figures/simple_branch_tikz.tex \
+	   figures/merge_simple_branch_tikz.tex
 
 default: all
 

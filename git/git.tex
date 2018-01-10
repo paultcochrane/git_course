@@ -435,6 +435,224 @@ This is better than nothing, however \ldots
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Using Git with others}
 
+\begin{frame}
+\frametitle{Working with others}
+\begin{itemize}
+    \item a networked world
+    \item version control becomes more interesting when one works with
+        others
+    \item author and committer can be different people (usually aren't)
+    \item work more often with branches (very powerful feature)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Add remote repos to model}
+\begin{itemize}
+    \item working directory
+    \item staging area
+    \item local repo
+    \item remote repo(s)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Cloning an existing repo}
+\begin{itemize}
+    \item git clone
+    \item changes to git config --list
+    \item explain meaning of origin
+    \item master, origin/master, HEAD
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Exercise!}
+\end{frame}
+
+\begin{frame}
+\frametitle{Dealing with conflicts}
+\begin{itemize}
+    \item can happen when working on same part of a file
+    \item happens when working with others
+    \item happens when working with branches and stashes (hence can also
+        happen when one is working alone!)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Exercise!}
+\end{frame}
+
+\begin{frame}
+\frametitle{Branches}
+\begin{itemize}
+    \item what are they?
+    \item why use them?
+    \item localise work on a focussed topic
+    \item don't interfere with main development on master
+    \item allows devs to work on parts of projects independently
+    \item allows for code reviews before merging
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The default branch: master}
+
+Discuss push/pull just from master?  Then have push/pull concept ready
+for quick fix example below
+\end{frame}
+
+\begin{frame}
+\frametitle{Branches}
+\begin{itemize}
+    \item git branch
+    \item git branch -a
+    \item git branch <branchname>
+    \item git checkout <branchname>
+    \item git checkout -b <branchname>
+    \item naming branches -> clarity very helpful
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Simple branch}
+\begin{center}
+    \resizebox{!}{0.7\textheight}{
+        \input{figures/simple_branch_tikz.tex}
+    }
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Examples and exercises!}
+\end{frame}
+
+\begin{frame}
+\frametitle{Merging branches}
+\begin{itemize}
+    \item merge changes on one branch into another
+    \item git merge <branchname>
+    \item fast-forward merge
+    \item merge commits
+    \item conflicts can occur (merge conflicts)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Merging branches}
+\begin{center}
+    \resizebox{!}{0.7\textheight}{
+        \input{figures/merge_simple_branch_tikz.tex}
+    }
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Example: quick fix}
+\begin{itemize}
+    \item when working on a new feature (on a feature branch)
+    \item bug found on main branch -> quick fix necessary
+    \item commit changes on current branch
+    \item checkout master
+    \item checkout quick fix branch (git checkout -b <branchname>)
+    \item make fix, test, commit
+    \item merge into master, push
+    \item return to work on feature branch
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Example: handling merge conflicts}
+\begin{itemize}
+    \item work on same area of code
+    \item try to merge
+    \item handle (resolve) conflict
+    \item git add (to mark as resolved)
+    \item git commit (as necessary)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Cherry picking}
+\begin{itemize}
+    \item associated with merging
+    \item only when some commits are wanted
+    \item git cherry-pick <commit>
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Local and remote branches}
+\end{frame}
+
+\begin{frame}
+\frametitle{Fetching from remotes}
+\begin{itemize}
+    \item git pull $\approx$ git fetch; git merge
+    \item why fetch then merge?
+    \item origin is writable but upstream isn't -> common OSS model
+    \item define upstream
+    \item changes are made on upstream
+    \item fetch changes to local repo
+    \item merge changes into local branch (e.g. master)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Exercise!}
+\end{frame}
+
+\begin{frame}
+\frametitle{Rewriting history}
+\begin{itemize}
+    \item unpublished (not yet pushed) changes can be rearranged
+    \item reorder, edit, squash, reword, delete (split also possible,
+        but more involved)
+    \item the story on wants to tell about the development; not all
+        commits need to be pushed
+    \item allows one to polish the changes; improve quality
+    \item linearise changes; published repo has clear, linear history
+        (see e.g. Ovid's slide about git histories)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Interactive rebase}
+\begin{itemize}
+    \item git rebase -i
+    \item very handy to clean up history before pushing
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Stashing changes}
+\begin{itemize}
+    \item why use this?
+    \item what is this?
+    \item handy feature for interrupted work
+    \item e.g. quick fix example
+    \item git stash
+    \item git stash show -p
+    \item git stash pop (conflicts possible)
+    \item git stash drop
+    \item git stash drop/show {n}
+\end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Using a version control system service}
+
+\begin{frame}
+    \frametitle{Online VCS services}
+    \begin{itemize}
+        \item GitHub
+        \item GitLab
+        \item BitBucket
+    \end{itemize}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository
 
