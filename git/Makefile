@@ -3,7 +3,7 @@
 BASENAME = git
 TEXNAME = $(BASENAME).tex
 
-TEXFILES = \
+TEXFILES = figures/CentralRepo_tikz.tex
 
 default: all
 

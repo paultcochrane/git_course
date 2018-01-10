@@ -39,6 +39,7 @@
 \usepackage{setspace}
 \usepackage{csquotes}
 \usepackage{listings}
+\usepackage{graphicx}
 
 \newcommand{\ttt}[1]{\texttt{#1}}
 \newcommand{\tbf}[1]{\textbf{#1}}
