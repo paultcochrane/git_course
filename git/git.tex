@@ -362,15 +362,85 @@ This is better than nothing, however \ldots
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+\frametitle{Basic workflow}
+\begin{itemize}
+    \item creation (mkdir, init, edit)
+    \item saving snapshots of work (add, commit, return to edit step)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Extending the sample project}
+\begin{itemize}
+    \item edit, add, commit
+    \item seeing what we've done
+    \begin{itemize}
+        \item git log (--graph)
+        \item git show
+        \item git diff
+    \end{itemize}
+    \item deleting/renaming files
+    \begin{itemize}
+        \item git rm
+        \item git mv
+    \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Explan SHAs}
+\begin{itemize}
+    \item in context of diff, show, log, etc.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Exercise: extend the sample project further}
+\begin{itemize}
+    \item recommended steps \ldots
+    \item practice git add/commit/rm/mv
+    \item practice git log/show/diff
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Import existing project}
+\begin{itemize}
+    \item git init, git add, git commit
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Aliasing commands}
+\begin{itemize}
+    \item reduce typing, use alias
+    \item handy aliases: st, di, ci, co
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Staging and unstaging files}
+\begin{itemize}
+    \item staging area in more depth
+    \item unstage files one doesn't want to track
+    \item git reset (just moves pointer/label)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Exercise!}
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Using Git with others}
 
 
 https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository
 
-\begin{verbose}
+\begin{verbatim}
 git checkout $(git rev-list -n 1 HEAD -- "$file")^ -- "$file"
-\end{verbose}
+\end{verbatim}
 
 the file is then shown as a new file in the repo.  One can use `git diff
 --cached` to see its contents.
