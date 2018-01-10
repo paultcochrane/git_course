@@ -350,11 +350,22 @@ This is better than nothing, however \ldots
     \item Working directory: checked out version of local repository
     \item Staging area: what will be committed next
     \item Repository: storage of snapshots
+    \item Contrast with other systems, which store diffs between changes
 \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Using Git with others}
+
+
+https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository
+
+\begin{verbose}
+git checkout $(git rev-list -n 1 HEAD -- "$file")^ -- "$file"
+\end{verbose}
+
+the file is then shown as a new file in the repo.  One can use `git diff
+--cached` to see its contents.
 
 \end{document}
 
