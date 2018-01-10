@@ -1,0 +1,24 @@
+\begin{tikzpicture}
+[repo/.style={circle,
+		fill=green!20!white,
+		draw=green!50!black,
+		minimum size=10mm},
+workingcopy/.style={circle,
+		fill=blue!20!white,
+		draw=blue!50!black,
+		minimum size=5mm},
+link/.style={-, >=stealth, thick}]
+
+% central repo
+\node at (0, 0) [repo] (mainrepo) { };
+% working copies
+\node at (2,0)  [workingcopy] (copyright)  { };
+\node at (-2,0) [workingcopy] (copyleft)   { };
+\node at (0,2)  [workingcopy] (copytop)    { };
+\node at (0,-2) [workingcopy] (copybottom) { };
+% links between repo and working copies
+\draw [link] (mainrepo) -- (copyright);
+\draw [link] (mainrepo) -- (copyleft);
+\draw [link] (mainrepo) -- (copytop);
+\draw [link] (mainrepo) -- (copybottom);
+\end{tikzpicture}
