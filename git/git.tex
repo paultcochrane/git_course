@@ -663,6 +663,17 @@ git checkout $(git rev-list -n 1 HEAD -- "$file")^ -- "$file"
 the file is then shown as a new file in the repo.  One can use `git diff
 --cached` to see its contents.
 
+\begin{verbatim}
+git rev-list -n 1 HEAD -- "$file"
+\end{verbatim}
+
+finds the last commit affecting the file.  Since this is the last commit
+affecting the file, it must be the commit where the file was deleted.  Hence
+the commit directly preceding this one will be the last commit where the
+file was still intact (the parent commit).  The parent commit of a given
+commit is specified with the caret \ttt{\^} character, hence we check out
+the parent commit of the deletion commit specifying just to operate on the
+given file.
 \end{document}
 
 % vim: expandtab shiftwidth=4:
