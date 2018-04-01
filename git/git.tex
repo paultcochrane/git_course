@@ -674,6 +674,22 @@ file was still intact (the parent commit).  The parent commit of a given
 commit is specified with the caret \ttt{\^} character, hence we check out
 the parent commit of the deletion commit specifying just to operate on the
 given file.
+
+
+
+Recover a lost/deleted commit
+
+https://stackoverflow.com/questions/10099258/how-can-i-recover-a-lost-commit-in-git
+
+Git doesn't immediately delete a commit that is no longer attached to any
+previous commit, it performs such cleanup operations on a periodic basis.
+Hence, if one wants information about a commit that is no longer available
+via \ttt{tig} or \ttt{git log} however hasn't yet been garbage collected,
+one can still access this information by using \ttt{git reflog}.  This shows
+a log of all operations on references and hence the SHA hash will still be
+avaiable for the missing commit.  Using this hash reference, one can recover
+the commit, or if one only wants the commit message (say), then a simple
+\ttt{git log <sha-hash>} will return the required information.
 \end{document}
 
 % vim: expandtab shiftwidth=4:
