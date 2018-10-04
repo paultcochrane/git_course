@@ -698,6 +698,37 @@ Splitting commits
 https://stackoverflow.com/questions/6217156/break-a-previous-commit-into-multiple-commits
 
 
+Finding out commits that affect a given line
+
+https://stackoverflow.com/questions/8435343/retrieve-the-commit-log-for-a-specific-line-in-a-file
+
+\begin{verbatim}
+git blame -L150,+11 -- /path/to/file
+\end{verbatim}
+
+will show the blame from line 150 and the following 11 lines.
+
+\begin{verbatim}
+git log --pretty=short -u -L 155,155:/path/to/file
+\end{verbatim}
+
+One could also use pick-axe:
+
+\begin{verbatim}
+git log -S 'pattern from line in file' -- /path/to/file
+\end{verbatim}
+
+if the file has been renamed, one can use \verbatim{--follow} to follow
+commits back further.  (this works only for single files):
+
+\begin{verbatim}
+git log -S 'pattern from line in file' --follow -- /path/to/file
+\end{verbatim}
+
+Or use \ttt{Glog} from vim-fugitive in vim:
+
+https://stackoverflow.com/a/29261649
+
 
 \end{document}
 
