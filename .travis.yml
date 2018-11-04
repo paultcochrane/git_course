@@ -1,7 +1,7 @@
 sudo: true
 
 install:
-    - sudo apt-get install -y texlive-latex-extra latex-beamer
+    - sudo apt-get install -y texlive-latex-extra latex-beamer texlive-lang-german
 
 script:
     - cd $TRAVIS_BUILD_DIR/svn_git && make
