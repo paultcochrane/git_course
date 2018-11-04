@@ -40,6 +40,10 @@
 \usepackage{csquotes}
 \usepackage{listings}
 \usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{standalone}
+
+\usetikzlibrary{positioning}
 
 \newcommand{\ttt}[1]{\texttt{#1}}
 \newcommand{\tbf}[1]{\textbf{#1}}

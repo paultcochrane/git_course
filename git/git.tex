@@ -22,20 +22,20 @@
 \section{About the course}
 
 \begin{frame}
-\frametitle{Course Goals}
+\frametitle{Course goals}
 
 At the end of this course you should:
 
 \begin{itemize}
-    \item Feel comfortable using Git
-    \item Know where to get further help, if necessary
-    \item Be able to use Git on private projects
-    \item Be able to collaborate with others using remote repositories
+    \item feel comfortable using Git
+    \item know where to get further help, if necessary
+    \item be able to use Git on private projects
+    \item be able to collaborate with others using remote repositories
 \end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Course Outline}
+\frametitle{Course outline}
 \begin{itemize}
     \item Introduction to Git and version control systems
     \item Installing Git
@@ -52,8 +52,10 @@ At the end of this course you should:
 \end{itemize}
 \end{frame}
 
+% XXX: course flow as diagram
+
 \begin{frame}
-\frametitle{Course Information}
+\frametitle{Course information}
 \begin{itemize}
     \item Feedback most welcome
     \item Slides and notes are available on the GitHub docs site for the
@@ -65,7 +67,7 @@ At the end of this course you should:
 \end{frame}
 
 \begin{frame}
-\frametitle{About Me}
+\frametitle{About me}
 \begin{itemize}
     \item Physicist from New Zealand
     \item Have been involved in scientific computing and development of
@@ -86,7 +88,8 @@ At the end of this course you should:
 \begin{frame}
 \frametitle{What are Version Control Systems?}
 \begin{itemize}
-    \item A way to track changes to groups of files
+
+    \item A way to track changes\footnote[frame]{e.g. when, what, by whom} to groups of files
     \item Most often used in software projects
     \item Most often used to track changes to text files (but not
         exclusively)
@@ -107,15 +110,32 @@ At the end of this course you should:
 \end{figure}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{What are Version Control Systems?}
-\begin{itemize}
-    \item Like a safety net: accidental file deletion isn't a catastrophe
-        % -> image of a safety net
-    \item Saved states are like anchor points in like rock climbing:
-        one can fall back a small distance without losing everything
-        % -> image of anchor point/rock climber
-\end{itemize}
+    \begin{itemize}
+        \item Like a safety net: accidental file deletion isn't a catastrophe
+    \end{itemize}
+    \begin{figure}
+        \centerline{%
+            \includegraphics[height=0.65\textheight]{images/safety_net_golden_gate_bridge.jpg}}
+            \caption{\tiny \url{https://todayinlaborhistory.wordpress.com/2015/01/05/january-5-1933/}}
+    \end{figure}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{What are Version Control Systems?}
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item Saved states are like anchor points in like rock climbing:
+                one can fall back a small distance without losing everything
+        \end{itemize}
+        \begin{figure}
+            \centerline{%
+                \includegraphics[height=0.8\textheight]{images/northern_exposure_jasper_rock_climbing.jpg}}
+                \caption{\tiny by Fran\c{c}ois Laplante, \url{http://www.northernexposurejasper.com/}}
+        \end{figure}
+    \end{multicols}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -123,63 +143,110 @@ At the end of this course you should:
 
 Does this look familiar?
 
-\begin{lstlisting}
+\begin{lstlisting}[basicstyle=\ttfamily]
+$ ls
 file.1      file.20090803  file.keep
 file.2      file.alt       file.old
 file.old.2  file.fixed     file.new
 \end{lstlisting}
+%stopzone
 
 This is better than nothing, however \ldots
 \begin{itemize}
-    \item what happened between the different versions?
+    \item what happened between the different versions?  And just as
+        important: \emph{why}?
     \item which file is actually the most current?
     \item what if \ttt{file.old} is the \emph{newest} file?
     \item can the differences between files tell us anything?
+    \item why store \emph{nine} files when we really only need one?
 \end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Why Use a Version Control System?}
 \begin{itemize}
+    \item Version Control Systems help to tame this chaos
     \item Useful in detecting when bugs were introduced or fixed
     \item Used to save known states of a group of files and hence versions
         (releases) of a software project
+    \item Can aid work on collaborative projects
 \end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Version Control Systems}
-\begin{itemize}
-    \item Local
+\frametitle{Version Control Systems: Local Model}
         % -> image/diagram of local system
-    \begin{itemize}
-        \item e.g. RCS
-    \end{itemize}
-    \item Centralised
-    \begin{center}
-        \resizebox{!}{0.7\textheight}{
-            \input{figures/CentralRepo_tikz.tex}
-        }
-    \end{center}
-        % -> image/diagram of centralised system
-    \begin{itemize}
-        \item e.g. Subversion, CVS
-    \end{itemize}
-    \item Distributed
+\begin{itemize}
+    \item Restricted to a single computer
+    \item Historically also only able to be used by one person at a time
+        (e.g. access control via file locking)
+    \item Examples:
+        \begin{itemize}
+            \item \href{https://en.wikipedia.org/wiki/Revision_Control_System}
+                       {Revision Control System (RCS)}
+            \item \href{https://en.wikipedia.org/wiki/Source_Code_Control_System}
+                       {Source Code Control System (SCCS)}
+        \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Version Control Systems: Centralised Model}
+\begin{columns}[T]
+    \begin{column}{0.7\textwidth}
+        \begin{itemize}
+            \item Client-Server architecture
+            \item Server contains all repository files and is ``single source of truth''
+            \item Clients contain copies of repository, where one work on project
+                files (\emph{working copy})
+            \item Require network access to server for version control actions
+            \item Examples:
+            \begin{itemize}
+                \item \href{https://en.wikipedia.org/wiki/Concurrent_Versions_System}
+                           {Concurrent Versions System (CVS)}
+                \item \href{https://en.wikipedia.org/wiki/Apache_Subversion}
+                           {Subversion (SVN)}
+            \end{itemize}
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+        \begin{center}
+        \resizebox{\textwidth}{!}{\input{figures/CentralRepo_tikz.tex}}
+        \end{center}
+    \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Version Control Systems: Distributed Model}
         % -> image/diagram of distributed system
-    \begin{itemize}
-        \item e.g. Git, Mercurial
-    \end{itemize}
+\begin{itemize}
+    \item Client-Server or Peer-to-peer or a mixture of the two
+    \item Each client has complete repository and its entire history
+    \item Server no longer strictly required; if used, contains a ``bare''
+        version of the repository, i.e. the working directory is not present
+    \item Offline work now possible and simple
+    \item When collaborating can resync work when online again
+    \item Examples:
+        \begin{itemize}
+            \item \href{https://git-scm.com/}{Git}
+                \includegraphics[height=0.05\textheight]{images/git_logo.png}
+            \item \href{https://www.mercurial-scm.org/}{Mercurial}
+                \includegraphics[height=0.05\textheight]{images/mercurial_logo.png}
+        \end{itemize}
 \end{itemize}
 \end{frame}
 
 \begin{frame}
 \frametitle{Git History}
 \begin{itemize}
-    \item BitKeeper
-    \item License problems
-    \item Linux wrote his own system
-    \item Open source
+    \item Linux kernel development could use proprietary BitKeeper system
+        free of charge
+    \item The owners of BitKeeper changed the licensing conditions, which
+        meant that it was no longer free for kernel developers to use
+    \item Thus Linus Torvals wrote his own system: Git
+    \item Open source with a large developer community and an even larger
+        user base.
 \end{itemize}
 \end{frame}
 
@@ -188,19 +255,46 @@ This is better than nothing, however \ldots
 \section{Installing Git}
 
 \begin{frame}
+\frametitle{Installing Git (GUI options)}
+There are many GUI clients to choose from.  Here is a selection:
+\begin{itemize}
+    \item SourceTree
+        \includegraphics[height=0.05\textheight]{images/Sourcetree-blue.pdf}
+        \begin{itemize}
+            \item \url{https://www.sourcetreeapp.com/}
+            \item Free as in beer
+        \end{itemize}
+    \item TortoiseGit
+        \includegraphics[height=0.05\textheight]{images/tgit_logo.pdf}
+        \begin{itemize}
+            \item \url{https://tortoisegit.org/}
+            \item Free as in freedom
+        \end{itemize}
+    \item Git Extensions
+        \includegraphics[height=0.05\textheight]{images/git-extensions-logo.pdf}
+        \begin{itemize}
+            \item \url{https://gitextensions.github.io/}
+            \item Free as in freedom
+        \end{itemize}
+    \item GitKraken
+        \includegraphics[height=0.05\textheight]{images/gitkraken-logo-dark-hz.png}
+        \begin{itemize}
+            \item \url{https://www.gitkraken.com/}
+            \item Free for non-commercial use
+        \end{itemize}
+    \item More GUI clients can be found on the Git website:
+        \begin{itemize}
+            \item \url{https://git-scm.com/download/gui/windows}
+        \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
 \frametitle{Installing Git (CLI options)}
 \begin{itemize}
     \item Windows
     \item MacOS
     \item Linux/Unix
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Installing Git (GUI options)}
-\begin{itemize}
-    \item SourceTree
-    \item TortoiseGit
 \end{itemize}
 \end{frame}
 
@@ -219,6 +313,8 @@ This is better than nothing, however \ldots
 \begin{frame}
 \frametitle{Text Editors}
 \begin{itemize}
+    \item We will be creating and editing text files, hence the need for a
+        text editor.
     \item Many options:
     \begin{itemize}
         \item Notepad++
@@ -226,8 +322,6 @@ This is better than nothing, however \ldots
         \item Atom
         \item Sublime text
     \end{itemize}
-    \item We will be creating and editing text files, hence the need for a
-        text editor.
     \item The choice of editor is unimportant; what \emph{is} important is
         that you feel comfortable using yours.
 \end{itemize}
@@ -267,33 +361,44 @@ This is better than nothing, however \ldots
 \end{frame}
 
 \begin{frame}
+    \frametitle{Starting a new repository (conceptual steps)}
+    \begin{itemize}
+        \item Create directory for repository (mkdir)
+        \item Initialise repository (git init)
+        \item Create file(s) (edit file)
+        \item Add file(s) to repository (git add)
+        \item Commit file(s) (git commit)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
 \frametitle{Starting a new repository (conceptual steps)}
 \begin{itemize}
     \item To create a repository, need to \ttt{init}ialise it
         \begin{itemize}
-            \item git init
+            \item \code{git init}
         \end{itemize}
-    \item Repository is just a directory, with a .git directory
+    \item Repository is just a directory, with a \code{.git} directory
         \begin{itemize}
-            \item ls -la
+            \item \code{ls -la}
         \end{itemize}
     \item Things that go into a repository are just files
         \begin{itemize}
-            \item touch file
+            \item \code{touch file}
         \end{itemize}
-    \item To tell Git to track a file, need to \ttt{add} it
+    \item To tell Git to track a file, one needs to \ttt{add} it
         \begin{itemize}
-            \item git add
+            \item \code{git add}
         \end{itemize}
     \item Tracked files and \emph{changes to tracked files} are put in
         the \emph{staging area}
         \begin{itemize}
-            \item git status (see staged)
+            \item \code{git status} (see staged files)
         \end{itemize}
     \item To record files and \emph{changes to files}, one \ttt{commit}s
         them to the repository
         \begin{itemize}
-            \item git commit
+            \item \code{git commit}
         \end{itemize}
 \end{itemize}
 \end{frame}
@@ -305,14 +410,16 @@ This is better than nothing, however \ldots
     \item Create a directory and change into it
     \item Initialise the repository
     \item Run git status to see the current repository state
-    \item Create a file (untracked); see the repository state
-    \item Add the file to the repository (track it); see the repository state
-    \item Commit the file to the repository; see the repository state
+    \item Create a file (untracked); see the repository state, what changed?
+    \item Add the file to the repository (track it); see the repository
+        state, what changed?
+    \item Commit the file to the repository; see the repository state, what
+        changed?
 \end{itemize}
 \end{frame}
 
 \begin{frame}
-\frametitle{Minor Detour: Git Configuration}
+\frametitle{Minor detour: Git configuration}
 \begin{itemize}
     \item Brief intro to git config
     \item Repo-local config
