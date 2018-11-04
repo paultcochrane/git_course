@@ -1,3 +1,9 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+
+\begin{document}
+
 \begin{tikzpicture}
 [repo/.style={circle,
 		fill=green!20!white,
@@ -10,15 +16,16 @@ workingcopy/.style={circle,
 link/.style={-, >=stealth, thick}]
 
 % central repo
-\node at (0, 0) [repo] (mainrepo) { };
+\node (main repo) at (0, 0) [repo] {Server};
 % working copies
-\node at (2,0)  [workingcopy] (copyright)  { };
-\node at (-2,0) [workingcopy] (copyleft)   { };
-\node at (0,2)  [workingcopy] (copytop)    { };
-\node at (0,-2) [workingcopy] (copybottom) { };
+\node (client right)  [workingcopy, right=of main repo] {\tiny Client};
+\node (client left)   [workingcopy, left=of main repo]  {\tiny Client};
+\node (client top)    [workingcopy, above=of main repo] {\tiny Client};
+\node (client bottom) [workingcopy, below=of main repo] {\tiny Client};
 % links between repo and working copies
-\draw [link] (mainrepo) -- (copyright);
-\draw [link] (mainrepo) -- (copyleft);
-\draw [link] (mainrepo) -- (copytop);
-\draw [link] (mainrepo) -- (copybottom);
+\draw [link, <->] (main repo) -- (client right);
+\draw [link, <->] (main repo) -- (client left);
+\draw [link, <->] (main repo) -- (client top);
+\draw [link, <->] (main repo) -- (client bottom);
 \end{tikzpicture}
+\end{document}
