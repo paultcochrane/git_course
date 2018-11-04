@@ -5,7 +5,8 @@ TEXNAME = $(BASENAME).tex
 
 TEXFILES = figures/CentralRepo_tikz.tex \
 	   figures/simple_branch_tikz.tex \
-	   figures/merge_simple_branch_tikz.tex
+	   figures/merge_simple_branch_tikz.tex \
+	   version_control_systems.tex
 
 default: all
 
