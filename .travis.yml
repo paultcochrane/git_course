@@ -1,12 +1,7 @@
-env:
-    - PATH=$PATH:~/texlive/2017/bin/x86_64-linux
+sudo: true
 
 install:
-    - wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-    - tar -xvzf install-tl-unx.tar.gz
-    - cd install-tl-*
-    - "./install-tl --profile=$TRAVIS_BUILD_DIR/texlive.profile"
-    - tlmgr install csquotes pgfopts beamertheme-metropolis fira textpos tabto-ltx mathabx tcolorbox environ trimspaces upquote
+    - sudo apt-get install -y texlive-latex-extra latex-beamer
 
 script:
     - cd $TRAVIS_BUILD_DIR/svn_git && make
