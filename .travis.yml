@@ -1,4 +1,5 @@
-sudo: true
+dist: trusty
+sudo: required
 
 install:
     - sudo apt-get install -y texlive-latex-extra latex-beamer texlive-lang-german texlive-fonts-extra texlive-fonts-recommended texlive-xetex
