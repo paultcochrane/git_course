@@ -4,7 +4,7 @@ title: Version Control with Git
 email: paul@liekut.de
 description: > # this means to ignore newlines until "baseurl:"
     A course in learning how to use the version control system Git.
-baseurl: "/version_control_course" # the subpath of your site, e.g. /blog
+baseurl: "/git_course" # the subpath of your site, e.g. /blog
 url: "https://paultcochrane.github.io"
 twitter_username: peateasea
 github_username:  paultcochrane
