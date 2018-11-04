@@ -70,7 +70,6 @@
         }
     }
 }
-\newcommand{\T}{\textbackslash}
 \newcommand{\notepad}{\texttt{Notepad++}\xspace}
 
 % vim: expandtab shiftwidth=4
