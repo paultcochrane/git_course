@@ -50,4 +50,11 @@
 \newcommand{\tit}[1]{\textit{#1}}
 \newcommand{\code}[1]{\texttt{#1}}
 
+\lstset{
+    basicstyle=\footnotesize\ttfamily,
+    backgroundcolor=\color{gray!20!white},
+    framerule=0pt,
+    showstringspaces=false,
+}
+
 % vim: expandtab shiftwidth=4
