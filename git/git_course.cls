@@ -1,6 +1,6 @@
 % git_course.cls - Git course LaTeX Class File.
 
-% Copyright (C) 2017 Paul Cochrane
+% Copyright (C) 2017-2018 Paul Cochrane
 %
 % This program is free software; you can redistribute it and/or
 % modify it under the terms of the GNU General Public License
@@ -18,7 +18,7 @@
 % USA.
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{git_course}[2017/10/30 Git course LaTeX Class]
+\ProvidesClass{git_course}[2018/11/07 Git course LaTeX Class]
 
 \LoadClass[t]{beamer}
 \usetheme{metropolis}
