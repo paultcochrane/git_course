@@ -5,7 +5,6 @@ install:
     - sudo apt-get install -y texlive-latex-extra latex-beamer texlive-lang-german texlive-fonts-extra texlive-fonts-recommended texlive-xetex lmodern
 
 script:
-    - cd $TRAVIS_BUILD_DIR/svn_git && make
     - cd $TRAVIS_BUILD_DIR/git_intro && make
     - cd $TRAVIS_BUILD_DIR/git_advanced && make
     - cd $TRAVIS_BUILD_DIR/git && make
@@ -16,7 +15,6 @@ deploy:
     api_key:
         secure: EuXJrYhEreRxPNFHFsOfIsjtOurIt+xjfm5UfgVWvzvby33SzPMOTfVp4LWLHJ6NRY6rMyMwEm6tNaeOyFIMSaDDCkXC0Lrt4iJ9Z0OzDjxSD2RqvnonM7aosFIPEt5ukiV8D7HEceGNCoxu9CoOg4vb6G0xDzNYJTX7Ur5kbGs=
     file:
-        - "svn_git/version_control_course.pdf"
         - "git_intro/git_intro.pdf"
         - "git_advanced/git_advanced.pdf"
         - "git/git.pdf"
