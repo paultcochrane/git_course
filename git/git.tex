@@ -81,6 +81,17 @@ There are many GUI clients to choose from.  Here is a selection:
 \end{itemize}
 \end{frame}
 
+\begin{frame}[fragile]
+    \frametitle{Detour: setting name and email metadata}
+    If this is the first time you've installed Git, then one of the first
+    things you need to do is to set your name and email address
+    configuration metadata:
+\begin{lstlisting}[language=bash]
+$ git config --global user.name "Your name"
+$ git config --global user.email "<username@example.com>"
+\end{lstlisting}
+\end{frame}
+
 \begin{frame}
 \frametitle{Text Editors}
 \begin{itemize}
@@ -125,7 +136,6 @@ There are many GUI clients to choose from.  Here is a selection:
     \item git status (staged)
     \item git commit
     \item git status (clean)
-    \item git config user.name; git config user.email
     \item master is default branch
     \item (normally don't have to run git status all the time)
 \end{itemize}
