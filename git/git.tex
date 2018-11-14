@@ -669,6 +669,25 @@ git push origin --delete <branch-name>
 git push origin :<branch-name>
 \end{lstlisting}
 \end{frame}
+
+\section{Deleting a remote tag}
+
+\begin{frame}[fragile]
+\frametitle{Deleting a remote tag}
+
+\begin{lstlisting}
+# as of git 1.7.0
+git push --delete origin tagname
+# previously
+git push origin :tagname
+\end{lstlisting}
+
+Delete a local tag via \texttt{git tag}:
+\begin{lstlisting}
+git tag -d tagname
+\end{lstlisting}
+\end{frame}
+
 \end{document}
 
 % vim: expandtab shiftwidth=4:
