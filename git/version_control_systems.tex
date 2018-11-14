@@ -142,8 +142,26 @@ This is better than nothing, however \ldots
 \end{frame}
 
 \begin{frame}
+\frametitle{What \emph{shouldn't} be kept under version control?}
 \begin{itemize}
+    \item Automatically generated files
         \begin{itemize}
+            \item e.g.: \code{.o}, \code{.log}, \code{.pdf}, \code{.pyc}
+        \end{itemize}
+    \item Editor backup files
+        \begin{itemize}
+            \item e.g.: \code{file\~{}}, \code{file.bak}
+        \end{itemize}
+    \item Data files
+        \begin{itemize}
+            \item e.g. simulation input or output files
+            \item are often static or change very seldom
+            \item better kept on an FTP server or similar
+        \end{itemize}
+    \item Large files
+        \begin{itemize}
+            \item can make cloning a repository very slow
+            \item cause unnecessary bloat in repository
         \end{itemize}
 \end{itemize}
 \end{frame}
