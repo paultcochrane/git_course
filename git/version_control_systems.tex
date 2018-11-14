@@ -90,65 +90,19 @@ This is better than nothing, however \ldots
 \end{frame}
 
 \begin{frame}
-\frametitle{Version Control Systems: Local Model}
-        % -> image/diagram of local system
 \begin{itemize}
-    \item Restricted to a single computer
-    \item Historically also only able to be used by one person at a time
-        (e.g. access control via file locking)
-    \item Examples:
         \begin{itemize}
-            \item \href{https://en.wikipedia.org/wiki/Revision_Control_System}
-                       {Revision Control System (RCS)}
-            \item \href{https://en.wikipedia.org/wiki/Source_Code_Control_System}
-                       {Source Code Control System (SCCS)}
         \end{itemize}
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Version Control Systems: Centralised Model}
-\begin{columns}[T]
-    \begin{column}{0.7\textwidth}
         \begin{itemize}
-            \item Client-Server architecture
-            \item Server contains all repository files and is ``single source of truth''
-            \item Clients contain copies of repository, where one work on project
-                files (\emph{working copy})
-            \item Require network access to server for version control actions
-            \item Examples:
-            \begin{itemize}
-                \item \href{https://en.wikipedia.org/wiki/Concurrent_Versions_System}
-                           {Concurrent Versions System (CVS)}
-                \item \href{https://en.wikipedia.org/wiki/Apache_Subversion}
-                           {Subversion (SVN)}
-            \end{itemize}
         \end{itemize}
-    \end{column}
-    \begin{column}{0.4\textwidth}
-        \begin{center}
-        \resizebox{\textwidth}{!}{\input{figures/CentralRepo_tikz.tex}}
-        \end{center}
-    \end{column}
-\end{columns}
 \end{frame}
 
 \begin{frame}
-\frametitle{Version Control Systems: Distributed Model}
-        % -> image/diagram of distributed system
 \begin{itemize}
-    \item Client-Server or Peer-to-peer or a mixture of the two
-    \item Each client has complete repository and its entire history
-    \item Server no longer strictly required; if used, contains a ``bare''
-        version of the repository, i.e. the working directory is not present
-    \item Offline work now possible and simple
-    \item When collaborating can resync work when online again
-    \item Examples:
         \begin{itemize}
-            \item \href{https://git-scm.com/}{Git}
-                \includegraphics[height=0.05\textheight]{images/git_logo.png}
-            \item \href{https://www.mercurial-scm.org/}{Mercurial}
-                \includegraphics[height=0.05\textheight]{images/mercurial_logo.png}
         \end{itemize}
 \end{itemize}
 \end{frame}
