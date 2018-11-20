@@ -228,15 +228,26 @@ $ git config --global user.email "<username@example.com>"
 \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{Parts of a local Git repository}
-\begin{itemize}
-    \item Working directory
-    \item Staging area
-    \item Repository
-    \item Very important for understanding operations
-    \item need image of wd, staging and repo
-\end{itemize}
+\begin{columns}[T]
+    \begin{column}{0.5\textwidth}
+        \begin{itemize}
+            \item Working directory
+            \item Staging area
+            \item Repository
+            \item Very important for understanding operations
+        \end{itemize}
+    \end{column}
+
+    \begin{column}{0.5\textwidth}
+        \begin{center}
+            \resizebox{!}{0.7\textheight}{
+                \input{figures/working_dir_staging_repo.tex}
+            }
+        \end{center}
+    \end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}
