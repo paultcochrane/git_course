@@ -631,19 +631,28 @@ git rev-list -n 1 HEAD -- "$file"
         {\url{https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository}}
 \end{frame}
 
-Recover a lost/deleted commit
+\begin{frame}[fragile]
+    \frametitle{Recover a lost or deleted commit}
+    \tbf{Problem:} A rebase or reset has made a commit unreachable
 
-https://stackoverflow.com/questions/10099258/how-can-i-recover-a-lost-commit-in-git
+    \tbf{Solution:} Don't panic! Git doesn't immediately delete commits;
+    they are still available via their SHA hash, just not available by
+    traversing the commit tree.  Use the reflog to show all operations
+    (including ``lost'' commits.  Check out the commit into its own branch
+    or simply cherry pick to restore.
+\begin{lstlisting}
+git reflog
+... find commit from commit message ...
+git checkout -b <commit_sha>
+# or
+git cherry-pick <commit_sha>
+\end{lstlisting}
+%stopzone
 
-Git doesn't immediately delete a commit that is no longer attached to any
-previous commit, it performs such cleanup operations on a periodic basis.
-Hence, if one wants information about a commit that is no longer available
-via \ttt{tig} or \ttt{git log} however hasn't yet been garbage collected,
-one can still access this information by using \ttt{git reflog}.  This shows
-a log of all operations on references and hence the SHA hash will still be
-avaiable for the missing commit.  Using this hash reference, one can recover
-the commit, or if one only wants the commit message (say), then a simple
-\ttt{git log <sha-hash>} will return the required information.
+    See: \resizebox{0.9\textwidth}{!}
+        {\url{https://stackoverflow.com/questions/10099258/how-can-i-recover-a-lost-commit-in-git}}
+\end{frame}
+
 
 
 
