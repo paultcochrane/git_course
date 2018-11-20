@@ -591,29 +591,45 @@ git rebase --continue
         {\url{https://stackoverflow.com/questions/6217156/break-a-previous-commit-into-multiple-commits}}.
 \end{frame}
 
+\begin{frame}[fragile]
+    \frametitle{Restore a deleted file (simple revert)}
+    \tbf{Problem:} a file has been deleted in an earlier commit and you wish
+    to restore it.
 
-https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository
+    \tbf{Solution:} If the file was deleted in a commit of its own, then
+    just revert and write an appropriate commit message.
 
-\begin{verbatim}
-git checkout $(git rev-list -n 1 HEAD -- "$file")^ -- "$file"
-\end{verbatim}
+\begin{lstlisting}
+git revert <commit_sha>
+... explain reason for revert in commit message ...
+\end{lstlisting}
+\end{frame}
 
-the file is then shown as a new file in the repo.  One can use `git diff
---cached` to see its contents.
+\begin{frame}[fragile]
+    \frametitle{Restore a deleted file (restore from SHA)}
+    \tbf{Problem:} a file has been deleted in an earlier commit and you wish
+    to restore it.
 
-\begin{verbatim}
+    \tbf{Solution:} If the file was deleted as a part of a larger commit, a
+    simple revert is not so simple.  Instead, find the last commit affecting
+    the file; this is the commit where it was deleted.  Check out the file
+    from this commit's parent commit.  The file is now a newly-added file in
+    the working directory.
+
+\begin{lstlisting}
+git checkout \
+    $(git rev-list -n 1 HEAD -- "$file")^ -- "$file"
+\end{lstlisting}
+%stopzone
+
+This command finds the most recent commit affecting the file:
+\begin{lstlisting}
 git rev-list -n 1 HEAD -- "$file"
-\end{verbatim}
-
-finds the last commit affecting the file.  Since this is the last commit
-affecting the file, it must be the commit where the file was deleted.  Hence
-the commit directly preceding this one will be the last commit where the
-file was still intact (the parent commit).  The parent commit of a given
-commit is specified with the caret \ttt{\^} character, hence we check out
-the parent commit of the deletion commit specifying just to operate on the
-given file.
-
-
+\end{lstlisting}
+%stopzone
+    See: \resizebox{0.9\textwidth}{!}
+        {\url{https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository}}
+\end{frame}
 
 Recover a lost/deleted commit
 
