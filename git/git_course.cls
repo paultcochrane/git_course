@@ -50,6 +50,7 @@
 \newcommand{\tbf}[1]{\textbf{#1}}
 \newcommand{\tit}[1]{\textit{#1}}
 \newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\see}[1]{See: \resizebox{0.9\textwidth}{!}{\url{#1}}}
 
 \lstset{
     basicstyle=\footnotesize\ttfamily,
