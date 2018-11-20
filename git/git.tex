@@ -652,40 +652,81 @@ git cherry-pick <commit_sha>
     \see{https://stackoverflow.com/questions/10099258/how-can-i-recover-a-lost-commit-in-git}
 \end{frame}
 
+\begin{frame}[fragile]
+    \frametitle{Find commits affecting a given line in a file (blame)}
 
+    \tbf{Problem:} you want to find the commits corresponding to a given
+    line a file.
 
+    \tbf{Solution:} use blame with the line number(s) on the file.
 
-Finding out commits that affect a given line
-
-https://stackoverflow.com/questions/8435343/retrieve-the-commit-log-for-a-specific-line-in-a-file
-
-\begin{verbatim}
+E.g. this command will show the blame from line 150 and the following 11 lines.
+\begin{lstlisting}
 git blame -L150,+11 -- /path/to/file
-\end{verbatim}
+\end{lstlisting}
 
-will show the blame from line 150 and the following 11 lines.
+    \see{https://stackoverflow.com/questions/8435343/retrieve-the-commit-log-for-a-specific-line-in-a-file}
+\end{frame}
 
-\begin{verbatim}
+\begin{frame}[fragile]
+    \frametitle{Find commits affecting a given line in a file (log)}
+
+    \tbf{Problem:} you want to find the commits corresponding to a given
+    line a file.
+
+    \tbf{Solution:} use log with the line number(s) on the file.
+
+    E.g. this command will show the log and a patch (or patches) as a unified diff
+    output from commits affecting line 155.
+\begin{lstlisting}
 git log --pretty=short -u -L 155,155:/path/to/file
-\end{verbatim}
+\end{lstlisting}
 
-One could also use pick-axe:
+    \see{https://stackoverflow.com/questions/8435343/retrieve-the-commit-log-for-a-specific-line-in-a-file}
+\end{frame}
 
-\begin{verbatim}
-git log -S 'pattern from line in file' -- /path/to/file
-\end{verbatim}
+\begin{frame}[fragile]
+    \frametitle{Find commits affecting a given line in a file (pick-axe)}
 
-if the file has been renamed, one can use \verb|--follow| to follow
-commits back further.  (this works only for single files):
+    \tbf{Problem:} you want to find the commits corresponding to a given
+    line a file.
 
-\begin{verbatim}
-git log -S 'pattern from line in file' --follow -- /path/to/file
-\end{verbatim}
+    \tbf{Solution:} use log -S (pick-axe) with a pattern matching the line
+    in the file(s).  One advantage here is that one can also follow commits
+    across renames; although in this case only works for single files.
 
-Or use \ttt{Glog} from vim-fugitive in vim:
+Works for multiple files:
+\begin{lstlisting}
+git log -S '<pattern_from_line_in_file>' -- /path/to/file
+\end{lstlisting}
 
-https://stackoverflow.com/a/29261649
+Follow renames of single file arguments:
+\begin{lstlisting}
+git log -S '<pattern_from_line_in_file>' \
+    --follow -- /path/to/file
+\end{lstlisting}
 
+    \see{https://stackoverflow.com/questions/8435343/retrieve-the-commit-log-for-a-specific-line-in-a-file}
+\end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{Find commits affecting a given line in a file (Glog)}
+
+    \tbf{Problem:} you want to find the commits corresponding to a given
+    line a file.
+
+    \tbf{Solution:} use the Glog command from the vim-fugitive plugin.  Note
+    this is only for users of the vim editor.
+
+    Load the file and navigate to the line of interest, then enter (in
+    command mode)
+\begin{lstlisting}
+:Glog
+\end{lstlisting}
+
+    See: \url{https://stackoverflow.com/a/29261649}
+\end{frame}
 
 Clean up references to remotes which have already been deleted upstream.
 
