@@ -728,12 +728,26 @@ git log -S '<pattern_from_line_in_file>' \
     See: \url{https://stackoverflow.com/a/29261649}
 \end{frame}
 
-Clean up references to remotes which have already been deleted upstream.
+\begin{frame}[fragile]
+    \frametitle{Clean up remote references}
 
-\begin{verbatim}
+    \tbf{Problem:} \code{git branch -a} shows branches which have been
+    deleted in the remote repository.
+
+    This situation can occur if a shared feature branch is deleted by
+    someone other than you, or you have a remote feature branch which you
+    have deleted via e.g. the ``delete branch'' feature on GitHub's website.
+    The local references to the now non-existent remote branches still exist
+    and just need to be brought up to date with the current remote state.
+
+    \tbf{Solution:} Use the \code{prune} option to \code{git remote}.
+
+\begin{lstlisting}
+git remote prune <remote_alias>
+# e.g.:
 git remote prune origin
-\end{verbatim}
-
+\end{lstlisting}
+\end{frame}
 
 \section{Further reading}
 
