@@ -44,6 +44,7 @@
 \usepackage{standalone}
 
 \usetikzlibrary{positioning}
+\usetikzlibrary{calc}
 
 \newcommand{\ttt}[1]{\texttt{#1}}
 \newcommand{\tbf}[1]{\textbf{#1}}

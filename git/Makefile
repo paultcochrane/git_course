@@ -6,6 +6,7 @@ TEXNAME = $(BASENAME).tex
 TEXFILES = figures/CentralRepo_tikz.tex \
 	   figures/simple_branch_tikz.tex \
 	   figures/merge_simple_branch_tikz.tex \
+	   figures/working_dir_staging_repo.tex \
 	   about_the_course.tex \
 	   version_control_systems.tex
 
