@@ -566,6 +566,32 @@ for quick fix example below
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Tricks and tips}
+
+\begin{frame}[fragile]
+    \frametitle{Splitting commits}
+    \tbf{Problem:} you've committed code that you'd rather have in
+        separate commits.
+
+    \tbf{Solution:} use an interactive rebase to edit the commit
+        to split; ``undo'' the code changes to separate; add
+        modifications; amend the current commit.
+        Make ``undone'' changes and commit.  Continue
+        the interactive rebase.
+\begin{lstlisting}
+git rebase -i <branch_name>~<num_commits>
+# extract changes to separate
+git add <changed_files>
+git commit --amend
+# add separated changes to files
+git commit <changed_files>
+git rebase --continue
+\end{lstlisting}
+    See: \resizebox{0.9\textwidth}{!}
+        {\url{https://stackoverflow.com/questions/6217156/break-a-previous-commit-into-multiple-commits}}.
+\end{frame}
+
+
 https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository
 
 \begin{verbatim}
@@ -603,11 +629,6 @@ avaiable for the missing commit.  Using this hash reference, one can recover
 the commit, or if one only wants the commit message (say), then a simple
 \ttt{git log <sha-hash>} will return the required information.
 
-
-
-Splitting commits
-
-https://stackoverflow.com/questions/6217156/break-a-previous-commit-into-multiple-commits
 
 
 Finding out commits that affect a given line
