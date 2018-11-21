@@ -105,6 +105,45 @@ git config --help
 \end{itemize}
 \end{frame}
 
+
+\begin{frame}
+    \frametitle{Starting a new repository}
+    Steps to create a Git repository:
+    \begin{itemize}
+        \item create a directory
+        \item change into that directory
+        \item run \code{git init}
+        \item that's it!
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Exercise: create a new repository}
+\begin{itemize}
+    \item Create a directory and change into it
+\end{itemize}
+\begin{lstlisting}
+mkdir blupp
+cd blupp
+\end{lstlisting}
+\begin{itemize}
+    \item Initialise the repository
+\end{itemize}
+\begin{lstlisting}
+git init
+\end{lstlisting}
+\begin{itemize}
+    \item What's the output of the \code{git init} command?  How does this
+        help us?
+    \item Explore the directory, what's in there?
+    \item Use \code{ls -la} to find the hidden directory.
+    \item Run \code{git status} for more info from git.  What's this
+        output it telling us?
+\end{itemize}
+\end{frame}
+
+
 \begin{frame}
 \frametitle{Starting a new repository from scratch}
 \begin{itemize}
