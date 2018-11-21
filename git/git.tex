@@ -71,14 +71,48 @@ There are many GUI clients to choose from.  Here is a selection:
     {Gain familiarity with the shell, and you'll find your productivity soaring.}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{Installing Git (CLI options)}
 \begin{itemize}
     \item Windows
     \item MacOS
-    \item Linux/Unix
 \end{itemize}
 \end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Installing Git (CLI options; Linux/Unix)}
+\begin{itemize}
+    \item either via a package manager, e.g.:
+\end{itemize}
+
+\begin{lstlisting}
+sudo apt install git  # Debian-based distributions
+sudo yum install git  # RedHat-based distributions
+\end{lstlisting}
+
+\begin{itemize}
+    \item or via the source code:
+\end{itemize}
+
+\begin{lstlisting}[
+    breaklines=true,
+    postbreak=\mbox{$\hookrightarrow$\space}]
+wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-<version>.tar.gz
+tar -xvzf git-<version>.tar.gz
+cd git-<version>
+./configure
+make
+make test  # optional
+sudo make install
+\end{lstlisting}
+
+\begin{itemize}
+    \item more help is available on the Git Linux/Unix download page:
+        \url{https://git-scm.com/download/linux}
+\end{itemize}
+\end{frame}
+
 
 \begin{frame}[fragile]
     \frametitle{Detour: setting name and email metadata}
