@@ -23,22 +23,14 @@
 \input{installing_git.tex}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{frame}[fragile]
-    \frametitle{Detour: setting name and email metadata}
-    If this is the first time you've installed Git, then one of the first
-    things you need to do is to set your name and email address
-    configuration metadata:
-\begin{lstlisting}[language=bash]
-$ git config --global user.name "Your name"
-$ git config --global user.email "<username@example.com>"
-\end{lstlisting}
-\end{frame}
+\section{Text editors}
 
 \begin{frame}
 \frametitle{Text editors}
 \begin{itemize}
     \item We will be creating and editing text files, hence the need for a
         text editor.
+    \item One of the fundamental tools of software development.
     \item There are many options to choose from:
     \begin{itemize}
         \item \href{https://notepad-plus-plus.org/}{Notepad++}
@@ -51,6 +43,39 @@ $ git config --global user.email "<username@example.com>"
     \item The choice of editor is unimportant; what \emph{is} important is
         that you feel comfortable using yours.
 \end{itemize}
+\end{frame}
+
+\section{Initial Git configuration}
+
+\begin{frame}[fragile]
+    \frametitle{Detour: setting name and email metadata}
+    If this is the first time you've installed Git, then one of the first
+    things you need to do is to set your name and email address
+    configuration metadata:
+\begin{lstlisting}[language=bash]
+git config --global user.name "Your name"
+git config --global user.email "<username@example.com>"
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Exercise: explore \code{git config}}
+
+    Open a terminal (or the Git-Bash shell in Windows) and enter the
+    following commands:
+\begin{lstlisting}
+git config
+git config --list
+git config --help
+\end{lstlisting}
+
+    \begin{itemize}
+        \item describe the output of each command
+        \item how does the output relate to the commands mentioned on the
+            previous slide?
+        \item if you need to find out detailed information about a command,
+            what might you always be able to do?
+    \end{itemize}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
