@@ -1,0 +1,105 @@
+\section{Installing Git}
+
+\begin{frame}
+\frametitle{Installing Git (GUI options)}
+There are many GUI clients to choose from.  Here is a selection:
+\begin{itemize}
+    \item SourceTree
+        \includegraphics[height=0.05\textheight]{images/Sourcetree-blue.pdf}
+        \begin{itemize}
+            \item \url{https://www.sourcetreeapp.com/}
+            \item License: free as in beer
+        \end{itemize}
+    \item TortoiseGit
+        \includegraphics[height=0.05\textheight]{images/tgit_logo.pdf}
+        \begin{itemize}
+            \item \url{https://tortoisegit.org/}
+            \item License: free as in freedom
+        \end{itemize}
+    \item Git Extensions
+        \includegraphics[height=0.05\textheight]{images/git-extensions-logo.pdf}
+        \begin{itemize}
+            \item \url{https://gitextensions.github.io/}
+            \item License: free as in freedom
+        \end{itemize}
+    \item GitKraken
+        \includegraphics[height=0.05\textheight]{images/gitkraken-logo-dark-hz.png}
+        \begin{itemize}
+            \item \url{https://www.gitkraken.com/}
+            \item License: free for non-commercial use
+        \end{itemize}
+    \item More GUI clients can be found on the Git website:
+        \begin{itemize}
+            \item \url{https://git-scm.com/download/gui/windows}
+        \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Use the command line!}
+\begin{itemize}
+    \item With the command line one can get futher and do more; the
+        learning curve is steeper, but it's worth it.
+    \item Hence, we will focus on the command line interface (CLI) from now
+        on.
+\end{itemize}
+    \blockquote[Hunt and Thomas, \emph{The Pragmatic Programmer}]
+    {Gain familiarity with the shell, and you'll find your productivity soaring.}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Installing Git (CLI options; Windows)}
+\begin{itemize}
+    \item download the installer from \url{https://git-scm.com/download/win}
+    \item double click the downloaded \code{.exe} file and follow the
+        installation instructions to install it
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Installing Git (CLI options; MacOS)}
+\begin{itemize}
+    \item download the installer from \url{https://git-scm.com/download/mac}
+    \item double click the downloaded image file to install it
+        % TODO: add installation screens to slides
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Installing Git (CLI options; Linux/Unix)}
+\begin{itemize}
+    \item either via a package manager, e.g.:
+\end{itemize}
+
+\begin{lstlisting}
+sudo apt install git  # Debian-based distributions
+sudo yum install git  # RedHat-based distributions
+\end{lstlisting}
+
+\begin{itemize}
+    \item or via the source code:
+\end{itemize}
+
+\begin{lstlisting}[
+    breaklines=true,
+    postbreak=\mbox{$\hookrightarrow$\space}]
+wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-<version>.tar.gz
+tar -xvzf git-<version>.tar.gz
+cd git-<version>
+./configure
+make
+make test  # optional
+sudo make install
+\end{lstlisting}
+
+\begin{itemize}
+    \item more help is available on the Git Linux/Unix download page:
+        \url{https://git-scm.com/download/linux}
+\end{itemize}
+\end{frame}
+
+% vim: expandtab shiftwidth=4:
