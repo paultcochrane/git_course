@@ -144,6 +144,55 @@ git init
 \end{frame}
 
 
+\begin{frame}[fragile]
+\begin{lstlisting}[basicstyle=\tiny\ttfamily]
+$ mkdir blupp
+$ cd blupp/
+$ git init
+Initialized empty Git repository in /home/cochrane/blupp/.git/
+$ ls
+$ ls -ltra
+total 28
+drwxr-xr-x 117 cochrane cochrane 20480 Nov 21 02:39 ..
+drwxr-xr-x   3 cochrane cochrane  4096 Nov 21 02:39 .
+drwxr-xr-x   7 cochrane cochrane  4096 Nov 21 02:39 .git
+$ ls .git/
+branches  config  description  HEAD  hooks  info  objects  refs
+$ ls .git/*
+.git/config  .git/description  .git/HEAD
+
+.git/branches:
+
+.git/hooks:
+applypatch-msg.sample  pre-applypatch.sample      pre-push.sample     update.sample
+commit-msg.sample      pre-commit.sample          pre-rebase.sample
+post-update.sample     prepare-commit-msg.sample  pre-receive.sample
+
+.git/info:
+exclude
+
+.git/objects:
+info  pack
+
+.git/refs:
+heads  tags
+\end{lstlisting}
+%stopzone
+\end{frame}
+
+\begin{frame}[fragile]
+\begin{lstlisting}[basicstyle=\tiny\ttfamily]
+$ git status
+On branch master
+
+Initial commit
+
+nothing to commit (create/copy files and use "git add" to track)
+\end{lstlisting}
+\end{frame}
+%stopzone
+
+
 \begin{frame}
 \frametitle{Starting a new repository from scratch}
 \begin{itemize}
