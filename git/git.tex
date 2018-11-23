@@ -193,6 +193,30 @@ nothing to commit (create/copy files and use "git add" to track)
 %stopzone
 
 
+\begin{frame}[fragile]
+\frametitle{Adding files or changes to the repository}
+\begin{itemize}
+    \item To add files (or changes to files) to the repository's
+        staging area, we use the \code{git add} command.
+    \begin{itemize}
+        \item the \emph{staging area} is where changes to the repository
+            are kept before they are committed.
+    \end{itemize}
+    \item Git now knows to \emph{track} the file for future changes.
+    \item \emph{Staging}, \emph{tracking}, and \emph{adding} are all
+        roughly equivalent terms for the same process.
+\end{itemize}
+
+Let's add a file in tiny steps to see the process in detail:
+\begin{lstlisting}
+touch moo     # create a file
+git status    # check repo status (file is *untracked*)
+git add moo   # add file to the staging area
+git status    # file is now a change to be committed
+\end{lstlisting}
+\end{frame}
+
+
 \begin{frame}
 \frametitle{Starting a new repository from scratch}
 \begin{itemize}
