@@ -22,18 +22,9 @@
 
 \LoadClass[t]{beamer}
 \usetheme{metropolis}
-\setsansfont[
-        Extension      = .otf,
-        UprightFont    = *-Light,
-        ItalicFont     = *-LightItalic,
-        BoldFont       = *-Regular,
-        BoldItalicFont = *-RegularItalic
-        ]{FiraSans}
-\setmonofont[
-        Extension   = .otf,
-        UprightFont = *-Regular,
-        BoldFont    = *-Bold
-        ]{FiraMono}
+\usepackage[T1]{fontenc}
+\usepackage{FiraSans}
+\usepackage{FiraMono}
 
 \usepackage{multicol}
 \usepackage{setspace}
