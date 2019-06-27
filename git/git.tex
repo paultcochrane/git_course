@@ -691,7 +691,6 @@ git rebase --continue
 
     \tbf{Solution:} If the file was deleted in a commit of its own, then
     just revert and write an appropriate commit message.
-
 \begin{lstlisting}
 git revert <commit_sha>
 ... explain reason for revert in commit message ...
@@ -708,7 +707,6 @@ git revert <commit_sha>
     the file; this is the commit where it was deleted.  Check out the file
     from this commit's parent commit.  The file is now a newly-added file in
     the working directory.
-
 \begin{lstlisting}
 git checkout \
     $(git rev-list -n 1 HEAD -- "$file")^ -- "$file"
