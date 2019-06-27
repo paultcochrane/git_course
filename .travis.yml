@@ -2,7 +2,7 @@ dist: xenial
 sudo: required
 
 install:
-    - sudo apt-get update && sudo apt-get upgrade
+    - sudo apt-get -y update && sudo apt-get -y upgrade
     - sudo apt-get install -y texlive-latex-extra latex-beamer texlive-lang-german texlive-fonts-extra texlive-fonts-recommended texlive-xetex lmodern
 
 script:
