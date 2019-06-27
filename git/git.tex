@@ -908,6 +908,16 @@ git tag -d tagname
     source: https://stackoverflow.com/a/227026/10874800
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Setting the executable bit on Windows Git}
+Windows will show files as being executable, but the executable bit won't be
+set when adding and committing files in Git Bash.  Here's a workaround:
+    \begin{lstlisting}
+    find . -name '*.sh' | xargs git update-index --chmod=+x
+    \end{lstlisting}
+    source: https://stackoverflow.com/a/32717779/10874800
+\end{frame}
+
 \appendix
 
 \section{Version Control System models}
