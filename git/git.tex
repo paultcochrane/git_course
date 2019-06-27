@@ -890,6 +890,24 @@ git tag -d tagname
 \end{lstlisting}
 \end{frame}
 
+
+\begin{frame}[fragile]
+\frametitle{Checking branch merge status}
+    \begin{lstlisting}
+    git branch --merged master lists branches merged into master
+
+    git branch --merged lists branches merged into HEAD (i.e. tip of current
+    branch)
+
+    git branch --no-merged lists branches that have not been merged
+
+    By default this applies to only the local branches. The -a flag will
+    show both local and remote branches, and the -r flag shows only the
+    remote branches.
+    \end{lstlisting}
+    source: https://stackoverflow.com/a/227026/10874800
+\end{frame}
+
 \appendix
 
 \section{Version Control System models}
