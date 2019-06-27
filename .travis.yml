@@ -5,8 +5,6 @@ install:
     - sudo apt-get install -y texlive-latex-extra latex-beamer texlive-lang-german texlive-fonts-extra texlive-fonts-recommended texlive-xetex lmodern
 
 script:
-    - cd $TRAVIS_BUILD_DIR/git_intro && make
-    - cd $TRAVIS_BUILD_DIR/git_advanced && make
     - cd $TRAVIS_BUILD_DIR/git && make
     - cd $TRAVIS_BUILD_DIR
 
