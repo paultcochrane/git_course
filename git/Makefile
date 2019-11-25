@@ -16,7 +16,7 @@ default: all
 slides: $(BASENAME).pdf
 
 $(BASENAME).pdf: $(TEXNAME) $(TEXFILES) git_course.cls
-	xelatex $(TEXNAME) && xelatex $(TEXNAME)
+	xelatex $(TEXNAME) # && xelatex $(TEXNAME)
 
 all: slides
 
