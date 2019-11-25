@@ -918,7 +918,6 @@ git tag -d tagname
 \end{lstlisting}
 \end{frame}
 
-
 \begin{frame}[fragile]
 \frametitle{Checking branch merge status}
     \begin{lstlisting}
@@ -944,6 +943,13 @@ set when adding and committing files in Git Bash.  Here's a workaround:
     find . -name '*.sh' | xargs git update-index --chmod=+x
     \end{lstlisting}
     source: https://stackoverflow.com/a/32717779/10874800
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Extract single commit as patch}
+\begin{lstlisting}
+git format-patch -1 f8aae4
+\end{lstlisting}
 \end{frame}
 
 \appendix
