@@ -956,24 +956,26 @@ git format-patch -1 f8aae4
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
 \frametitle{Extracting subdir into separate repo}
 used to have to use git filter branch:
     https://stackoverflow.com/a/359759/10874800
 
+    new-repo-name: name of the new repository, derived from subdir of
+    old-repo-name
+
 For example:
-git clone git@dnps-git.awi.de:ossi.git ossi_orders
-cd ossi_orders/
-git filter-branch --prune-empty --subdirectory-filter orders master   # entfernt alle Commits, die nicht mit dem `orders` Verzeichnis zu tun haben
-git remote set-url origin git@dnps-git.awi.de:ossi_orders.git
-# füge test_order_parsing.py Skript hinzu
-# füge Makefile hinzu
-# füge orders_overview Skript hinzu
-# korrigiere incorrekte Mailadressen in Commits
+    \begin{lstlisting}
+git clone git@<server-name>:<orig-repo-name>.git <new-repo-name>
+cd <new-repo-name>/
+# delete all commits that don't have anything to do with the `orders` directory
+git filter-branch --prune-empty --subdirectory-filter orders master
+git remote set-url origin git@<server-name>:<new-repo-name>.git
+# fix incorrect email addresses in commits
 git filter-branch --original refs/correct_email_orig --env-filter '
-OLD_EMAIL="paul@liekut.de"
+OLD_EMAIL="paul@<old-email-provider>"
 CORRECT_NAME="Paul Cochrane"
-CORRECT_EMAIL="cochrane@driftnoise.com"
+CORRECT_EMAIL="paul.cochrane@<new-email-provider>"
 if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
 then
 export GIT_COMMITTER_NAME="$CORRECT_NAME"
@@ -986,24 +988,27 @@ export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
 fi
 ' --tag-name-filter cat -- --branches --tags
 git push -u origin master
+    \end{lstlisting}
 
 but now can use git subtree:
     https://stackoverflow.com/a/17864475/10874800
 
-cd ~/Projekte/DriftNoise/ossi_scripts/
-git subtree split -P drift_forecasts/ -b ice-drift-forecasts
+\begin{lstlisting}
+cd <old-repo-name>
+git subtree split -P <subdir-name>/ -b <new-repo-name>
 cd ..
-mkdir ice-drift-forecasts
-cd ice-drift-forecasts/
+mkdir <new-repo-name>
+cd <new-repo-name>/
 git init
-git pull ../ossi_scripts/ ice-drift-forecasts
-git remote add origin git@git.driftnoise.com:ice-drift-forecasts.git
+git pull ../<old-repo-name>/ <new-repo-name>
+git remote add origin git@<server-name>:<new-repo-name>.git
 git push origin -u master
-cd ../ossi_scripts/
-git rm -rf drift_forecasts/
+cd ../<old-repo-name>/
+git rm -rf <subdir-name>/
 git ci
 git push
-git branch -D drift_forecasts
+git branch -D <subdir-name>  # <= TODO check that this step is correct!
+\end{lstlisting}
 \end{frame}
 
 \appendix
