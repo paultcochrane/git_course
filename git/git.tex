@@ -864,6 +864,18 @@ git remote prune origin
 \end{frame}
 
 \begin{frame}
+    \frametitle{Find out current branch}
+    \begin{lstlisting}
+    git branch  // starred branch is current branch
+    git branch -a  // starred branch is current branch
+    git branch --show-current  // returns name of current branch
+    git symbolic-ref --short HEAD  // returns name of current branch (after Git version 1.8)
+    git rev-parse --abbrev-ref HEAD  // returns name of current branch (before Git version 2.22)
+    \end{lstlisting}
+    \href{https://stackoverflow.com/questions/6245570/how-to-get-the-current-branch-name-in-git}{How to get the current branch name in Git?}
+\end{frame}
+
+\begin{frame}
 \frametitle{Extras}
 git-worktree - Manage multiple working trees
 \end{frame}
