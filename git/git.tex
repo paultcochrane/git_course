@@ -902,6 +902,13 @@ git remote prune origin
     Solution spotted here: https://stackoverflow.com/a/54534613/10874800
 \end{frame}
 
+\begin{frame}[fragile]
+    \frametitle{Update local submodules from the upstream repo}
+    \begin{lstlisting}
+    git submodule update --remote --merge
+    \end{lstlisting}
+\end{frame}
+
 \begin{frame}
 \frametitle{Extras}
 git-worktree - Manage multiple working trees
