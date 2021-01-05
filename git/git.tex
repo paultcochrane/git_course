@@ -876,6 +876,13 @@ git remote prune origin
 \end{frame}
 
 \begin{frame}
+    \frametitle{Find out where current branch diverged from upstream master}
+    \begin{lstlisting}
+    git merge-base --fork-point origin/master <branch-name>
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}
 \frametitle{Extras}
 git-worktree - Manage multiple working trees
 \end{frame}
