@@ -904,8 +904,25 @@ git remote prune origin
 
 \begin{frame}[fragile]
     \frametitle{Update local submodules from the upstream repo}
+
     \begin{lstlisting}
     git submodule update --remote --merge
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Update submodule URL}
+
+    ... which can happen if one moves the submodule's repo to a different
+    location.
+
+    \begin{lstlisting}
+    # update the submodule url
+    git config --file=.gitmodules submodule.<submodule-name>.url <new-repo-url>
+    # synchronise the submodule
+    git submodule sync
+    # update the submodule from the upstream repo
+    git submodule update --init --recursive --remote
     \end{lstlisting}
 \end{frame}
 
