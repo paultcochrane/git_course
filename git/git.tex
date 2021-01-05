@@ -890,6 +890,19 @@ git remote prune origin
 \end{frame}
 
 \begin{frame}
+    \frametitle{Find diff between most recent stash and current working dir}
+    \begin{lstlisting}
+    git stash show -l
+    \end{lstlisting}
+
+    This shows the diff between the current working directory and the most
+    recent stash. Not documented in the \ttt{git stash} man page (for version
+    2.20.1), but good to know.
+
+    Solution spotted here: https://stackoverflow.com/a/54534613/10874800
+\end{frame}
+
+\begin{frame}
 \frametitle{Extras}
 git-worktree - Manage multiple working trees
 \end{frame}
