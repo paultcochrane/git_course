@@ -883,6 +883,13 @@ git remote prune origin
 \end{frame}
 
 \begin{frame}
+    \frametitle{Run test suite on all commits in given range}
+    \begin{lstlisting}
+    git rebase -i <branch_name>~x -x '<test command>'
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}
 \frametitle{Extras}
 git-worktree - Manage multiple working trees
 \end{frame}
