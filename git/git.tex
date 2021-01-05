@@ -863,7 +863,7 @@ git remote prune origin
 \end{lstlisting}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
     \frametitle{Find out current branch}
     \begin{lstlisting}
     git branch  // starred branch is current branch
@@ -875,21 +875,21 @@ git remote prune origin
     \href{https://stackoverflow.com/questions/6245570/how-to-get-the-current-branch-name-in-git}{How to get the current branch name in Git?}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
     \frametitle{Find out where current branch diverged from upstream master}
     \begin{lstlisting}
     git merge-base --fork-point origin/master <branch-name>
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
     \frametitle{Run test suite on all commits in given range}
     \begin{lstlisting}
     git rebase -i <branch_name>~x -x '<test command>'
     \end{lstlisting}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
     \frametitle{Find diff between most recent stash and current working dir}
     \begin{lstlisting}
     git stash show -l
