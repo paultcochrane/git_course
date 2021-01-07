@@ -924,6 +924,13 @@ git remote prune origin
     # update the submodule from the upstream repo
     git submodule update --init --recursive --remote
     \end{lstlisting}
+
+    Some hints gleaned from here:
+    https://dev.to/serhatteker/changing-git-submodule-repository-to-other-url-branch-356p
+
+    Check that the tip commit of the updated submodule is the tip commit
+    that you expect (i.e. check the submodule's repo and compare its tip
+    commit with where the submodule is used).
 \end{frame}
 
 \begin{frame}
