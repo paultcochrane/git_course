@@ -181,6 +181,16 @@ heads  tags
 \end{frame}
 
 \begin{frame}[fragile]
+\frametitle{What does git init do?}
+\begin{itemize}
+    \item Creates a \code{.git} directory
+    \item Creates various configuration files, e.g. \code{.git/config}
+    \item Sets up the repository; the repository is inside the \code{.git}
+        directory
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
 \begin{lstlisting}[basicstyle=\tiny\ttfamily]
 $ git status
 On branch master
@@ -331,7 +341,13 @@ The add/commit cycle is like how a photographer creates a group photo.
     \item man pages
     \item git help
     \item books
+    \begin{itemize}
+        \item How Git Works; Julia Evans; \url{https://wizardzines.com/zines/git/}
+    \end{itemize}
     \item online references
+    \begin{itemize}
+        \item \url{https://git-scm.com/doc}
+    \end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -387,6 +403,48 @@ The add/commit cycle is like how a photographer creates a group photo.
 \end{frame}
 
 \begin{frame}
+\frametitle{Workﬂow}
+
+Preparation:
+\begin{itemize}
+    \item \code{git init} (only once)
+    \item \code{git checkout}
+    \item \code{git config}
+\end{itemize}
+
+Main steps:
+\begin{itemize}
+    \item \code{git add} (before committing a file)
+    \item \code{git mv}
+    \item \code{git status}
+    \item \code{git diff}
+    \item \code{git rm}
+    \item \code{git log}
+    \item \code{git show}
+    \item \code{git commit}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Specifying commits}
+\begin{description}
+    \item[\code{c82a22c39c}] SHA hash
+    \item[\code{HEAD}] name of the commit
+    \item[\code{HEAD\^}] parent of \code{HEAD}
+    \item[\code{HEAD\^\^}] grandparent of \code{HEAD}
+    \item[\code{HEAD~2}] also grandparent of \code{HEAD}
+    \item[\code{HEAD~4}] great-great grandparent of \code{HEAD}
+\end{description}
+
+also works with branch names:
+\begin{description}
+    \item[\code{main\^}] parent of tip of “\code{main}” branch
+    \item[\code{main~4}] great-great grandparent of tip of “\code{main}” branch
+        experimental tip of “\code{experimental}” branch
+\end{description}
+\end{frame}
+
+\begin{frame}
 \frametitle{Detour: Commit advice}
 
 when, what, how to commit
@@ -396,6 +454,59 @@ commit messages
 commit a single, focussed idea/concept
 
 small commits have small diffs and are easier for others to review
+
+Recommendations for commits:
+
+\begin{itemize}
+    \item A commit should contain a single, self contained idea.
+    \item The commit message should contain a short description
+        of the idea or change being made in this commit.
+    \item A one line subject line
+    \item An optional text describing more details of the change. The
+        why of the change is important. Remember: this is a
+        communication exercise.
+    \item Commits should be as small as possible (atomic commits).
+\end{itemize}
+
+    http://sethrobertson.github.io/GitBestPractices
+
+How often should I commit?
+\begin{itemize}
+    \item as often as possible
+    \item “release early, release often”
+    \item as soon as the changes belonging to a given idea are
+        ﬁnished
+    \item don’t be afraid to commit!
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Commit advice (cont.)}
+
+\begin{itemize}
+    \item Each commit needs a “commit message” describing the
+    change
+    \item Commit messages document what was done in each
+    change and why
+    \item An important part of communication within a project:
+    \begin{itemize}
+        \item commit logs are messages to other people
+        \item ... and are messages to yourself in the future!
+    \end{itemize}
+\end{itemize}
+
+What should I write in a commit message?
+\begin{itemize}
+    \item a short description of the change
+    \item the description can sometimes be longer than the actual
+    change! The message describes the “why” of the change.
+    \item the message should be able to explain later what
+    happened in the change
+    \item note: when problems occur, this is where one looks ﬁrst for
+        information
+\end{itemize}
+
 \end{frame}
 
 \begin{frame}
@@ -430,6 +541,75 @@ small commits have small diffs and are easier for others to review
     \item practice git add/commit/rm/mv
     \item practice git log/show/diff
 \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Ignoring files}
+
+To ignore files in Git one simply needs a \code{.gitignore} file with
+entries for the files one wishes to ignore. It is possible to use
+regular expressions and wildcards such as \code{*.o} in order to ignore
+multiple files.
+
+TODO: insert example of creating files to ignore and then creating a
+.gitignore file.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Ignoring files (cont.)}
+
+Because the \code{.gitignore} file can change (and it’s highly likely
+that we’re interested in these changes) one also keeps this file under
+version control. We therefore add the file to the repository and commit
+it:
+
+\begin{lstlisting}
+$ git add .gitignore
+$ git commit .gitignore
+Created commit 38d2e3c: Ignoring the hallo program
+1 files changed, 2 insertions (+) , 0 deletions (-)
+create mode 100644 .gitignore
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Showing branches}
+\code{git show-branch}
+
+\begin{itemize}
+    \item shows the available branches
+    \item shows with an asterisk \code{*} which is the current branch
+\end{itemize}
+
+\begin{lstlisting}
+$ git show-branch -- list
+* [ master ] Ignoring the hallo program and * ~files
+$ git show-branch --more=35
+[ master ] Ignoring the hallo program and * ~files
+[ master\^ ] Added a southern ’hallo’ variant
+[ master~2 ] Initial import of the hallo project
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Showing branches (cont.)}
+\code{git branch} shows available branches and which branch is
+current.
+
+\begin{lstlisting}
+$ git branch
+* master
+\end{lstlisting}
+
+\code{git branch -v} shows the commit hash and the commit
+message of the most recent commit.
+
+TODO need more expansive examples here with multiple branches.
+
+\begin{lstlisting}
+$ git branch -v
+* master 38d2e3c Ignoring the hallo program and *~
+\end{lstlisting}
 \end{frame}
 
 \begin{frame}
@@ -472,6 +652,23 @@ small commits have small diffs and are easier for others to review
     \item author and committer can be different people (usually aren't)
     \item work more often with branches (very powerful feature)
 \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Working with others (also online)}
+
+\begin{description}
+    \item[\code{git clone}] Clones a pre-existing repository; basically copy
+        into a new directory and get the current branch
+    \item[\code{git pull}] Pull changes from another repo into the local repo
+    \item[\code{git push}] Push changes from a local repo into another
+    \item[\code{git format-patch}] Generate a patch file, which one can
+        then send as an email attachment
+\end{description}
+\end{frame}
+
+\begin{frame}
+\frametitle{Tagging commits}
 \end{frame}
 
 \begin{frame}
@@ -666,6 +863,36 @@ for quick fix example below
     \item git stash drop
     \item git stash drop/show {n}
 \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Stashing changes}
+\code{git stash}
+\begin{itemize}
+    \item One is in the middle of a task
+    \item Something unrelated needs to be fixed quickly
+    \item Use \code{git stash} to save the current state (or more
+        explicitly: \code{git stash save}
+    \item The working copy is now "clean"
+    \item One is now able to work on the new topic and check in the
+        changes
+    \item \code{git stash pop} reinstates the old state
+    \item Now one can work on the previous task again, where one
+        left off
+    \item \code{git stash} works like a stack (push/pop operations)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Stashing changes}
+
+\begin{description}
+    \item \code{git stash list} List all “stashed” states
+    \item \code{git stash show} Show a stashed state
+    \item \code{git stash apply} Apply a state to the current working copy
+    \item \code{git stash pop} Pop the “top most” state off the stack and
+        apply it onto the current working copy
+\end{description}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1160,6 +1387,46 @@ git branch -D <subdir-name>  # <= TODO check that this step is correct!
         \end{itemize}
 \end{itemize}
 \end{frame}
+
+
+\begin{frame}
+\frametitle{Leftover notes from old git/svn course}
+merging commits: git rebase -i <commit>
+
+splitting commits: git rebase -i <commit> - mark which commit
+to edit - when rebase reaches that commit use
+
+git reset HEAD\^ to reset before the commit but keep your
+working tree intact - incrementally add changes and commit
+them (git add -p can be useful) - run git rebase –continue to
+proceed applying the commits after the now-split commit
+(adapted from
+http://stackoverflow.com/questions/4307095/git-how-to-split-up-a-commit-buried-in-history)
+
+reordering commits: git rebase -i <commit>
+pick, squash, edit
+
+http://www.gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html
+
+http://www.gitready.com/advanced/2009/03/20/reorder-commits-with-rebase.html
+
+git config --global color.ui auto -> automatically colour diffs,
+logs and other git output
+
+git diff --word-diff -> do a diff on words and not on lines. Per
+default in colour, but if don’t have a colour terminal minus
+signs (-) and plus signs (+) are used around words to show
+what has been removed or added respectively.
+
+create bare repo -> clone -> make commits in local repo -> git
+push -> error -> why? A: because there isn’t a branch on the
+server, there needs to be a connection between the local
+
+”master” branch and the ”origin” on the server, hence one
+needs to run ”git push origin master” in order to make this
+connection.
+\end{frame}
+
 
 % good git helper talk
 % C'mon git happy; John Anderson; PerlCon Pittsburgh 2019
