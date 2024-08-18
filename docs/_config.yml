@@ -6,7 +6,7 @@ description: > # this means to ignore newlines until "baseurl:"
     A course in learning how to use the version control system Git.
 baseurl: "/git_course" # the subpath of your site, e.g. /blog
 url: "https://paultcochrane.github.io"
-twitter_username: peateasea
+mastodon_username: peateasea
 github_username:  paultcochrane
 
 # Build settings
