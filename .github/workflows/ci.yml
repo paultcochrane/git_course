@@ -2,9 +2,7 @@ name: Build document in CI
 
 on:
   push:
-    branches: [ $default-branch ]
   pull_request:
-    branches: [ $default-branch ]
 
 jobs:
   build:
