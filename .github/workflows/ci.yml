@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Install dependencies
-      run: sudo apt install texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended texlive-xetex lmodern make latexmk
+      run: sudo apt install texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended texlive-xetex texlive-luatex lmodern make latexmk
 
     - name: Install dependencies
       run: cd git && make
