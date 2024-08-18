@@ -12,6 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+
     - name: Install dependencies
       run: apt install texlive-latex-extra latex-beamer texlive-lang-german texlive-fonts-extra texlive-fonts-recommended texlive-xetex lmodern make latexmk
 
