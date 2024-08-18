@@ -1,0 +1,19 @@
+name: Build document in CI
+
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Install dependencies
+      run: apt install texlive-latex-extra latex-beamer texlive-lang-german texlive-fonts-extra texlive-fonts-recommended texlive-xetex lmodern make latexmk
+
+    - name: Install dependencies
+      run: cd git && make
