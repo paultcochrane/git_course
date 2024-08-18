@@ -15,8 +15,8 @@ Install the required dependencies.  On a Debian-based system this looks
 like:
 
 ```shell
-$ sudo apt install -y texlive-latex-extra latex-beamer texlive-lang-german \
-    texlive-fonts-extra texlive-fonts-recommended texlive-xetex lmodern make
+$ sudo apt install texlive-latex-extra texlive-fonts-extra \
+    texlive-fonts-recommended texlive-xetex texlive-luatex lmodern make latexmk
 ```
 
 Then enter the `git` directory and run `make` to build the project:
