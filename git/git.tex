@@ -1502,4 +1502,23 @@ git remote remove job-apps
 
 \end{document}
 
+\begin{frame}{Interactive rebasing with root commit}
+    Usually the root commit is excluded from a rebase.  However, sometimes
+    it's necessary to edit this commit as well as any others following.  For
+    example, let's say the first 4 commits have been created.  We later find
+    changes which should have been part of the initial (root) commit (e.g. we
+    missed adding a file), then it would be necessary to change the root
+    commit.  To do this we can use the --root option to rebase:
+
+    git rebase -i --root
+
+    which then runs an interactive rebase but also showing the root commit.
+    Then it's possible to add the missing changes to the root commit, say by
+    creating a commit adding those changes and then squashing this extra
+    commit into the initial (root) commit.
+
+    See also:
+    https://mariusschulz.com/blog/how-to-squash-the-first-two-commits-in-a-git-repository
+\end{frame}
+
 % vim: expandtab shiftwidth=4:
