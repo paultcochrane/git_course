@@ -1483,6 +1483,23 @@ connection.
 % C'mon git happy; John Anderson; PerlCon Pittsburgh 2019
 % https://youtu.be/oEKXV-_o3YQ
 
+
+\begin{frame}{Merge git repositories into one}
+
+solution found here: https://medium.com/altcampus/how-to-merge-two-or-multiple-git-repositories-into-one-9f8a5209913f
+# enter the working directory of an existing repo to merge into
+cd Bewerbungen/
+# add other repo as remote and fetch its commits
+git remote add --fetch job-apps git@bitbucket.org:paultcochrane/job_applications.git
+# merge new repo into repo of pwd
+# note --allow-unrelated-histories to allow merge to work
+# otherwise error
+git merge job-apps/master --allow-unrelated-histories
+# remove now unnecessary remote
+git remote remove job-apps
+
+\end{frame}
+
 \end{document}
 
 % vim: expandtab shiftwidth=4:
