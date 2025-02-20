@@ -909,6 +909,29 @@ for quick fix example below
     \end{itemize}
 \end{frame}
 
+\begin{frame}
+    \frametitle{Forking a repository}
+
+    - create own repository of another project
+    - gives ability to contribute to original project via Pull Requests
+    (also called Merge Requests)
+    - one can push changes to own fork because it belongs to you
+    - pushing changes directly to someone else's project isn't possible
+    (unless you have commit access, which isn't default situation)
+    - commit changes to a non-`main` branch and push to upstream fork ->
+    from here can create Pull Request
+    - services like GitHub/GitLab detect such pushes and prompt to create a
+    Pull Request
+    - fork and pull request has become most common open source collaboration
+    workflow (mostly due to GitHub)
+    diagram:
+    |upstream repo; label: "upstream"|  -> fork -> |upstream fork; label: "origin"|
+                        fetch v                            push ^ ; clone v
+                                                   |local repo|
+
+    - show screenshots of example of forking a repo on GitHub
+\end{frame}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Tricks and tips}
