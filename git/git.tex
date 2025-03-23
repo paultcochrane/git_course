@@ -909,7 +909,7 @@ for quick fix example below
     \end{itemize}
 \end{frame}
 
-\begin{frame}
+\begin{frame}[fragile]
     \frametitle{Forking a repository}
 
     - create own repository of another project
@@ -925,9 +925,11 @@ for quick fix example below
     - fork and pull request has become most common open source collaboration
     workflow (mostly due to GitHub)
     diagram:
+    \begin{lstlisting}
     |upstream repo; label: "upstream"|  -> fork -> |upstream fork; label: "origin"|
-                        fetch v                            push ^ ; clone v
+                        fetch v                            push \^ ; clone v
                                                    |local repo|
+    \end{lstlisting}
 
     - show screenshots of example of forking a repo on GitHub
 \end{frame}
@@ -940,7 +942,7 @@ for quick fix example below
     - the first step is to create a fork of the project repository that
     you're contributing to (see Forking a repository)
     - in your local Git repository of the project, create a feature branch
-    git checkout -b "feature_branch_name"
+    git checkout -b "feature\_branch\_name"
     - build your proposed feature in the feature branch
     - push feature branch to \emph{your} upstream forked repository
     - button will (usually) appear which leads to pull request dialog
@@ -1484,19 +1486,22 @@ connection.
 % https://youtu.be/oEKXV-_o3YQ
 
 
-\begin{frame}{Merge git repositories into one}
+\begin{frame}[fragile]
+    \frametitle{Merge git repositories into one}
 
 solution found here: https://medium.com/altcampus/how-to-merge-two-or-multiple-git-repositories-into-one-9f8a5209913f
+    \begin{lstlisting}
 # enter the working directory of an existing repo to merge into
 cd Bewerbungen/
 # add other repo as remote and fetch its commits
-git remote add --fetch job-apps git@bitbucket.org:paultcochrane/job_applications.git
+git remote add --fetch job-apps git@bitbucket.org:paultcochrane/job\_applications.git
 # merge new repo into repo of pwd
 # note --allow-unrelated-histories to allow merge to work
 # otherwise error
 git merge job-apps/master --allow-unrelated-histories
 # remove now unnecessary remote
 git remote remove job-apps
+    \end{lstlisting}
 
 \end{frame}
 
