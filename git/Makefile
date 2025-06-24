@@ -8,7 +8,8 @@ slides:
 all: slides
 
 clean:
-	rm -f *.vrb *.log *.nav *.snm *.toc *.aux *.out *.dvi *.fdb_latexmk *.fls git.pdf
+	latexmk -c
+	rm -f git.pdf
 
 help:
 	@echo "Possible targets: all, slides, show, clean"
