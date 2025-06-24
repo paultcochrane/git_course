@@ -1444,17 +1444,15 @@ git branch -D <subdir-name>  # <= TODO check that this step is correct!
 
 \begin{frame}
 \frametitle{Leftover notes from old git/svn course}
-merging commits: git rebase -i <commit>
+merging commits: \Verb|git rebase -i <commit>|
 
-splitting commits: git rebase -i <commit> - mark which commit
-to edit - when rebase reaches that commit use
-
-git reset HEAD\^ to reset before the commit but keep your
-working tree intact - incrementally add changes and commit
-them (git add -p can be useful) - run git rebase –continue to
-proceed applying the commits after the now-split commit
-(adapted from
-http://stackoverflow.com/questions/4307095/git-how-to-split-up-a-commit-buried-in-history)
+splitting commits: \Verb|git rebase -i <commit>|
+    - mark which commit to edit
+    - when rebase reaches that commit use \Verb|git reset HEAD\^| to reset before the commit but keep your
+working tree intact
+    - incrementally add changes and commit them (\Verb|git add -p| can be useful)
+    - run \Verb|git rebase --continue| to proceed applying the commits after the now-split commit
+(adapted from http://stackoverflow.com/questions/4307095/git-how-to-split-up-a-commit-buried-in-history)
 
 reordering commits: git rebase -i <commit>
 pick, squash, edit
