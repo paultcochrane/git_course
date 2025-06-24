@@ -3,7 +3,7 @@
 default: all
 
 slides:
-	latexmk git.tex
+	latexmk -shell-escape git.tex
 
 all: slides
 

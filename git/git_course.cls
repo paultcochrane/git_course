@@ -28,6 +28,7 @@
 
 \usepackage{multicol}
 \usepackage{setspace}
+\usepackage{minted}
 \usepackage{csquotes}
 \usepackage{listings}
 \usepackage{graphicx}
