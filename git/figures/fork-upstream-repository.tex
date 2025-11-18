@@ -52,6 +52,9 @@
         arrow,
         draw=blue!80,
     },
+    fade/.style={%
+        text=black!50
+    },
 }
 
 \begin{document}
@@ -69,7 +72,7 @@
 
     \draw[origarrow, ->]
         (ownerlocal.north) -- (ownerupstream.south)
-        node[prstep, left, text=black!50] {push};
+        node[prstep, left, fade] {push};
 
     \node[forkrepo, anchor=south east]
         (forkedupstream) at ($(gitservice.south east) + (-0.2, 0.2)$)
