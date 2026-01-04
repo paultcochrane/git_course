@@ -14,7 +14,7 @@ jobs:
     - name: Install dependencies
       run: sudo apt install texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended texlive-xetex texlive-luatex lmodern make latexmk
 
-    - name: Install dependencies
+    - name: Build slides
       run: cd git && make
 
     - name: Archive built slides
