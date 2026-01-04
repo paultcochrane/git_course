@@ -16,3 +16,9 @@ jobs:
 
     - name: Install dependencies
       run: cd git && make
+
+    - name: Archive built slides
+      uses: actions/upload-artifact@v4
+      with:
+        name: archive-slides
+        path: git.pdf
