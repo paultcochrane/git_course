@@ -1,0 +1,4 @@
+$ ls
+file.1      file.20250803  file.keep
+file.2      file.alt       file.old
+file.old.2  file.fixed     file.new

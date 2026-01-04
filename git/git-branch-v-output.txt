@@ -1,0 +1,2 @@
+$ git branch -v
+* master 38d2e3c Ignoring the hallo program and *~

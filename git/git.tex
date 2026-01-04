@@ -1,5 +1,7 @@
 \documentclass{git_course}
 
+\usepackage{minted}
+
 \title{Version control with Git}
 \author{Paul Cochrane}
 \date{\today}
@@ -158,13 +160,7 @@ At the end of this course you should:
 
 Does this look familiar?
 
-\begin{lstlisting}
-$ ls
-file.1      file.20090803  file.keep
-file.2      file.alt       file.old
-file.old.2  file.fixed     file.new
-\end{lstlisting}
-%stopzone
+\inputminted{bash}{hand-rolled-version-control.txt}
 
 This is better than nothing, however \ldots
 \begin{itemize}
@@ -426,39 +422,8 @@ git init
 
 
 \begin{frame}[fragile]
-\begin{lstlisting}[basicstyle=\tiny\ttfamily]
-$ mkdir blupp
-$ cd blupp/
-$ git init
-Initialized empty Git repository in /home/cochrane/blupp/.git/
-$ ls
-$ ls -ltra
-total 28
-drwxr-xr-x 117 cochrane cochrane 20480 Nov 21 02:39 ..
-drwxr-xr-x   3 cochrane cochrane  4096 Nov 21 02:39 .
-drwxr-xr-x   7 cochrane cochrane  4096 Nov 21 02:39 .git
-$ ls .git/
-branches  config  description  HEAD  hooks  info  objects  refs
-$ ls .git/*
-.git/config  .git/description  .git/HEAD
-
-.git/branches:
-
-.git/hooks:
-applypatch-msg.sample  pre-applypatch.sample      pre-push.sample     update.sample
-commit-msg.sample      pre-commit.sample          pre-rebase.sample
-post-update.sample     prepare-commit-msg.sample  pre-receive.sample
-
-.git/info:
-exclude
-
-.git/objects:
-info  pack
-
-.git/refs:
-heads  tags
-\end{lstlisting}
-%stopzone
+    \inputminted{bash}{create-example-repo.txt}
+    \inputminted{bash}{dot-git-dir-contents.txt}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -846,13 +811,7 @@ that we’re interested in these changes) one also keeps this file under
 version control. We therefore add the file to the repository and commit
 it:
 
-\begin{lstlisting}
-$ git add .gitignore
-$ git commit .gitignore
-Created commit 38d2e3c: Ignoring the hallo program
-1 files changed, 2 insertions (+) , 0 deletions (-)
-create mode 100644 .gitignore
-\end{lstlisting}
+    \inputminted{bash}{add-gitignore.txt}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -864,14 +823,7 @@ create mode 100644 .gitignore
     \item shows with an asterisk \code{*} which is the current branch
 \end{itemize}
 
-\begin{lstlisting}
-$ git show-branch -- list
-* [ master ] Ignoring the hallo program and * ~files
-$ git show-branch --more=35
-[ master ] Ignoring the hallo program and * ~files
-[ master\^ ] Added a southern ’hallo’ variant
-[ master~2 ] Initial import of the hallo project
-\end{lstlisting}
+    \inputminted{bash}{git-show-branch-output.txt}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -879,20 +831,14 @@ $ git show-branch --more=35
 \code{git branch} shows available branches and which branch is
 current.
 
-\begin{lstlisting}
-$ git branch
-* master
-\end{lstlisting}
+    \inputminted{bash}{git-branch-output.txt}
 
 \code{git branch -v} shows the commit hash and the commit
 message of the most recent commit.
 
 TODO need more expansive examples here with multiple branches.
 
-\begin{lstlisting}
-$ git branch -v
-* master 38d2e3c Ignoring the hallo program and *~
-\end{lstlisting}
+    \inputminted{bash}{git-branch-v-output.txt}
 \end{frame}
 
 \begin{frame}
@@ -1338,17 +1284,11 @@ git revert <commit_sha>
     the file; this is the commit where it was deleted.  Check out the file
     from this commit's parent commit.  The file is now a newly-added file in
     the working directory.
-\begin{lstlisting}
-git checkout \
-    $(git rev-list -n 1 HEAD -- "$file")^ -- "$file"
-\end{lstlisting}
-%stopzone
+
+    \inputminted{bash}{restore-deleted-file-from-sha.txt}
 
 This command finds the most recent commit affecting the file:
-\begin{lstlisting}
-git rev-list -n 1 HEAD -- "$file"
-\end{lstlisting}
-%stopzone
+    \inputminted{bash}{most-recent-commit-affecting-file.txt}
 
     \see{https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository}
 \end{frame}
@@ -1362,14 +1302,8 @@ git rev-list -n 1 HEAD -- "$file"
     traversing the commit tree.  Use the reflog to show all operations
     (including ``lost'' commits.  Check out the commit into its own branch
     or simply cherry pick to restore.
-\begin{lstlisting}
-git reflog
-... find commit from commit message ...
-git checkout -b <commit_sha>
-# or
-git cherry-pick <commit_sha>
-\end{lstlisting}
-%stopzone
+
+    \inputminted{bash}{recover-lost-or-deleted-commit.txt}
 
     \see{https://stackoverflow.com/questions/10099258/how-can-i-recover-a-lost-commit-in-git}
 \end{frame}
@@ -1626,9 +1560,8 @@ git tag -d tagname
 \frametitle{Setting the executable bit on Windows Git}
 Windows will show files as being executable, but the executable bit won't be
 set when adding and committing files in Git Bash.  Here's a workaround:
-    \begin{lstlisting}
-    find . -name '*.sh' | xargs git update-index --chmod=+x
-    \end{lstlisting}
+
+    \inputminted{bash}{set-executable-bit-on-windows-git.txt}
     source: https://stackoverflow.com/a/32717779/10874800
 \end{frame}
 
@@ -1648,50 +1581,13 @@ used to have to use git filter branch:
     old-repo-name
 
 For example:
-    \begin{lstlisting}
-git clone git@<server-name>:<orig-repo-name>.git <new-repo-name>
-cd <new-repo-name>/
-# delete all commits that don't have anything to do with the `orders` directory
-git filter-branch --prune-empty --subdirectory-filter orders master
-git remote set-url origin git@<server-name>:<new-repo-name>.git
-# fix incorrect email addresses in commits
-git filter-branch --original refs/correct_email_orig --env-filter '
-OLD_EMAIL="paul@<old-email-provider>"
-CORRECT_NAME="Paul Cochrane"
-CORRECT_EMAIL="paul.cochrane@<new-email-provider>"
-if [ "$GIT_COMMITTER_EMAIL" = "$OLD_EMAIL" ]
-then
-export GIT_COMMITTER_NAME="$CORRECT_NAME"
-export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
-fi
-if [ "$GIT_AUTHOR_EMAIL" = "$OLD_EMAIL" ]
-then
-export GIT_AUTHOR_NAME="$CORRECT_NAME"
-export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
-fi
-' --tag-name-filter cat -- --branches --tags
-git push -u origin master
-    \end{lstlisting}
+
+    \inputminted{bash}{extract-subdir-into-own-repo-with-filter-branch.txt}
 
 but now can use git subtree:
     https://stackoverflow.com/a/17864475/10874800
 
-\begin{lstlisting}
-cd <old-repo-name>
-git subtree split -P <subdir-name>/ -b <new-repo-name>
-cd ..
-mkdir <new-repo-name>
-cd <new-repo-name>/
-git init
-git pull ../<old-repo-name>/ <new-repo-name>
-git remote add origin git@<server-name>:<new-repo-name>.git
-git push origin -u master
-cd ../<old-repo-name>/
-git rm -rf <subdir-name>/
-git ci
-git push
-git branch -D <subdir-name>  # <= TODO check that this step is correct!
-\end{lstlisting}
+    \inputminted{bash}{extract-subdir-into-own-repo-with-git-subtree.txt}
 \end{frame}
 
 \appendix

@@ -1,0 +1,26 @@
+$ ls
+$ ls -ltra
+total 28
+drwxr-xr-x 117 cochrane cochrane 20480 Nov 21 02:39 ..
+drwxr-xr-x   3 cochrane cochrane  4096 Nov 21 02:39 .
+drwxr-xr-x   7 cochrane cochrane  4096 Nov 21 02:39 .git
+$ ls .git/
+branches  config  description  HEAD  hooks  info  objects  refs
+$ ls .git/*
+.git/config  .git/description  .git/HEAD
+
+.git/branches:
+
+.git/hooks:
+applypatch-msg.sample  pre-applypatch.sample      pre-push.sample     update.sample
+commit-msg.sample      pre-commit.sample          pre-rebase.sample
+post-update.sample     prepare-commit-msg.sample  pre-receive.sample
+
+.git/info:
+exclude
+
+.git/objects:
+info  pack
+
+.git/refs:
+heads  tags

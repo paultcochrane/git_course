@@ -1,0 +1,6 @@
+$ git show-branch --list
+* [ master ] Ignoring the hallo program and * ~files
+$ git show-branch --more=35
+[ master ] Ignoring the hallo program and * ~files
+[ master\^ ] Added a southern ’hallo’ variant
+[ master~2 ] Initial import of the hallo project

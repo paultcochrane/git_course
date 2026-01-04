@@ -1,0 +1,5 @@
+git reflog
+# find commit from commit message
+git checkout -b <commit_sha>
+# or
+git cherry-pick <commit_sha>

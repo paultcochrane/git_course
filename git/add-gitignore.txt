@@ -1,0 +1,5 @@
+$ git add .gitignore
+$ git commit .gitignore
+Created commit 38d2e3c: Ignoring the hallo program
+1 files changed, 2 insertions (+) , 0 deletions (-)
+create mode 100644 .gitignore

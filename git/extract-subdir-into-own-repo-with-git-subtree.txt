@@ -1,0 +1,14 @@
+cd <old-repo-name>
+git subtree split -P <subdir-name>/ -b <new-repo-name>
+cd ..
+mkdir <new-repo-name>
+cd <new-repo-name>/
+git init
+git pull ../<old-repo-name>/ <new-repo-name>
+git remote add origin git@<server-name>:<new-repo-name>.git
+git push origin -u master
+cd ../<old-repo-name>/
+git rm -rf <subdir-name>/
+git ci
+git push
+git branch -D <subdir-name>  # <= TODO check that this step is correct!
