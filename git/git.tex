@@ -1100,7 +1100,7 @@ for quick fix example below
     \item define upstream
     \item changes are made on upstream
     \item fetch changes to local repo
-    \item merge changes into local branch (e.g. master)
+    \item merge changes into local branch (e.g.\ master)
 \end{itemize}
 \end{frame}
 
@@ -1118,7 +1118,7 @@ for quick fix example below
         commits need to be pushed
     \item allows one to polish the changes; improve quality
     \item linearise changes; published repo has clear, linear history
-        (see e.g. Ovid's slide about git histories)
+        (see e.g.\ Ovid's slide about git histories)
 \end{itemize}
 \end{frame}
 
@@ -1136,7 +1136,7 @@ for quick fix example below
     \item why use this?
     \item what is this?
     \item handy feature for interrupted work
-    \item e.g. quick fix example
+    \item e.g.\ quick fix example
     \item git stash
     \item git stash show -p
     \item git stash pop (conflicts possible)
@@ -1407,7 +1407,7 @@ git log -S '<pattern_from_line_in_file>' \
 
     This situation can occur if a shared feature branch is deleted by
     someone other than you, or you have a remote feature branch which you
-    have deleted via e.g. the ``delete branch'' feature on GitHub's website.
+    have deleted via e.g.\ the ``delete branch'' feature on GitHub's website.
     The local references to the now non-existent remote branches still exist
     and just need to be brought up to date with the current remote state.
 
@@ -1662,7 +1662,7 @@ git branch -D <subdir-name>  # <= TODO check that this step is correct!
 \begin{itemize}
     \item Restricted to a single computer
     \item Historically also only able to be used by one person at a time
-        (e.g. access control via file locking)
+        (e.g.\ access control via file locking)
     \item Examples:
         \begin{itemize}
             \item \href{https://en.wikipedia.org/wiki/Revision_Control_System}
@@ -1786,7 +1786,7 @@ git remote remove job-apps
     Usually the root commit is excluded from a rebase.  However, sometimes
     it's necessary to edit this commit as well as any others following.  For
     example, let's say the first 4 commits have been created.  We later find
-    changes which should have been part of the initial (root) commit (e.g. we
+    changes which should have been part of the initial (root) commit (e.g.\ we
     missed adding a file), then it would be necessary to change the root
     commit.  To do this we can use the --root option to rebase:
 
