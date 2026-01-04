@@ -21,4 +21,4 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: archive-slides
-        path: git.pdf
+        path: git/git.pdf
