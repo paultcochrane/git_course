@@ -1237,6 +1237,51 @@ for quick fix example below
     projects in their spare time.
 \end{frame}
 
+
+\begin{frame}
+    \frametitle{Pull requests in the enterprise}
+
+The pull request model has become so popular that it has replaced other
+workflows previously common in closed-source environments.  Once upon a
+time, the repository would be central and everyone would be making changes
+to the `main`/`master`/`trunk` branch all of the time.  Because everyone on
+the team was working towards a common goal there wasn't much need to have a
+process to say "hey, I'm adding some code to the project!" because that was
+everyone's job.  And anyway, if you saw a strange change to the code you
+could simply walk to a nearby office and ask your co-worker about it.  With
+pull requests, there's more ceremony and friction involved in getting code
+changes merged into a project.  This is both a blessing and a curse.  Using
+a pull request model (automated via a centralised Git service) allows more
+people to review the code changes before they land into the main branch and
+hence there is more opportunity for bugs to be found and for information to
+spread throughout the team.  This improves code quality and reduces the risk
+of breakages once the code goes "live".  It also allows for teams to work
+remotely and hence distributed across the globe, meaning we don't have to
+sit in the same office to get things done anymore.  Yet, it adds more work,
+friction and delay to the process of getting changes made.  Thus, fixes or
+new features can be slowed down by the extra steps required to integrate
+code into the main branch, which can be frustrating for developers and users
+alike.
+
+Assuming that this process is more of a blessing than a curse, it has one
+technical advantage: the repository setup is a little bit easier than the
+situation with Eck and Alice as described earlier.  This is because an
+explicit fork for each contributor is no longer necessary.  The upstream
+repository becomes a central reference point and pull requests are based off
+branches pushed to the central repository rather than requiring the extra
+step of pulling code from a separate upstream forked repository.  This also
+makes merging code a bit easier.  Since everything revolves around the
+central repository one can implement automated
+\href{https://en.wikipedia.org/wiki/Continuous_integration}{continuous
+integration} processes
+which check and automatically merge branches after they have been reviewed
+and signed off on.
+
+... the image from above (of the pull request flow) thus becomes more of a
+triangle, because people are working from a central point of reference.
+\end{frame}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Tricks and tips}
