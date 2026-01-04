@@ -1316,7 +1316,7 @@ This command finds the most recent commit affecting the file:
 
     \tbf{Solution:} use blame with the line number(s) on the file.
 
-E.g. this command will show the blame from line 150 and the following 11 lines.
+E.g.\ this command will show the blame from line 150 and the following 11 lines.
 \begin{lstlisting}
 git blame -L150,+11 -- /path/to/file
 \end{lstlisting}
@@ -1332,7 +1332,7 @@ git blame -L150,+11 -- /path/to/file
 
     \tbf{Solution:} use log with the line number(s) on the file.
 
-    E.g. this command will show the log and a patch (or patches) as a unified diff
+    E.g.\ this command will show the log and a patch (or patches) as a unified diff
     output from commits affecting line 155.
 \begin{lstlisting}
 git log --pretty=short -u -L 155,155:/path/to/file
@@ -1471,7 +1471,7 @@ git remote prune origin
     https://dev.to/serhatteker/changing-git-submodule-repository-to-other-url-branch-356p
 
     Check that the tip commit of the updated submodule is the tip commit
-    that you expect (i.e. check the submodule's repo and compare its tip
+    that you expect (i.e.\ check the submodule's repo and compare its tip
     commit with where the submodule is used).
 \end{frame}
 
@@ -1544,7 +1544,7 @@ git tag -d tagname
     \begin{lstlisting}
     git branch --merged master lists branches merged into master
 
-    git branch --merged lists branches merged into HEAD (i.e. tip of current
+    git branch --merged lists branches merged into HEAD (i.e.\ tip of current
     branch)
 
     git branch --no-merged lists branches that have not been merged
@@ -1654,7 +1654,7 @@ but now can use git subtree:
     \item Client-Server or Peer-to-peer or a mixture of the two
     \item Each client has complete repository and its entire history
     \item Server no longer strictly required; if used, contains a ``bare''
-        version of the repository, i.e. the working directory is not present
+        version of the repository, i.e.\ the working directory is not present
     \item Offline work now possible and simple
     \item When collaborating can resync work when online again
     \item Examples:
