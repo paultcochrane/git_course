@@ -483,8 +483,8 @@ git status    # file is now a change to be committed
 \begin{lstlisting}
 git status    # file is now a change to be committed
 git commit    # commit staged changes to repository
-... enter commit message ...
-... see brief commit information ...
+# enter commit message
+# see brief commit information
 git status    # working directory now clean
 \end{lstlisting}
 \end{frame}
@@ -740,7 +740,7 @@ How often should I commit?
     \item An important part of communication within a project:
     \begin{itemize}
         \item commit logs are messages to other people
-        \item ... and are messages to yourself in the future!
+        \item \ldots and are messages to yourself in the future!
     \end{itemize}
 \end{itemize}
 
@@ -800,7 +800,7 @@ regular expressions and wildcards such as \code{*.o} in order to ignore
 multiple files.
 
 TODO: insert example of creating files to ignore and then creating a
-.gitignore file.
+\code{.gitignore} file.
 \end{frame}
 
 \begin{frame}[fragile]
@@ -1148,7 +1148,7 @@ for quick fix example below
     - one can push changes to own fork because it belongs to you
     - pushing changes directly to someone else's project isn't possible
     (unless you have commit access, which isn't default situation)
-    - commit changes to a non-`main` branch and push to upstream fork ->
+    - commit changes to a non-\code{main} branch and push to upstream fork ->
     from here can create Pull Request
     - services like GitHub/GitLab detect such pushes and prompt to create a
     Pull Request
@@ -1195,7 +1195,7 @@ for quick fix example below
 The pull request model has become so popular that it has replaced other
 workflows previously common in closed-source environments.  Once upon a
 time, the repository would be central and everyone would be making changes
-to the `main`/`master`/`trunk` branch all of the time.  Because everyone on
+to the main/master/trunk branch all of the time.  Because everyone on
 the team was working towards a common goal there wasn't much need to have a
 process to say "hey, I'm adding some code to the project!" because that was
 everyone's job.  And anyway, if you saw a strange change to the code you
@@ -1228,7 +1228,7 @@ integration} processes
 which check and automatically merge branches after they have been reviewed
 and signed off on.
 
-... the image from above (of the pull request flow) thus becomes more of a
+\ldots the image from above (of the pull request flow) thus becomes more of a
 triangle, because people are working from a central point of reference.
 \end{frame}
 
@@ -1270,7 +1270,7 @@ git rebase --continue
     just revert and write an appropriate commit message.
 \begin{lstlisting}
 git revert <commit_sha>
-... explain reason for revert in commit message ...
+# explain reason for revert in commit message
 \end{lstlisting}
 \end{frame}
 
@@ -1455,7 +1455,7 @@ git remote prune origin
 \begin{frame}[fragile]
     \frametitle{Update submodule URL}
 
-    ... which can happen if one moves the submodule's repo to a different
+    \ldots which can happen if one moves the submodule's repo to a different
     location.
 
     \begin{lstlisting}
@@ -1695,7 +1695,7 @@ default in colour, but if don’t have a colour terminal minus
 signs (-) and plus signs (+) are used around words to show
 what has been removed or added respectively.
 
-create bare repo -> clone -> make commits in local repo -> git
+Create bare repo -> clone -> make commits in local repo -> git
 push -> error -> why? A: because there isn’t a branch on the
 server, there needs to be a connection between the local
 
