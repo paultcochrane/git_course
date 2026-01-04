@@ -17,8 +17,8 @@ jobs:
     - name: Build slides
       run: cd git && make
 
-    - name: Archive built slides
+    - name: Archive built PDF document
       uses: actions/upload-artifact@v4
       with:
-        name: archive-slides
+        name: git-pdf
         path: git/git.pdf
