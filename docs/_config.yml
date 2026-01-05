@@ -1,5 +1,5 @@
 # Site settings
-theme: "minimal-mistakes-jekyll"
+theme: jekyll-theme-slate
 title: Version Control with Git
 email: paul@peateasea.de
 description: > # this means to ignore newlines until "baseurl:"
