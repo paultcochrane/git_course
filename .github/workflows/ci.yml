@@ -13,10 +13,11 @@ jobs:
 
     - uses: xu-cheng/latex-action@v4
       with:
-        root_file: git/git.tex
+        root_file: git.tex
         texlive_version: 2025
         latexmk_use_lualatex: true
         latexmk_shell_escape: true
+        pre_compile: "cd git"
 
     - name: Archive built PDF document
       uses: actions/upload-artifact@v4
