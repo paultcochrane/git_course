@@ -11,11 +11,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: sudo apt install texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended texlive-xetex texlive-luatex lmodern make latexmk
-
-    - name: Build slides
-      run: cd git && make
+    - uses: xu-cheng/latex-action@v4
+      with:
+        root_file: git/git.tex
+        texlive_version: 2025
+        latexmk_use_lualatex: true
+        latexmk_shell_escape: true
 
     - name: Archive built PDF document
       uses: actions/upload-artifact@v4
