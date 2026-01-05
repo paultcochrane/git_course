@@ -22,7 +22,6 @@ jobs:
 
     - name: Release draft
       uses: softprops/action-gh-release@v2.5.0
-        # if: github.ref_type == 'tag'
       with:
         name: draft
         draft: true
