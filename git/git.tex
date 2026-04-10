@@ -1749,6 +1749,30 @@ git remote remove job-apps
     https://stackoverflow.com/a/598788/10874800
 \end{frame}
 
+\begin{frame}[fragile]{Set upstream branch to use same as local branch}
+    TODO: check that this is correct!
+
+When rebasing and see this error message
+\begin{minted}{text}
+There is no tracking information for the current branch.
+Please specify which branch you want to rebase against.
+See git-rebase(1) for details.
+
+    git rebase '<branch>'
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=<remote>/<branch> <name-of-local-branch>
+\end{minted}
+
+    make sure your branch is based on \code{main} (or \code{master})
+    properly.  You might need to run \code{git rebase main} when on the
+    branch's tip commit to get things in the correct state.
+
+    This can also be achieved by using the correct git config setting.
+\end{frame}
+%stopzone
+
 \end{document}
 
 % vim: expandtab shiftwidth=4:
