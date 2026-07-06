@@ -34,6 +34,7 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{standalone}
+\usepackage[svgnames]{xcolor}
 
 \usetikzlibrary{positioning}
 \usetikzlibrary{calc}
@@ -45,7 +46,13 @@
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\see}[1]{See: \resizebox{0.9\textwidth}{!}{\url{#1}}}
 
-\lstset{
+\setminted{%
+    autogobble=true,
+    fontsize=\footnotesize,
+    bgcolor=Beige,
+}
+
+\lstset{%
     basicstyle=\footnotesize\ttfamily,
     backgroundcolor=\color{gray!20!white},
     framerule=0pt,
