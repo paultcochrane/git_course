@@ -1,10 +1,141 @@
 \section{Installing Git}
 
+\subsection{Command line client (CLI)}
+
+\begin{frame}{Cross-platform consistency with the command line}
+    \begin{itemize}
+        \item The only consistent interface to Git across platforms (e.g.
+            Windows, Mac, Linux) is via the command line.
+        \item The behaviour is the same, the concepts are the same, and the
+            commands are the same.
+        \item There is much more control with the CLI.
+        \item Most online information mentions only the CLI commands when
+            working with Git and solving problems.
+        \item Thus, this course focuses on Git's command line interface
+            (CLI).
+        \item Note: the learning curve is steeper, but it's worth it.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Why not a GUI?}
+    \begin{itemize}
+        \item A graphical user interface (GUI) often gives a good
+            introduction to Git's usage and concepts.
+        \item GUIs can be more intuitive to use, at least initially.
+        \item The command line will, however, take you further.
+    \end{itemize}
+
+    \blockquote[Hunt and Thomas, \emph{The Pragmatic Programmer}]
+    {Gain familiarity with the shell, and you'll find your productivity soaring.}
+\end{frame}
+
+\begin{frame}{Installing Git (Windows)}
+    Roughly three options:
+    \begin{itemize}
+        \item WinGet
+        \item Standalone installer (setup program)
+        \item Windows Subsystem for Linux (WSL)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Installing Git (Windows: WinGet)}
+    \begin{itemize}
+        \item
+            \href{https://learn.microsoft.com/en-us/windows/package-manager/winget/}{WinGet}
+            is a package manager for Windows.
+        \item Download the latest \code{.msixbundle} file from the WinGet
+            releases page:
+            {\footnotesize \url{https://github.com/microsoft/winget-cli/releases}}
+        \item Double click on the downloaded file to install it.
+        \item Install Git by opening the PowerShell or cmd and enter:
+            \begin{minted}{shell}
+            winget install --id Git.Git -e --source winget
+            \end{minted}
+        \item Git now available via Git-Bash program or via PowerShell/cmd
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Installing Git (Windows: Standalone installer)}
+    \begin{itemize}
+        \item Download the setup program from the Git Windows install page:
+            {\footnotesize \url{https://git-scm.com/install/windows}}
+        \item Double click on the downloaded file to run the setup program.
+        \item Follow the prompts to install Git.
+        \item Git now available via Git-Bash program or via PowerShell/cmd
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Installing Git (Windows: WSL)}
+    \begin{itemize}
+        \item Install WSL using the Ubuntu distribution
+            \begin{minted}{shell}
+            wsl.exe --install -d Ubuntu
+            \end{minted}
+        \item Start Ubuntu from the Start Menu
+        \item Install Git as in Linux
+            \begin{minted}{shell}
+            sudo apt update
+            sudo apt install git
+            \end{minted}
+        \item Git available as command within WSL/Ubuntu
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Installing Git (MacOS)}
+    Roughly two options:
+    \begin{itemize}
+        \item Homebrew
+            \begin{itemize}
+                \item Install homebrew from {\footnotesize \url{https://brew.sh/}}
+                \item Install Git via homebrew:
+                    \begin{minted}{shell}
+                        brew install git
+                    \end{minted}
+            \end{itemize}
+        \item MacPorts
+            \begin{itemize}
+                \item Install MacPorts from {\footnotesize \url{https://www.macports.org/}}
+                \item Install Git via MacPorts:
+                    \begin{minted}{shell}
+                        sudo port install git
+                    \end{minted}
+            \end{itemize}
+        \item Git now available from within a terminal
+        \item See also main Git install page for Mac:
+            {\footnotesize \url{https://git-scm.com/install/mac}}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Installing Git (Linux)}
+    Use the package manager for your distribution.  E.g.:
+    \begin{itemize}
+        \item Debian/Ubuntu
+            \begin{minted}{shell}
+                sudo apt install git
+            \end{minted}
+        \item Fedora
+            \begin{minted}{shell}
+                sudo yum install git
+            \end{minted}
+        \item Arch
+            \begin{minted}{shell}
+                sudo pacman -S git
+            \end{minted}
+        \item Git now available from within a terminal
+        \item For more information and other distributions, see the Git
+            install page for Linux:
+            {\footnotesize \url{https://git-scm.com/install/linux}}
+    \end{itemize}
+\end{frame}
+
 \subsection{Graphical clients (GUIs)}
 
 \begin{frame}
     \frametitle{Graphical Git clients}
-    There are \emph{many} GUI clients to choose from.  E.g.:
+
+    Should you wish to use a graphical Git client, there are \emph{many} to
+    choose from.  E.g.:
+
 \begin{itemize}
     \item SourceTree
         \includegraphics[height=0.05\textheight]{images/Sourcetree-blue.pdf}
@@ -48,84 +179,9 @@
         \end{itemize}
     \item Many more GUI clients can be found on the Git website:
         \begin{itemize}
-            \item \url{https://git-scm.com/download/gui}
+            \item \url{https://git-scm.com/tools/gui}
         \end{itemize}
     \end{itemize}
-\end{frame}
-
-\subsection{The command line interface (CLI)}
-
-\begin{frame}
-\frametitle{Use the command line!}
-\begin{itemize}
-    \item All graphical interfaces are essentially wrappers around Git's
-        command line interface
-    \item With the command line one can get futher and do more; the
-        learning curve is steeper, but it's worth it.
-    \item Hence, we will focus on the command line interface (CLI) from now
-        on.
-    \item E.g.\ bash, fish, zsh (on Linux/Unix); Powershell, Command (on
-        Windows); iTerm, etc. (on MacOS)
-    \item Behaviour is the same everywhere with the command line.
-    \item Starting with a GUI is a good introduction, but the command line
-        will take you further
-\end{itemize}
-    \blockquote[Hunt and Thomas, \emph{The Pragmatic Programmer}]
-    {Gain familiarity with the shell, and you'll find your productivity soaring.}
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Installing Git (CLI options; Windows)}
-\begin{itemize}
-    \item download the installer from \url{https://git-scm.com/download/win}
-    \item double click the downloaded \code{.exe} file and follow the
-        installation instructions to install it
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Installing Git (CLI options; MacOS)}
-\begin{itemize}
-    \item download the installer from \url{https://git-scm.com/download/mac}
-    \item double click the downloaded image file to install it
-        % TODO: add installation screens to slides
-\end{itemize}
-\end{frame}
-
-
-\begin{frame}[fragile]
-\frametitle{Installing Git (CLI options; Linux/Unix)}
-\begin{itemize}
-    \item either via a package manager, e.g.:
-\end{itemize}
-
-\begin{lstlisting}
-sudo apt install git  # Debian-based distributions
-sudo yum install git  # RedHat-based distributions
-\end{lstlisting}
-
-\begin{itemize}
-    \item or via the source code:
-\end{itemize}
-
-\begin{lstlisting}[
-    breaklines=true,
-    postbreak=\mbox{$\hookrightarrow$\space}]
-wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-<version>.tar.gz
-tar -xvzf git-<version>.tar.gz
-cd git-<version>
-./configure
-make
-make test  # optional
-sudo make install
-\end{lstlisting}
-
-\begin{itemize}
-    \item more help is available on the Git Linux/Unix download page:
-        \url{https://git-scm.com/download/linux}
-\end{itemize}
 \end{frame}
 
 % vim: expandtab shiftwidth=4:
