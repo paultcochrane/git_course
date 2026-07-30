@@ -1777,6 +1777,28 @@ If you wish to set tracking information for this branch you can do so with:
 \end{frame}
 %stopzone
 
+\begin{frame}[fragile]
+    \frametitle{Fetching a branch from another repository}
+    \tbf{Problem:} you want to include code from a branch in someone else's
+        online repository.
+
+    \tbf{Solution:} fetch the branch to your local repository by specifying
+        online repository's address, the name of the remote branch and the
+        name that you'd like to call the branch locally
+    \begin{minted}{shell}
+        git fetch --no-tags <repository-url> <remote-branch-name>:<local-branch-name>
+    \end{minted}
+
+    Use \code{--no-tags} to avoid pulling any tags from the remote
+    repository unnecessarily.  Tags are fetched by default, hence the need
+    to negate this.
+
+    Inspiration for the solution:
+    \see{https://stackoverflow.com/a/16095458}
+    Git fetch docs:
+    \see{https://git-scm.com/docs/git-fetch}
+\end{frame}
+
 \end{document}
 
 % vim: expandtab shiftwidth=4:
