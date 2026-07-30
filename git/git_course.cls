@@ -42,7 +42,7 @@
 \newcommand{\ttt}[1]{\texttt{#1}}
 \newcommand{\tbf}[1]{\textbf{#1}}
 \newcommand{\tit}[1]{\textit{#1}}
-\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\code}[1]{\mintinline{text}{#1}}
 \newcommand{\see}[1]{See: \resizebox{0.9\textwidth}{!}{\url{#1}}}
 
 \setminted{%
