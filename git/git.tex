@@ -332,6 +332,58 @@ This is better than nothing, however \ldots
     \end{minted}
 \end{frame}
 
+\begin{frame}{A quick config demo}
+    \begin{itemize}
+        \item For Git to work 100\% from the get-go, we need to tell it who
+            we are.
+        \item But what happens if we don't tell Git who we are before using it?
+        \item Let's be brave and run into a problem I know will appear so
+            that you can avoid it in the future.
+        \item Then we can discuss why Git needs this in the first place.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{A quick config demo}
+    \begin{minted}{shell}
+        mkdir who-are-you  # create example directory
+        cd who-are-you  # change into new directory
+        git init  # initialise new Git repository
+        Initialized empty Git repository in /home/vagrant/who-are-you/.git/
+        # create an example file with some content
+        echo "# A project with an unknown author" > README.md
+        git add README.md  # add the file to the staging area
+        git commit README.md  # try to commit the change
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{A quick config demo}
+    \begin{minted}{shell}
+    Author identity unknown
+
+    *** Please tell me who you are.
+
+    Run
+
+      git config --global user.email "you@example.com"
+      git config --global user.name "Your Name"
+
+    to set your account's default identity.
+    Omit --global to set the identity only in this repository.\
+
+    fatal: unable to auto-detect email address (got 'vagrant@bookworm.(none)')
+    \end{minted}
+\end{frame}
+
+introduce git configuration; show git config --list output; mention
+necessary initial configuration (name, email address) and explain why Git
+requires this.  Show how to set this information.  Get participants to do
+this on their own systems (or change the value if they have already set it).
+
+Describe this as a demo, showing what goes wrong if one hasn't set up name
+and email address before committing.
+
+Main takeaway: you will run into problems when using Git.  Remain calm!
+
 \begin{frame}[fragile]
     \frametitle{Detour: setting name and email metadata}
     If this is the first time you've installed Git, then one of the first
