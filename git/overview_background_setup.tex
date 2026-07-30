@@ -326,20 +326,26 @@ This is better than nothing, however \ldots
 \end{frame}
 
 \begin{frame}[fragile]{A quick config demo}
+    \begin{itemize}
+        \item We'll start from a \emph{pristine} Git installation.
+        \item I'll show you the steps.
+        \item You can follow along if you want.
+    \end{itemize}
     \begin{minted}{shell}
         mkdir who-are-you  # create example directory
         cd who-are-you  # change into new directory
         git init  # initialise new Git repository
-        Initialized empty Git repository in /home/vagrant/who-are-you/.git/
         # create an example file with some content
         echo "# A project with an unknown author" > README.md
         git add README.md  # add the file to the staging area
         git commit README.md  # try to commit the change
     \end{minted}
+    BOOM! \emoji{bomb} \emoji{exploding-head}
 \end{frame}
 
 \begin{frame}[fragile]{A quick config demo}
-    \begin{minted}{shell}
+    Here's the error message you'll see:
+    \begin{minted}[fontsize=\scriptsize]{output}
     Author identity unknown
 
     *** Please tell me who you are.
@@ -350,49 +356,86 @@ This is better than nothing, however \ldots
       git config --global user.name "Your Name"
 
     to set your account's default identity.
-    Omit --global to set the identity only in this repository.\
+    Omit --global to set the identity only in this repository.
 
-    fatal: unable to auto-detect email address (got 'vagrant@bookworm.(none)')
+    fatal: unable to auto-detect email address
+    (got 'vagrant@bookworm.(none)')
     \end{minted}
 \end{frame}
 
-introduce git configuration; show git config --list output; mention
-necessary initial configuration (name, email address) and explain why Git
-requires this.  Show how to set this information.  Get participants to do
-this on their own systems (or change the value if they have already set it).
-
-Describe this as a demo, showing what goes wrong if one hasn't set up name
-and email address before committing.
-
-Main takeaway: you will run into problems when using Git.  Remain calm!
-
-\begin{frame}[fragile]
-    \frametitle{Detour: setting name and email metadata}
-    If this is the first time you've installed Git, then one of the first
-    things you need to do is to set your name and email address
-    configuration metadata:
-    \begin{minted}{shell}
-        git config --global user.name "Your name"
-        git config --global user.email "<username@example.com>"
-    \end{minted}
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Exercise: explore \code{git config}}
-
-    Open a terminal (or the Git-Bash shell in Windows) and enter the
-    following commands:
-    \begin{minted}{shell}
-    git config
-    git config --list
-    git config --help
-    \end{minted}
+\begin{frame}[fragile]{A quick config demo}
+    What happened here?
 
     \begin{itemize}
-        \item describe the output of each command
-        \item how does the output relate to the commands mentioned on the
-            previous slide?
-        \item if you need to find out detailed information about a command,
-            what might you always be able to do?
+        \item Git saves author identity metadata when making changes to the
+            repository.
+        \item The identity metadata is the author's name and email address.
+        \item We need to set the \code{user.name} and \code{user.email}
+            configuration parameters.
     \end{itemize}
+
+    Main takeaway: you will run into problems when using Git.  This is not
+    something to be worried about.  Remain calm!
+\end{frame}
+
+\begin{frame}[fragile]{A quick config demo}
+    We use the \code{git config} command to see and set configuration data.
+
+    Show the current configuration with (try it out!):
+    \begin{minted}{shell}
+        git config --list
+    \end{minted}
+
+    Example output:
+    \begin{minted}{output}
+        core.repositoryformatversion=0
+        core.filemode=true
+        core.bare=false
+        core.logallrefupdates=true
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{A quick config demo}
+    Set the \code{user.name} and \code{user.email} parameters with \code{git
+    config}.  E.g.\ for me:
+    \begin{minted}{shell}
+        git config --global user.name "Paul Cochrane"
+        git config --global user.email "paul@peateasea.de"
+    \end{minted}
+
+    This sets the parameters for all repositories (i.e.\ globally).
+
+    To set these values for a given repository, omit the
+    \mintinline{text}{--global} option.
+
+    Note: Git gave us a hint in the error output earlier about how to solve
+    the problem.  This happens often: reading the error output carefully can
+    save a lot of time searching the internet for solutions!
+\end{frame}
+
+\begin{frame}[fragile]{A quick config demo}
+    Running \code{git config --list} shows the updated configuration:
+    \begin{minted}{text}
+        user.name=Paul Cochrane
+        user.email=paul@peateasea.de
+        core.repositoryformatversion=0
+        core.filemode=true
+        core.bare=false
+        core.logallrefupdates=true
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Set up your configuration}
+    Now it's your turn!
+
+    Check your current Git configuration settings and set your
+    \code{user.name} and \code{user.email} config parameters.
+
+    \begin{minted}{shell}
+        # see configuration
+        git config --list
+        # set name and email address
+        git config --global user.name "Your name"
+        git config --global user.email "username@example.com"
+    \end{minted}
 \end{frame}

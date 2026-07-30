@@ -34,6 +34,7 @@
 \usepackage{tikz}
 \usepackage{standalone}
 \usepackage[svgnames]{xcolor}
+\usepackage{emoji}
 
 \usetikzlibrary{positioning}
 \usetikzlibrary{calc}
