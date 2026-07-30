@@ -1,0 +1,565 @@
+\part{Tips and tricks}
+
+\section{Tips and tricks}
+
+\begin{frame}[fragile]
+    \frametitle{Splitting commits}
+    \tbf{Problem:} you've committed code that you'd rather have in
+        separate commits.
+
+    \tbf{Solution:} use an interactive rebase to edit the commit
+        to split; ``undo'' the code changes to separate; add
+        modifications; amend the current commit.
+        Make ``undone'' changes and commit.  Continue
+        the interactive rebase.
+    \begin{minted}{shell}
+    git rebase -i <branch_name>~<num_commits>
+    # extract changes to separate
+    git add <changed_files>
+    git commit --amend
+    # add separated changes to files
+    git commit <changed_files>
+    git rebase --continue
+    \end{minted}
+
+    \see{https://stackoverflow.com/questions/6217156/break-a-previous-commit-into-multiple-commits}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Restore a deleted file (simple revert)}
+    \tbf{Problem:} a file has been deleted in an earlier commit and you wish
+    to restore it.
+
+    \tbf{Solution:} If the file was deleted in a commit of its own, then
+    just revert and write an appropriate commit message.
+    \begin{minted}{shell}
+    git revert <commit_sha>
+    # explain reason for revert in commit message
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Restore a deleted file (restore from SHA)}
+    \tbf{Problem:} a file has been deleted in an earlier commit and you wish
+    to restore it.
+
+    \tbf{Solution:} If the file was deleted as a part of a larger commit, a
+    simple revert is not so simple.  Instead, find the last commit affecting
+    the file; this is the commit where it was deleted.  Check out the file
+    from this commit's parent commit.  The file is now a newly-added file in
+    the working directory.
+
+    \inputminted{bash}{restore-deleted-file-from-sha.txt}
+
+This command finds the most recent commit affecting the file:
+    \inputminted{bash}{most-recent-commit-affecting-file.txt}
+
+    \see{https://stackoverflow.com/questions/953481/find-and-restore-a-deleted-file-in-a-git-repository}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Recover a lost or deleted commit}
+    \tbf{Problem:} A rebase or reset has made a commit unreachable.
+
+    \tbf{Solution:} Don't panic! Git doesn't immediately delete commits;
+    they are still available via their SHA hash, just not available by
+    traversing the commit tree.  Use the reflog to show all operations
+    (including ``lost'' commits.  Check out the commit into its own branch
+    or simply cherry pick to restore.
+
+    \inputminted{bash}{recover-lost-or-deleted-commit.txt}
+
+    \see{https://stackoverflow.com/questions/10099258/how-can-i-recover-a-lost-commit-in-git}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Find commits affecting a given line in a file (blame)}
+
+    \tbf{Problem:} you want to find the commits corresponding to a given
+    line a file.
+
+    \tbf{Solution:} use blame with the line number(s) on the file.
+
+E.g.\ this command will show the blame from line 150 and the following 11 lines.
+    \begin{minted}{shell}
+        git blame -L150,+11 -- /path/to/file
+    \end{minted}
+
+    \see{https://stackoverflow.com/questions/8435343/retrieve-the-commit-log-for-a-specific-line-in-a-file}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Find commits affecting a given line in a file (log)}
+
+    \tbf{Problem:} you want to find the commits corresponding to a given
+    line a file.
+
+    \tbf{Solution:} use log with the line number(s) on the file.
+
+    E.g.\ this command will show the log and a patch (or patches) as a unified diff
+    output from commits affecting line 155.
+    \begin{minted}{shell}
+        git log --pretty=short -u -L 155,155:/path/to/file
+    \end{minted}
+
+    \see{https://stackoverflow.com/questions/8435343/retrieve-the-commit-log-for-a-specific-line-in-a-file}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Find commits affecting a given line in a file (pick-axe)}
+
+    \tbf{Problem:} you want to find the commits corresponding to a given
+    line a file.
+
+    \tbf{Solution:} use log -S (pick-axe) with a pattern matching the line
+    in the file(s).  One advantage here is that one can also follow commits
+    across renames; although in this case only works for single files.
+
+Works for multiple files:
+    \begin{minted}{shell}
+        git log -S '<pattern_from_line_in_file>' -- /path/to/file
+    \end{minted}
+
+Follow renames of single file arguments:
+    \begin{minted}{shell}
+        git log -S '<pattern_from_line_in_file>' \
+            --follow -- /path/to/file
+    \end{minted}
+
+    \see{https://stackoverflow.com/questions/8435343/retrieve-the-commit-log-for-a-specific-line-in-a-file}
+\end{frame}
+
+
+\begin{frame}[fragile]
+    \frametitle{Find commits affecting a given line in a file (Glog)}
+
+    \tbf{Problem:} you want to find the commits corresponding to a given
+    line a file.
+
+    \tbf{Solution:} use the Glog command from the vim-fugitive plugin.  Note
+    this is only for users of the vim editor.
+
+    Load the file and navigate to the line of interest, then enter (in
+    command mode)
+    \begin{minted}{shell}
+        :Glog
+    \end{minted}
+
+    See: \url{https://stackoverflow.com/a/29261649}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Clean up remote references}
+
+    \tbf{Problem:} \code{git branch -a} shows branches which have been
+    deleted in the remote repository.
+
+    This situation can occur if a shared feature branch is deleted by
+    someone other than you, or you have a remote feature branch which you
+    have deleted via e.g.\ the ``delete branch'' feature on GitHub's website.
+    The local references to the now non-existent remote branches still exist
+    and just need to be brought up to date with the current remote state.
+
+    \tbf{Solution:} Use the \code{prune} option to \code{git remote}.
+
+    \begin{minted}{shell}
+        git remote prune <remote_alias>
+        # e.g.:
+        git remote prune origin
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Find out current branch}
+    \begin{minted}{shell}
+        git branch  // starred branch is current branch
+        git branch -a  // starred branch is current branch
+        git branch --show-current  // returns name of current branch
+        git symbolic-ref --short HEAD  // returns name of current branch (after Git version 1.8)
+        git rev-parse --abbrev-ref HEAD  // returns name of current branch (before Git version 2.22)
+    \end{minted}
+    \href{https://stackoverflow.com/questions/6245570/how-to-get-the-current-branch-name-in-git}{How to get the current branch name in Git?}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Find out where current branch diverged from upstream master}
+    \begin{minted}{shell}
+        git merge-base --fork-point origin/master <branch-name>
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Run test suite on all commits in given range}
+    \begin{minted}{shell}
+        git rebase -i <branch_name>~x -x '<test command>'
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Find diff between most recent stash and current working dir}
+    \begin{minted}{shell}
+        git stash show -l
+    \end{minted}
+
+    This shows the diff between the current working directory and the most
+    recent stash. Not documented in the \ttt{git stash} man page (for version
+    2.20.1), but good to know.
+
+    Solution spotted here: https://stackoverflow.com/a/54534613/10874800
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Update local submodules from the upstream repo}
+
+    \begin{minted}{shell}
+        git submodule update --remote --merge
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Update submodule URL}
+
+    \ldots which can happen if one moves the submodule's repo to a different
+    location.
+
+    \begin{minted}{shell}
+        # update the submodule url
+        git config --file=.gitmodules submodule.<submodule-name>.url <new-repo-url>
+        # synchronise the submodule
+        git submodule sync
+        # update the submodule from the upstream repo
+        git submodule update --init --recursive --remote
+    \end{minted}
+
+    Some hints gleaned from here:
+    https://dev.to/serhatteker/changing-git-submodule-repository-to-other-url-branch-356p
+
+    Check that the tip commit of the updated submodule is the tip commit
+    that you expect (i.e.\ check the submodule's repo and compare its tip
+    commit with where the submodule is used).
+\end{frame}
+
+\begin{frame}
+\frametitle{Extras}
+git-worktree - Manage multiple working trees
+\end{frame}
+
+\section{Further reading}
+
+\begin{frame}
+\frametitle{Further reading}
+\begin{itemize}
+    \item \href{http://jwiegley.github.io/git-from-the-bottom-up/}{Git from the Bottom Up}
+    \item \href{http://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html}
+               {A note about commit messages}
+    \item \href{https://xdg.me/blog/a-survey-of-git-best-practices/}
+               {A survey of git best practices}
+    \item \href{http://kamalmarhubi.com/blog/2016/03/08/git-rebase-exec-make-sure-your-tests-pass-at-each-commit-and-other-rebase-goodies/}
+               {git rebase --exec: make sure your tests pass at each commit!  (and other rebase goodies)}
+    \item \href{https://ohshitgit.com/}{Oh Shit, Git!?!  Help for getting out of a mess.}
+    \item \href{https://jwiegley.github.io/git-from-the-bottom-up/}{Git from the bottom up}
+    \item \href{https://cbea.ms/git-commit/}{How to write a git commit message}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Extras}
+    \begin{itemize}
+        \item Graphically display commits and branches in the terminal
+        \item \texttt{git log --graph --oneline --decorate --all}
+        \item Visualizing Git Concepts with D3
+        \item \url{https://onlywei.github.io/explain-git-with-d3/}
+    \end{itemize}
+\end{frame}
+
+\section{Deleting a remote branch}
+
+\begin{frame}[fragile]
+    \frametitle{Deleting a remote branch once you are finished with it}
+
+    \begin{minted}{shell}
+        # as of git 1.7.0
+        git push origin --delete <branch-name>
+        # previously
+        git push origin :<branch-name>
+    \end{minted}
+
+    Note missing remote component in old syntax.  Think of the syntax as:
+    push ``nothing/empty'' to the branch called \code{<branch-name>} at the
+    \code{origin}.  Isn't the new syntax much nicer?
+\end{frame}
+
+\section{Deleting a remote tag}
+
+\begin{frame}[fragile]
+\frametitle{Deleting a remote tag}
+
+    \begin{minted}{shell}
+        # as of git 1.7.0
+        git push --delete origin tagname
+        # previously
+        git push origin :tagname
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Delete a local tag via \texttt{git tag}}
+    \begin{minted}{shell}
+        git tag -d tagname
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Checking branch merge status}
+    \begin{minted}{shell}
+    git branch --merged master lists branches merged into master
+
+    git branch --merged lists branches merged into HEAD (i.e.\ tip of current
+    branch)
+
+    git branch --no-merged lists branches that have not been merged
+
+    By default this applies to only the local branches. The -a flag will
+    show both local and remote branches, and the -r flag shows only the
+    remote branches.
+    \end{minted}
+    source: https://stackoverflow.com/a/227026/10874800
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Setting the executable bit on Windows Git}
+Windows will show files as being executable, but the executable bit won't be
+set when adding and committing files in Git Bash.  Here's a workaround:
+
+    \inputminted{bash}{set-executable-bit-on-windows-git.txt}
+    source: https://stackoverflow.com/a/32717779/10874800
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Extract single commit as patch}
+    \begin{minted}{shell}
+        git format-patch -1 f8aae4
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Extracting subdir into separate repo}
+used to have to use git filter branch:
+    https://stackoverflow.com/a/359759/10874800
+
+    new-repo-name: name of the new repository, derived from subdir of
+    old-repo-name
+
+For example:
+
+    \inputminted{bash}{extract-subdir-into-own-repo-with-filter-branch.txt}
+
+but now can use git subtree:
+    https://stackoverflow.com/a/17864475/10874800
+
+    \inputminted{bash}{extract-subdir-into-own-repo-with-git-subtree.txt}
+\end{frame}
+
+\appendix
+
+\section{Version Control System models}
+
+\begin{frame}
+    \frametitle{Version Control System models}
+    \begin{itemize}
+        \item Local
+        \item Centralised
+        \item Distributed
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Local Model}
+        % -> image/diagram of local system
+\begin{itemize}
+    \item Restricted to a single computer
+    \item Historically also only able to be used by one person at a time
+        (e.g.\ access control via file locking)
+    \item Examples:
+        \begin{itemize}
+            \item \href{https://en.wikipedia.org/wiki/Revision_Control_System}
+                       {Revision Control System (RCS)}
+            \item \href{https://en.wikipedia.org/wiki/Source_Code_Control_System}
+                       {Source Code Control System (SCCS)}
+        \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Centralised Model}
+\begin{columns}[T]
+    \begin{column}{0.7\textwidth}
+        \begin{itemize}
+            \item Client-Server architecture
+            \item Server contains all repository files and is ``single source of truth''
+            \item Clients contain copies of repository, where one work on project
+                files (\emph{working copy})
+            \item Require network access to server for version control actions
+            \item Examples:
+            \begin{itemize}
+                \item \href{https://en.wikipedia.org/wiki/Concurrent_Versions_System}
+                           {Concurrent Versions System (CVS)}
+                \item \href{https://en.wikipedia.org/wiki/Apache_Subversion}
+                           {Subversion (SVN)}
+            \end{itemize}
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+        \begin{center}
+        \resizebox{\textwidth}{!}{\input{figures/CentralRepo_tikz.tex}}
+        \end{center}
+    \end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Distributed Model}
+        % -> image/diagram of distributed system
+\begin{itemize}
+    \item Client-Server or Peer-to-peer or a mixture of the two
+    \item Each client has complete repository and its entire history
+    \item Server no longer strictly required; if used, contains a ``bare''
+        version of the repository, i.e.\ the working directory is not present
+    \item Offline work now possible and simple
+    \item When collaborating can resync work when online again
+    \item Examples:
+        \begin{itemize}
+            \item \href{https://git-scm.com/}{Git}
+                \includegraphics[height=0.05\textheight]{images/git_logo.png}
+            \item \href{https://www.mercurial-scm.org/}{Mercurial}
+                \includegraphics[height=0.05\textheight]{images/mercurial_logo.png}
+        \end{itemize}
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Leftover notes from old git/svn course}
+merging commits: \Verb|git rebase -i <commit>|
+
+splitting commits: \Verb|git rebase -i <commit>|
+    - mark which commit to edit
+    - when rebase reaches that commit use \Verb|git reset HEAD\^| to reset before the commit but keep your
+working tree intact
+    - incrementally add changes and commit them (\Verb|git add -p| can be useful)
+    - run \Verb|git rebase --continue| to proceed applying the commits after the now-split commit
+(adapted from http://stackoverflow.com/questions/4307095/git-how-to-split-up-a-commit-buried-in-history)
+
+reordering commits: git rebase -i <commit>
+pick, squash, edit
+
+http://www.gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html
+
+http://www.gitready.com/advanced/2009/03/20/reorder-commits-with-rebase.html
+
+git config --global color.ui auto -> automatically colour diffs,
+logs and other git output
+
+git diff --word-diff -> do a diff on words and not on lines. Per
+default in colour, but if don’t have a colour terminal minus
+signs (-) and plus signs (+) are used around words to show
+what has been removed or added respectively.
+
+Create bare repo -> clone -> make commits in local repo -> git
+push -> error -> why? A: because there isn’t a branch on the
+server, there needs to be a connection between the local
+
+"master" branch and the "origin" on the server, hence one
+needs to run "git push origin master" in order to make this
+connection.
+\end{frame}
+
+
+% good git helper talk
+% C'mon git happy; John Anderson; PerlCon Pittsburgh 2019
+% https://youtu.be/oEKXV-_o3YQ
+
+
+\begin{frame}[fragile]
+    \frametitle{Merge git repositories into one}
+
+solution found here: https://medium.com/altcampus/how-to-merge-two-or-multiple-git-repositories-into-one-9f8a5209913f
+    \begin{minted}{shell}
+        # enter the working directory of an existing repo to merge into
+        cd Bewerbungen/
+        # add other repo as remote and fetch its commits
+        git remote add --fetch job-apps git@bitbucket.org:paultcochrane/job\_applications.git
+        # merge new repo into repo of pwd
+        # note --allow-unrelated-histories to allow merge to work
+        # otherwise error
+        git merge job-apps/master --allow-unrelated-histories
+        # remove now unnecessary remote
+        git remote remove job-apps
+    \end{minted}
+
+\end{frame}
+
+\begin{frame}{Interactive rebasing with root commit}
+    Usually the root commit is excluded from a rebase.  However, sometimes
+    it's necessary to edit this commit as well as any others following.  For
+    example, let's say the first 4 commits have been created.  We later find
+    changes which should have been part of the initial (root) commit (e.g.\ we
+    missed adding a file), then it would be necessary to change the root
+    commit.  To do this we can use the --root option to rebase:
+
+    git rebase -i --root
+
+    which then runs an interactive rebase but also showing the root commit.
+    Then it's possible to add the missing changes to the root commit, say by
+    creating a commit adding those changes and then squashing this extra
+    commit into the initial (root) commit.
+
+    See also:
+    https://mariusschulz.com/blog/how-to-squash-the-first-two-commits-in-a-git-repository
+    https://stackoverflow.com/a/598788/10874800
+\end{frame}
+
+\begin{frame}[fragile]{Set upstream branch to use same as local branch}
+    TODO: check that this is correct!
+
+When rebasing and see this error message
+\begin{minted}{text}
+There is no tracking information for the current branch.
+Please specify which branch you want to rebase against.
+See git-rebase(1) for details.\
+
+    git rebase '<branch>'
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=<remote>/<branch> <name-of-local-branch>
+\end{minted}
+
+    make sure your branch is based on \code{main} (or \code{master})
+    properly.  You might need to run \code{git rebase main} when on the
+    branch's tip commit to get things in the correct state.
+
+    This can also be achieved by using the correct git config setting.
+\end{frame}
+%stopzone
+
+\begin{frame}[fragile]
+    \frametitle{Fetching a branch from another repository}
+    \tbf{Problem:} you want to include code from a branch in someone else's
+        online repository.
+
+    \tbf{Solution:} fetch the branch to your local repository by specifying
+        online repository's address, the name of the remote branch and the
+        name that you'd like to call the branch locally
+    \begin{minted}{shell}
+        git fetch --no-tags <repository-url> <remote-branch-name>:<local-branch-name>
+    \end{minted}
+
+    Use \code{--no-tags} to avoid pulling any tags from the remote
+    repository unnecessarily.  Tags are fetched by default, hence the need
+    to negate this.
+
+    Inspiration for the solution:
+    \see{https://stackoverflow.com/a/16095458}
+    Git fetch docs:
+    \see{https://git-scm.com/docs/git-fetch}
+\end{frame}
