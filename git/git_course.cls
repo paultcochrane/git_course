@@ -30,7 +30,6 @@
 \usepackage{setspace}
 \usepackage{minted}
 \usepackage{csquotes}
-\usepackage{listings}
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{standalone}
@@ -50,13 +49,6 @@
     autogobble=true,
     fontsize=\footnotesize,
     bgcolor=Beige,
-}
-
-\lstset{%
-    basicstyle=\footnotesize\ttfamily,
-    backgroundcolor=\color{gray!20!white},
-    framerule=0pt,
-    showstringspaces=false,
 }
 
 % vim: expandtab shiftwidth=4

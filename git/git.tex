@@ -1,7 +1,5 @@
 \documentclass{git_course}
 
-\usepackage{minted}
-
 \title{Version control with Git}
 \author{Paul Cochrane}
 \date{\today}
@@ -330,10 +328,10 @@ This is better than nothing, however \ldots
     If this is the first time you've installed Git, then one of the first
     things you need to do is to set your name and email address
     configuration metadata:
-\begin{lstlisting}[language=bash]
-git config --global user.name "Your name"
-git config --global user.email "<username@example.com>"
-\end{lstlisting}
+    \begin{minted}{shell}
+        git config --global user.name "Your name"
+        git config --global user.email "<username@example.com>"
+    \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -341,11 +339,11 @@ git config --global user.email "<username@example.com>"
 
     Open a terminal (or the Git-Bash shell in Windows) and enter the
     following commands:
-\begin{lstlisting}
-git config
-git config --list
-git config --help
-\end{lstlisting}
+    \begin{minted}{shell}
+    git config
+    git config --list
+    git config --help
+    \end{minted}
 
     \begin{itemize}
         \item describe the output of each command
@@ -411,9 +409,9 @@ cd blupp
 \begin{itemize}
     \item Initialise the repository
 \end{itemize}
-\begin{lstlisting}
-git init
-\end{lstlisting}
+    \begin{minted}{shell}
+    git init
+    \end{minted}
 \begin{itemize}
     \item What's the output of the \code{git init} command?  How does this
         help us?
@@ -441,14 +439,14 @@ git init
 \end{frame}
 
 % \begin{frame}[fragile]
-% \begin{lstlisting}[basicstyle=\tiny\ttfamily]
+% \begin{minted}{shell}
 % $ git status
 % On branch master
 %
 % Initial commit
 %
 % nothing to commit (create/copy files and use "git add" to track)
-% \end{lstlisting}
+% \end{minted}
 % \end{frame}
 % %stopzone
 
@@ -468,12 +466,12 @@ git init
 \end{itemize}
 
 Let's add a file in tiny steps to see the process in detail:
-\begin{lstlisting}
-touch moo     # create a file
-git status    # check repo status (file is *untracked*)
-git add moo   # add file to the staging area
-git status    # file is now a change to be committed
-\end{lstlisting}
+    \begin{minted}{shell}
+    touch moo     # create a file
+    git status    # check repo status (file is *untracked*)
+    git add moo   # add file to the staging area
+    git status    # file is now a change to be committed
+    \end{minted}
 \end{frame}
 
 
@@ -484,13 +482,13 @@ git status    # file is now a change to be committed
         repository.
     \item A commit is a snapshot of the current repository state.
 \end{itemize}
-\begin{lstlisting}
-git status    # file is now a change to be committed
-git commit    # commit staged changes to repository
-# enter commit message
-# see brief commit information
-git status    # working directory now clean
-\end{lstlisting}
+    \begin{minted}{shell}
+    git status    # file is now a change to be committed
+    git commit    # commit staged changes to repository
+    # enter commit message
+    # see brief commit information
+    git status    # working directory now clean
+    \end{minted}
 \end{frame}
 
 
@@ -1159,11 +1157,11 @@ for quick fix example below
     - fork and pull request has become most common open source collaboration
     workflow (mostly due to GitHub)
     diagram:
-    \begin{lstlisting}
+    \begin{minted}{shell}
     |upstream repo; label: "upstream"|  -> fork -> |upstream fork; label: "origin"|
                         fetch v                            push \^ ; clone v
                                                    |local repo|
-    \end{lstlisting}
+    \end{minted}
 
     - show screenshots of example of forking a repo on GitHub
 \end{frame}
@@ -1252,15 +1250,15 @@ triangle, because people are working from a central point of reference.
         modifications; amend the current commit.
         Make ``undone'' changes and commit.  Continue
         the interactive rebase.
-\begin{lstlisting}
-git rebase -i <branch_name>~<num_commits>
-# extract changes to separate
-git add <changed_files>
-git commit --amend
-# add separated changes to files
-git commit <changed_files>
-git rebase --continue
-\end{lstlisting}
+    \begin{minted}{shell}
+    git rebase -i <branch_name>~<num_commits>
+    # extract changes to separate
+    git add <changed_files>
+    git commit --amend
+    # add separated changes to files
+    git commit <changed_files>
+    git rebase --continue
+    \end{minted}
 
     \see{https://stackoverflow.com/questions/6217156/break-a-previous-commit-into-multiple-commits}
 \end{frame}
@@ -1272,10 +1270,10 @@ git rebase --continue
 
     \tbf{Solution:} If the file was deleted in a commit of its own, then
     just revert and write an appropriate commit message.
-\begin{lstlisting}
-git revert <commit_sha>
-# explain reason for revert in commit message
-\end{lstlisting}
+    \begin{minted}{shell}
+    git revert <commit_sha>
+    # explain reason for revert in commit message
+    \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -1321,9 +1319,9 @@ This command finds the most recent commit affecting the file:
     \tbf{Solution:} use blame with the line number(s) on the file.
 
 E.g.\ this command will show the blame from line 150 and the following 11 lines.
-\begin{lstlisting}
-git blame -L150,+11 -- /path/to/file
-\end{lstlisting}
+    \begin{minted}{shell}
+        git blame -L150,+11 -- /path/to/file
+    \end{minted}
 
     \see{https://stackoverflow.com/questions/8435343/retrieve-the-commit-log-for-a-specific-line-in-a-file}
 \end{frame}
@@ -1338,9 +1336,9 @@ git blame -L150,+11 -- /path/to/file
 
     E.g.\ this command will show the log and a patch (or patches) as a unified diff
     output from commits affecting line 155.
-\begin{lstlisting}
-git log --pretty=short -u -L 155,155:/path/to/file
-\end{lstlisting}
+    \begin{minted}{shell}
+        git log --pretty=short -u -L 155,155:/path/to/file
+    \end{minted}
 
     \see{https://stackoverflow.com/questions/8435343/retrieve-the-commit-log-for-a-specific-line-in-a-file}
 \end{frame}
@@ -1356,15 +1354,15 @@ git log --pretty=short -u -L 155,155:/path/to/file
     across renames; although in this case only works for single files.
 
 Works for multiple files:
-\begin{lstlisting}
-git log -S '<pattern_from_line_in_file>' -- /path/to/file
-\end{lstlisting}
+    \begin{minted}{shell}
+        git log -S '<pattern_from_line_in_file>' -- /path/to/file
+    \end{minted}
 
 Follow renames of single file arguments:
-\begin{lstlisting}
-git log -S '<pattern_from_line_in_file>' \
-    --follow -- /path/to/file
-\end{lstlisting}
+    \begin{minted}{shell}
+        git log -S '<pattern_from_line_in_file>' \
+            --follow -- /path/to/file
+    \end{minted}
 
     \see{https://stackoverflow.com/questions/8435343/retrieve-the-commit-log-for-a-specific-line-in-a-file}
 \end{frame}
@@ -1381,9 +1379,9 @@ git log -S '<pattern_from_line_in_file>' \
 
     Load the file and navigate to the line of interest, then enter (in
     command mode)
-\begin{lstlisting}
-:Glog
-\end{lstlisting}
+    \begin{minted}{shell}
+        :Glog
+    \end{minted}
 
     See: \url{https://stackoverflow.com/a/29261649}
 \end{frame}
@@ -1402,44 +1400,44 @@ git log -S '<pattern_from_line_in_file>' \
 
     \tbf{Solution:} Use the \code{prune} option to \code{git remote}.
 
-\begin{lstlisting}
-git remote prune <remote_alias>
-# e.g.:
-git remote prune origin
-\end{lstlisting}
+    \begin{minted}{shell}
+        git remote prune <remote_alias>
+        # e.g.:
+        git remote prune origin
+    \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
     \frametitle{Find out current branch}
-    \begin{lstlisting}
-    git branch  // starred branch is current branch
-    git branch -a  // starred branch is current branch
-    git branch --show-current  // returns name of current branch
-    git symbolic-ref --short HEAD  // returns name of current branch (after Git version 1.8)
-    git rev-parse --abbrev-ref HEAD  // returns name of current branch (before Git version 2.22)
-    \end{lstlisting}
+    \begin{minted}{shell}
+        git branch  // starred branch is current branch
+        git branch -a  // starred branch is current branch
+        git branch --show-current  // returns name of current branch
+        git symbolic-ref --short HEAD  // returns name of current branch (after Git version 1.8)
+        git rev-parse --abbrev-ref HEAD  // returns name of current branch (before Git version 2.22)
+    \end{minted}
     \href{https://stackoverflow.com/questions/6245570/how-to-get-the-current-branch-name-in-git}{How to get the current branch name in Git?}
 \end{frame}
 
 \begin{frame}[fragile]
     \frametitle{Find out where current branch diverged from upstream master}
-    \begin{lstlisting}
-    git merge-base --fork-point origin/master <branch-name>
-    \end{lstlisting}
+    \begin{minted}{shell}
+        git merge-base --fork-point origin/master <branch-name>
+    \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
     \frametitle{Run test suite on all commits in given range}
-    \begin{lstlisting}
-    git rebase -i <branch_name>~x -x '<test command>'
-    \end{lstlisting}
+    \begin{minted}{shell}
+        git rebase -i <branch_name>~x -x '<test command>'
+    \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
     \frametitle{Find diff between most recent stash and current working dir}
-    \begin{lstlisting}
-    git stash show -l
-    \end{lstlisting}
+    \begin{minted}{shell}
+        git stash show -l
+    \end{minted}
 
     This shows the diff between the current working directory and the most
     recent stash. Not documented in the \ttt{git stash} man page (for version
@@ -1451,9 +1449,9 @@ git remote prune origin
 \begin{frame}[fragile]
     \frametitle{Update local submodules from the upstream repo}
 
-    \begin{lstlisting}
-    git submodule update --remote --merge
-    \end{lstlisting}
+    \begin{minted}{shell}
+        git submodule update --remote --merge
+    \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -1462,14 +1460,14 @@ git remote prune origin
     \ldots which can happen if one moves the submodule's repo to a different
     location.
 
-    \begin{lstlisting}
-    # update the submodule url
-    git config --file=.gitmodules submodule.<submodule-name>.url <new-repo-url>
-    # synchronise the submodule
-    git submodule sync
-    # update the submodule from the upstream repo
-    git submodule update --init --recursive --remote
-    \end{lstlisting}
+    \begin{minted}{shell}
+        # update the submodule url
+        git config --file=.gitmodules submodule.<submodule-name>.url <new-repo-url>
+        # synchronise the submodule
+        git submodule sync
+        # update the submodule from the upstream repo
+        git submodule update --init --recursive --remote
+    \end{minted}
 
     Some hints gleaned from here:
     https://dev.to/serhatteker/changing-git-submodule-repository-to-other-url-branch-356p
@@ -1517,12 +1515,16 @@ git-worktree - Manage multiple working trees
 \begin{frame}[fragile]
     \frametitle{Deleting a remote branch once you are finished with it}
 
-\begin{lstlisting}
-# as of git 1.7.0
-git push origin --delete <branch-name>
-# previously
-git push origin :<branch-name>
-\end{lstlisting}
+    \begin{minted}{shell}
+        # as of git 1.7.0
+        git push origin --delete <branch-name>
+        # previously
+        git push origin :<branch-name>
+    \end{minted}
+
+    Note missing remote component in old syntax.  Think of the syntax as:
+    push ``nothing/empty'' to the branch called \code{<branch-name>} at the
+    \code{origin}.  Isn't the new syntax much nicer?
 \end{frame}
 
 \section{Deleting a remote tag}
@@ -1530,22 +1532,23 @@ git push origin :<branch-name>
 \begin{frame}[fragile]
 \frametitle{Deleting a remote tag}
 
-\begin{lstlisting}
-# as of git 1.7.0
-git push --delete origin tagname
-# previously
-git push origin :tagname
-\end{lstlisting}
+    \begin{minted}{shell}
+        # as of git 1.7.0
+        git push --delete origin tagname
+        # previously
+        git push origin :tagname
+    \end{minted}
+\end{frame}
 
-Delete a local tag via \texttt{git tag}:
-\begin{lstlisting}
-git tag -d tagname
-\end{lstlisting}
+\begin{frame}[fragile]{Delete a local tag via \texttt{git tag}}
+    \begin{minted}{shell}
+        git tag -d tagname
+    \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Checking branch merge status}
-    \begin{lstlisting}
+    \begin{minted}{shell}
     git branch --merged master lists branches merged into master
 
     git branch --merged lists branches merged into HEAD (i.e.\ tip of current
@@ -1556,7 +1559,7 @@ git tag -d tagname
     By default this applies to only the local branches. The -a flag will
     show both local and remote branches, and the -r flag shows only the
     remote branches.
-    \end{lstlisting}
+    \end{minted}
     source: https://stackoverflow.com/a/227026/10874800
 \end{frame}
 
@@ -1571,9 +1574,9 @@ set when adding and committing files in Git Bash.  Here's a workaround:
 
 \begin{frame}[fragile]
 \frametitle{Extract single commit as patch}
-\begin{lstlisting}
-git format-patch -1 f8aae4
-\end{lstlisting}
+    \begin{minted}{shell}
+        git format-patch -1 f8aae4
+    \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -1718,18 +1721,18 @@ connection.
     \frametitle{Merge git repositories into one}
 
 solution found here: https://medium.com/altcampus/how-to-merge-two-or-multiple-git-repositories-into-one-9f8a5209913f
-    \begin{lstlisting}
-# enter the working directory of an existing repo to merge into
-cd Bewerbungen/
-# add other repo as remote and fetch its commits
-git remote add --fetch job-apps git@bitbucket.org:paultcochrane/job\_applications.git
-# merge new repo into repo of pwd
-# note --allow-unrelated-histories to allow merge to work
-# otherwise error
-git merge job-apps/master --allow-unrelated-histories
-# remove now unnecessary remote
-git remote remove job-apps
-    \end{lstlisting}
+    \begin{minted}{shell}
+        # enter the working directory of an existing repo to merge into
+        cd Bewerbungen/
+        # add other repo as remote and fetch its commits
+        git remote add --fetch job-apps git@bitbucket.org:paultcochrane/job\_applications.git
+        # merge new repo into repo of pwd
+        # note --allow-unrelated-histories to allow merge to work
+        # otherwise error
+        git merge job-apps/master --allow-unrelated-histories
+        # remove now unnecessary remote
+        git remote remove job-apps
+    \end{minted}
 
 \end{frame}
 
@@ -1760,7 +1763,7 @@ When rebasing and see this error message
 \begin{minted}{text}
 There is no tracking information for the current branch.
 Please specify which branch you want to rebase against.
-See git-rebase(1) for details.
+See git-rebase(1) for details.\
 
     git rebase '<branch>'
 
