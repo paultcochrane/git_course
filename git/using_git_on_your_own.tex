@@ -48,6 +48,31 @@
     \end{itemize}
 \end{frame}
 
+\begin{frame}{Creating a new repository}
+    Before we can add files and their content to a repository, we have to
+    create/initialise one.
+
+    Conceptual steps to create a Git repository:
+    \begin{itemize}
+        \item create a directory,
+        \item change into that directory,
+        \item initialise it!
+    \end{itemize}
+
+    The exact details depend upon the operating system.  We'll focus on the
+    usage in a Bash-like shell.
+\end{frame}
+
+\begin{frame}[fragile]{Creating a new repository}
+    Steps to create a Git repository (Bash-like shell):\footnote[frame]{For
+    \code{cmd.exe} and Powershell the details are slightly different.}
+    \begin{minted}{text}
+        mkdir think-of-a-good-example-dir-name
+        cd think-of-a-good-example-dir-name
+        git init
+    \end{minted}
+    That's it!
+\end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Exercise: create a new repository}
