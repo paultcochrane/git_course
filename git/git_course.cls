@@ -20,7 +20,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{git_course}[2018/11/07 Git course LaTeX Class]
 
-\LoadClass[t]{beamer}
+\LoadClass[t, xcolor={svgnames}]{beamer}
 \usetheme{metropolis}
 \usepackage[T1]{fontenc}
 \usepackage{FiraSans}
@@ -33,7 +33,6 @@
 \usepackage{graphicx}
 \usepackage{tikz}
 \usepackage{standalone}
-\usepackage[svgnames]{xcolor}
 \usepackage{emoji}
 
 \usetikzlibrary{positioning}
