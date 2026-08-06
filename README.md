@@ -4,7 +4,7 @@ A course in learning how to use the version control system [Git](http://git-scm.
 
 ## Building the slides from source
 
-First, clone the project repository and enter the project directory:
+First, clone the project repository and enter the `git_course` directory:
 
 ```shell
 $ git clone https://github.com/paultcochrane/git_course.git
@@ -19,9 +19,8 @@ $ sudo apt install texlive-latex-extra texlive-fonts-extra \
     texlive-fonts-recommended texlive-xetex texlive-luatex lmodern make latexmk
 ```
 
-Then enter the `git` directory and run `make` to build the project:
+Then run `make` to build the course slides:
 
 ```shell
-$ cd git
 $ make
 ```
