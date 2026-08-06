@@ -7,7 +7,7 @@ A course in learning how to use the version control system [Git](http://git-scm.
 First, clone the project repository and enter the project directory:
 
 ```shell
-$ git clone git@github.com:paultcochrane/git_course.git
+$ git clone https://github.com/paultcochrane/git_course.git
 $ cd git_course
 ```
 
