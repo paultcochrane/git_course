@@ -15,8 +15,7 @@ Install the required dependencies.  On a Debian-based system this looks
 like:
 
 ```shell
-$ sudo apt install texlive-latex-extra texlive-fonts-extra \
-    texlive-fonts-recommended texlive-xetex texlive-luatex lmodern make latexmk
+$ sudo apt install -y make latexmk texlive-latex-extra texlive-fonts-extra texlive-luatex python3-pygments
 ```
 
 Then run `make` to build the course slides:
