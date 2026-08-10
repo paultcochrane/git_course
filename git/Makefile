@@ -5,10 +5,7 @@ default: all
 slides:
 	latexmk -pdflua -shell-escape git.tex
 
-course-flow: course-flow.tex
-	latexmk -pdflua $@
-
-all: slides course-flow
+all: slides
 
 clean:
 	latexmk -c
