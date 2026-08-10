@@ -12,4 +12,4 @@ clean:
 	rm -f git.pdf
 
 help:
-	@echo "Possible targets: all, slides, show, clean"
+	@echo "Possible targets: all, slides, clean"
