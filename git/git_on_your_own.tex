@@ -24,7 +24,82 @@
 \end{itemize}
 \end{frame}
 
-\section{Creating repositories}
+\section{Example project: a kiwi café}
+
+\begin{frame}{Example project: kiwi café}
+Let's discover how Git can be useful with the help of a concrete example.
+
+    \textbf{Introducing:}
+    \begin{quote}
+        Kiwi Cakes and Coffee\\
+        Great coffee, awesome cake.
+    \end{quote}
+
+    \textbf{Scenario:}\\
+    You're the proud owner of a new café with a focus on cake recipes found
+    in New Zealand.
+\end{frame}
+
+\begin{frame}{Kiwi café: initial thoughts}
+Where to start?
+    \begin{itemize}
+        \item The café is a big project.
+        \item You'll want to collect the cake recipes
+            somewhere sensible on your computer.  You and your staff
+            can then find them easily.
+        \item You'll probably want to store other information about your
+            café close to the cake recipes.
+        \item Thus, it makes sense to create a directory for the café and a
+            subdirectory for the cake recipes.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Kiwi café: project structure}
+Create the project directories by running the following commands:
+\begin{minted}{shell}
+    mkdir kiwi-cakes-and-coffee
+    cd kiwi-cakes-and-coffee
+    mkdir recipes
+\end{minted}
+
+You now have this directory structure:
+\begin{minted}{console}
+    kiwi-cakes-and-coffee/
+    └── recipes
+\end{minted}
+
+    Great!  A well-organised directory layout is a good first step.  Now we
+    need to add some recipes.
+\end{frame}
+
+\begin{frame}[fragile]{Kiwi café: a first recipe}
+    Let's start with a classic that works anywhere: chocolate cake.
+
+    \begin{itemize}
+        \item Enter the \code{recipes} directory
+        \begin{minted}{shell}
+            cd recipes
+        \end{minted}
+        \item Open a new file in your text editor called \code{chocolate-cake.md}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Kiwi café: a first recipe}
+    Fill the file with this text
+    (\href{https://github.com/paultcochrane/git_course/git/examples/edmonds-chocolate-cake.md}{\beamerbutton{link}}):
+    \inputminted[fontsize=\tiny]{markdown}{examples/edmonds-chocolate-cake.md}
+    {\footnotesize \emph{Edmonds Cookery Book}, 51st De Luxe Edition, 2003.}
+\end{frame}
+
+\begin{frame}{Kiwi café: creating a repository}
+    \begin{itemize}
+        \item We're likely to change recipes in the future.
+        \item We'll also want to add and remove recipes.
+        \item We'll need a system to store the files and manage the changes: Git.
+        \item Thus, we need to create a Git repository in
+            \code{kiwi-cakes-and-coffee} directory.
+    \end{itemize}
+\end{frame}
 
 \begin{frame}{What is a repository?}
     So what \emph{is} this repository thing?
