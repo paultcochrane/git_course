@@ -186,6 +186,77 @@ You now have this directory structure:
     \end{minted}
 \end{frame}
 
+\subsection{Checking our surroundings}
+
+\begin{frame}[fragile]{What's changed?}
+    Initialising a Git repository creates a ``hidden'' directory called
+    \code{.git}.
+
+    Looking at the files and directories:
+    \begin{minted}{console}
+        kiwi-cakes-and-coffee/
+        ├── .git
+        │   <metadata and subdirs>
+        └── recipes
+            └── edmonds-chocolate-cake.md
+    \end{minted}
+
+    The \code{.git} directory contains metadata and files about the
+    repository.
+
+    The files and directories outside the \code{.git} directory are called
+    the \emph{working copy}.
+
+    The repository itself is contained in the \code{.git} directory.
+\end{frame}
+
+\begin{frame}[fragile]{What state is the repository in?}
+    \begin{itemize}
+        \item A repository changes over time.
+        \item Files are added, changed, deleted, moved, renamed.
+        \item Use \code{git status} to find the current repository state:
+    \end{itemize}
+    \begin{minted}{shell}
+        git status
+    \end{minted}
+    \begin{minted}[fontsize=\tiny]{output}
+        On branch main
+
+        No commits yet
+
+        Untracked files:
+          (use "git add <file>..." to include in what will be committed)
+                recipes/
+
+        nothing added to commit but untracked files present (use "git add" to track)
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Lots of useful information}
+    Git provides lots of information:
+    \begin{minted}[fontsize=\tiny]{output}
+        On branch main
+
+        No commits yet
+
+        Untracked files:
+          (use "git add <file>..." to include in what will be committed)
+                recipes/
+
+        nothing added to commit but untracked files present (use "git add" to track)
+    \end{minted}
+
+    \begin{itemize}
+        \item Where we are: \code{On branch main}
+        \item What's already in the repository: \code{No commits yet}
+        \item Files in the working copy: \code{Untracked files}
+        \item How to add untracked files to the repository: \code{use "git
+            add" to track}
+        \item \emoji{rocket} Tip: read such output carefully.  Help is often already
+            provided in Git's messages.
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{Creating a new repository}
     Before we can add files and their content to a repository, we have to
     create/initialise one.
