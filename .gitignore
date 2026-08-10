@@ -9,6 +9,7 @@
 *.vrb
 *~
 *.swp
+.vagrant/
 version_control_course.pdf
 git.pdf
 .sass-cache/
