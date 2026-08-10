@@ -20,7 +20,7 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{git_course}[2018/11/07 Git course LaTeX Class]
 
-\LoadClass[t, xcolor={svgnames}]{beamer}
+\LoadClass[t, framefootnotes, xcolor={svgnames}]{beamer}
 \usetheme{metropolis}
 \usepackage[T1]{fontenc}
 \usepackage{FiraSans}
