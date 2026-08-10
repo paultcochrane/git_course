@@ -129,6 +129,63 @@ You now have this directory structure:
     \end{itemize}
 \end{frame}
 
+\subsection{Creating the Git repository}
+
+\begin{frame}[fragile]{Creating the repository}
+    Now that we know \emph{why} we want to store our recipes in a Git
+    repository, let's create it.
+
+    To create a Git repository, enter the project's base directory and run
+    \code{git init}.
+
+    \begin{minted}{shell}
+        cd kiwi-cakes-and-coffee
+        git init
+    \end{minted}
+
+    You should see this output:
+    \begin{minted}[fontsize=\tiny]{output}
+	hint: Using 'master' as the name for the initial branch. This default branch name
+	hint: is subject to change. To configure the initial branch name to use in all
+	hint: of your new repositories, which will suppress this warning, call:
+	hint:
+	hint:   git config --global init.defaultBranch <name>
+	hint:
+	hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+	hint: 'development'. The just-created branch can be renamed via this command:
+	hint:
+	hint:   git branch -m <name>
+	Initialized empty Git repository in /home/vagrant/kiwi-cakes-and-coffee/.git/
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{master} or \texttt{main} or \texttt{trunk} or \ldots?}
+    That was a lot of output!
+    \begin{itemize}
+        \item Probably more than you expected.
+        \item Important bit came at the end:
+            \begin{minted}[fontsize=\tiny]{output}
+	        Initialized empty Git repository in /home/vagrant/kiwi-cakes-and-coffee/.git/
+            \end{minted}
+        \item We've created our Git repository. \emoji{tada}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{\texttt{master} or \texttt{main} or \texttt{trunk} or \ldots?}
+    What's with the hint text?
+    \begin{itemize}
+        \item Historically, the ``main'' branch was called \code{master}
+        \item It's still the default name, but this may change in the
+            future.
+        \item Nowadays \code{main} is more common.
+    \end{itemize}
+
+    Change the branch name to \code{main}:
+    \begin{minted}{shell}
+        git branch -m main
+    \end{minted}
+\end{frame}
+
 \begin{frame}{Creating a new repository}
     Before we can add files and their content to a repository, we have to
     create/initialise one.
