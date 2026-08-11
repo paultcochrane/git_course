@@ -335,6 +335,37 @@ You now have this directory structure:
     A collection of changes committed at once is called \emph{a commit}.
 \end{frame}
 
+\subsection{Committing our first recipe}
+
+\begin{frame}[fragile]{Committing our first recipe}
+    We've only told Git to track our recipe by \emph{adding} it.
+
+    To save this change permanently, we commit it with \code{git commit},
+    e.g.:
+
+    \begin{minted}{shell}
+        git commit recipes/chocolate-cake.md
+    \end{minted}
+
+    This command will open a text editor with this content:
+    \begin{minted}[fontsize=\tiny]{output}
+
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch main
+        #
+        # Initial commit
+        #
+        # Changes to be committed:
+        #       new file:   recipes/chocolate-cake.md
+        #
+    \end{minted}
+
+    \emoji{rocket} Tip: Again, Git provides lots of information.  Take the
+    time to read and understand it.
+\end{frame}
+
 \begin{frame}{Creating a new repository}
     Before we can add files and their content to a repository, we have to
     create/initialise one.
