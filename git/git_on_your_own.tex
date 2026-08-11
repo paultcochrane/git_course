@@ -366,6 +366,57 @@ You now have this directory structure:
     time to read and understand it.
 \end{frame}
 
+\subsection{Side note: editors for commit messages}
+
+\begin{frame}[fragile]{Commit messages and text editors}
+    Many command-line Git environments use Vim as the text editor for commit
+    messages.  Some use a different editor, e.g.: Nano.
+
+    You will need to know how to enter text into your given editor and how
+    to save that text.
+
+    This differs from environment to environment and editor to editor and is
+    a common point of pain for newcomers to Git.
+
+    Note: it is \emph{much} better long-term to use an editor than the
+    \code{-m} command-line shortcut.
+
+    \emoji{rocket} Tip: Take the time to choose an appropriate
+    editor and/or learn the relevant commands for the editor you have.
+\end{frame}
+
+\begin{frame}[fragile]{Entering a commit message into Vim}
+    To enter a commit message in Vim, follow these steps:
+    \begin{itemize}
+        \item To enter text, press \code{i} to change to \emph{input} mode.
+        \item Enter the commit message text.
+        \item To save the text, first press \code{Esc}, to change to
+            \emph{command} mode.
+        \item Then type \code{:wq} to \emph{write} the text to file and
+            \emph{quit} the editor.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Entering a commit message into Nano}
+    To enter a commit message in Nano, follow these steps
+    \begin{itemize}
+        \item Enter the commit message text.
+        \item To save the text, press \code{Ctrl} together with \code{x} to
+            exit the editor.
+        \item You will be asked if you wish to save the modified buffer.
+        \item Press \code{y} to confirm saving.
+        \item You will be shown the file name to write; this does not need
+            to be changed.
+        \item Press \code{Enter} to save the text and finish exiting the
+            editor.
+    \end{itemize}
+
+    To use Nano instead of Vim in Git-Bash on Windows, run this command:
+    \begin{minted}{shell}
+        export EDITOR=nano
+    \end{minted}
+\end{frame}
+
 \begin{frame}{Creating a new repository}
     Before we can add files and their content to a repository, we have to
     create/initialise one.
