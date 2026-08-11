@@ -417,6 +417,54 @@ You now have this directory structure:
     \end{minted}
 \end{frame}
 
+\subsection{Committing our first recipe (cont.)}
+
+\begin{frame}[fragile]{Entering our first commit message}
+    Remember the commit message template text from earlier?
+    \begin{minted}[fontsize=\tiny]{output}
+
+        # Please enter the commit message for your changes. Lines starting
+        # with '#' will be ignored, and an empty message aborts the commit.
+        #
+        # On branch main
+        #
+        # Initial commit
+        #
+        # Changes to be committed:
+        #       new file:   recipes/chocolate-cake.md
+        #
+    \end{minted}
+
+    Enter the following text \emph{above} the lines starting with \mintinline{text}{#}:
+    \begin{minted}[fontsize=\tiny]{text}
+        Add chocolate cake recipe from Edmonds Cookery Book
+
+        This is the classic recipe from the classic cookbook that every Kiwi owns.
+    \end{minted}
+    Then exit the editor, saving the text content while doing so.
+\end{frame}
+
+\begin{frame}[fragile]{Completing our first commit}
+    You should now see output like this:
+    \begin{minted}[fontsize=\tiny]{output}
+        [main (root-commit) 98fb831] Add chocolate cake recipe from Edmonds Cookery Book
+         1 file changed, 22 insertions(+)
+         create mode 100644 recipes/chocolate-cake.md
+    \end{minted}
+
+    There's a lot of information in the output:
+    \begin{itemize}
+        \item The branch name: \code{main}
+        \item The commit ID: \code{98fb831} (unique for each commit)
+        \item The commit message subject line:
+            \code{Add chocolate cake recipe from Edmonds Cookery Book}
+        \item The number of files and lines changed:
+            \code{1 file changed, 22 insertions(+)}
+        \item The file(s) created:
+            \code{create mode 100644 recipes/chocolate-cake.md}
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{Creating a new repository}
     Before we can add files and their content to a repository, we have to
     create/initialise one.
