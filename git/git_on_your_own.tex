@@ -704,6 +704,64 @@ Date:   Tue Aug 11 13:54:32 2026 +0000
     \end{minted}
 \end{frame}
 
+\subsection{Adding source information to recipes}
+
+\begin{frame}[fragile]{Where did that recipe come from, again?}
+    Few recipes are completely new creations; most come from a cookbook,
+    are found online, or are passed down by a relative.
+
+    We should make a note in our recipes about where we found them.  This
+    way, if there is any confusion about ingredients or instructions, we can
+    look up the original source to check.
+
+    The plan: add source information after the recipe's title, e.g.:
+    \begin{minted}{text}
+        Source: Edmonds Cookery Book, 51st De Luxe Edition, 2003.
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Add source information to recipes}
+    Open the files for the Chocolate Cake and Pavlova recipes.  Add this
+    text after the recipe's title:
+    \begin{minted}{text}
+        Source: Edmonds Cookery Book, 51st De Luxe Edition, 2003.
+    \end{minted}
+
+    Save the files and exit the editor.
+
+    Then open the file for the Sour Cream Cheesecake recipe and add this
+    text after the recipe's title:
+    \begin{minted}{text}
+        Source: The New Zealand Flatters Cookbook, 1995.
+    \end{minted}
+
+    Save the file and exit the editor.
+\end{frame}
+
+\begin{frame}[fragile]{What changed in the repository?}
+    How can we find out what changed in the repository?
+
+    One idea, check the status
+    \begin{minted}{shell}
+        git status
+    \end{minted}
+    \begin{minted}[fontsize=\tiny]{output}
+        On branch main
+        Changes not staged for commit:
+          (use "git add <file>..." to update what will be committed)
+          (use "git restore <file>..." to discard changes in working directory)
+                modified:   chocolate-cake.md
+                modified:   pavlova.md
+                modified:   sour-cream-cheesecake.md
+
+        no changes added to commit (use "git add" and/or "git commit -a")
+    \end{minted}
+
+    The files have been \emph{modified}.
+
+    Git, again, provides detailed advice about how one could proceed.
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Adding files or changes to the repository}
 \begin{itemize}
