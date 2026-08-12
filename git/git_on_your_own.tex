@@ -555,90 +555,6 @@ Date:   Tue Aug 11 13:54:32 2026 +0000
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Creating a new repository}
-    Before we can add files and their content to a repository, we have to
-    create/initialise one.
-
-    Conceptual steps to create a Git repository:
-    \begin{itemize}
-        \item create a directory,
-        \item change into that directory,
-        \item initialise it!
-    \end{itemize}
-
-    The exact details depend upon the operating system.  We'll focus on the
-    usage in a Bash-like shell.
-\end{frame}
-
-\begin{frame}[fragile]{Creating a new repository}
-    Steps to create a Git repository (Bash-like shell):\footnote{For
-    \code{cmd.exe} and Powershell the details are slightly different.}
-    \begin{minted}{text}
-        mkdir think-of-a-good-example-dir-name
-        cd think-of-a-good-example-dir-name
-        git init
-    \end{minted}
-    That's it!
-\end{frame}
-
-\begin{minted}{shell}
-\end{minted}
-
-\begin{frame}[fragile]{Exercise: create a new repository}
-    Now it's your turn!
-    \begin{itemize}
-        \item Create a directory and change into it
-    \end{itemize}
-    \begin{minted}{shell}
-    mkdir blupp
-    cd blupp
-    \end{minted}
-    \begin{itemize}
-        \item Initialise the repository
-    \end{itemize}
-        \begin{minted}{shell}
-        git init
-        \end{minted}
-    \begin{itemize}
-        \item What's the output of the \code{git init} command?  How does this
-            help us?
-        \item A directory was created (see command line output), what's in there?
-        \item Use e.g.\ \code{ls -la} to find the hidden directory.
-        \item What files are there in the hidden directory?
-        \item Run \code{git status} for more info from git.  What's this
-            output it telling us?
-        \item Do you have any questions?
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-    \inputminted{bash}{create-example-repo.txt}
-    \inputminted{bash}{dot-git-dir-contents.txt}
-\end{frame}
-
-\begin{frame}[fragile]
-\frametitle{What does git init do?}
-\begin{itemize}
-    \item Creates a \code{.git} directory
-    \item Creates various configuration files, e.g. \code{.git/config}
-    \item Sets up the repository; the repository is inside the \code{.git}
-        directory
-\end{itemize}
-\end{frame}
-
-% \begin{frame}[fragile]
-% \begin{minted}{shell}
-% $ git status
-% On branch master
-%
-% Initial commit
-%
-% nothing to commit (create/copy files and use "git add" to track)
-% \end{minted}
-% \end{frame}
-% %stopzone
-
-
 \begin{frame}[fragile]
 \frametitle{Adding files or changes to the repository}
 \begin{itemize}
@@ -661,24 +577,6 @@ Let's add a file in tiny steps to see the process in detail:
     git status    # file is now a change to be committed
     \end{minted}
 \end{frame}
-
-
-\begin{frame}[fragile]
-\frametitle{Committing files or changes to the repository}
-\begin{itemize}
-    \item Committing files or changes saves the staged changes into the
-        repository.
-    \item A commit is a snapshot of the current repository state.
-\end{itemize}
-    \begin{minted}{shell}
-    git status    # file is now a change to be committed
-    git commit    # commit staged changes to repository
-    # enter commit message
-    # see brief commit information
-    git status    # working directory now clean
-    \end{minted}
-\end{frame}
-
 
 \begin{frame}
 \frametitle{Add/commit cycle}
