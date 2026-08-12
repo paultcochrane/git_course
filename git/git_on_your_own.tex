@@ -603,6 +603,107 @@ Date:   Tue Aug 11 13:54:32 2026 +0000
     {\footnotesize \emph{Edmonds Cookery Book}, 51st De Luxe Edition, 2003.}
 \end{frame}
 
+\subsection{Worked solution: two new recipes}
+
+\begin{frame}[fragile]{Worked solution: add two new recipes to repository}
+    Save recipe text to file
+    \begin{minted}{shell}
+        vim sour-cream-cheesecake.md
+        vim pavlova.md
+    \end{minted}
+
+    Check repository status
+    \begin{minted}{shell}
+        git status
+    \end{minted}
+    \begin{minted}[fontsize=\tiny]{output}
+        On branch main
+        Untracked files:
+          (use "git add <file>..." to include in what will be committed)
+                pavlova.md
+                sour-cream-cheesecake.md
+
+        nothing added to commit but untracked files present (use "git add" to track)
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Worked solution: add two new recipes to repository}
+    Tell Git to track the files
+    \begin{minted}{shell}
+        git add sour-cream-cheesecake.md pavlova.md
+    \end{minted}
+
+    Check repository status again
+    \begin{minted}{shell}
+        git status
+    \end{minted}
+    \begin{minted}[fontsize=\tiny]{output}
+        On branch main
+        Changes to be committed:
+          (use "git restore --staged <file>..." to unstage)
+                new file:   pavlova.md
+                new file:   sour-cream-cheesecake.md
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Worked solution: add two new recipes to repository}
+    Commit the repository changes
+    \begin{minted}{shell}
+        git commit
+    \end{minted}
+    \begin{minted}[fontsize=\tiny]{output}
+Add remaining cake recipes to initial batch
+
+We should have enough cake variety to start the cafe now.  Here we add two
+recipes to compliment the chocolate cake we already have.  We include a staple
+cafe recipe sure to please everyone: a cheesecake from the Flatters Cookbook.
+We're also including the Kiwi classic: Pavlova from the Edmonds Cookery Book, a
+lot of work but sure to be a stand-out in the cake selection.
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Changes to be committed:
+#       new file:   pavlova.md
+#       new file:   sour-cream-cheesecake.md
+#
+    \end{minted}
+    \begin{minted}[fontsize=\tiny]{output}
+	[main 666d837] Add remaining cake recipes to initial batch
+	 2 files changed, 52 insertions(+)
+	 create mode 100644 recipes/pavlova.md
+	 create mode 100644 recipes/sour-cream-cheesecake.md
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Worked solution: add two new recipes to repository}
+    See the log of commits
+    \begin{minted}{shell}
+        git log
+    \end{minted}
+    \begin{minted}[fontsize=\tiny]{output}
+commit 666d837a88119015906bfcf07552de8a19682e6c (HEAD -> main)
+Author: Paul Cochrane <paul@peateasea.de>
+Date:   Wed Aug 12 14:25:13 2026 +0000
+
+    Add remaining cake recipes to initial batch
+
+    We should have enough cake variety to start the cafe now.  Here we add two
+    recipes to compliment the chocolate cake we already have.  We include a staple
+    cafe recipe sure to please everyone: a cheesecake from the Flatters Cookbook.
+    We're also including the Kiwi classic: Pavlova from the Edmonds Cookery Book, a
+    lot of work but sure to be a stand-out in the cake selection.
+
+commit 98fb831533850408c8fb6fc637e4d2a05636011f
+Author: Paul Cochrane <paul@peateasea.de>
+Date:   Tue Aug 11 13:54:32 2026 +0000
+
+    Add chocolate cake recipe from Edmonds Cookery Book
+
+    This is the classic recipe from the classic cookbook that every Kiwi owns.
+    \end{minted}
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Adding files or changes to the repository}
 \begin{itemize}
