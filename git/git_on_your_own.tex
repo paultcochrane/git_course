@@ -762,6 +762,21 @@ Date:   Tue Aug 11 13:54:32 2026 +0000
     Git, again, provides detailed advice about how one could proceed.
 \end{frame}
 
+\begin{frame}[fragile]{Commit advice to avoid}
+    Note this line in the \code{git status} output:
+    \begin{minted}[fontsize=\tiny]{output}
+        no changes added to commit (use "git add" and/or "git commit -a")
+    \end{minted}
+
+    Git advises us to use \code{git commit -a} to commit the changes.
+
+    I disagree.
+
+    In my experience, it is best to avoid the \code{-a} option because it
+    commits \emph{everything} that has changed, and that's often \emph{not}
+    what you want.
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Adding files or changes to the repository}
 \begin{itemize}
