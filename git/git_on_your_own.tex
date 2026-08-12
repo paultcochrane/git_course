@@ -569,6 +569,40 @@ Date:   Tue Aug 11 13:54:32 2026 +0000
     \end{enumerate}
 \end{frame}
 
+\subsection{Exercise: two new recipes}
+
+\begin{frame}[fragile]{Exercise: add two new recipes to the repository}
+    Using what you've learned so far, create two new recipes, one file for
+    each recipe (the content is given on the following slides), add them to
+    the repository, and save the new state in a single commit.
+
+    Follow these steps:
+    \begin{itemize}
+        \item Create the two new files in a text editor.
+        \item Check the repository status.
+        \item Tell Git to track the files.
+        \item Check the repository status again.
+        \item Commit the change to the repository.
+        \item View the log of commits.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Sour cream cheesecake}
+    Create the file \code{sour-cream-cheesecake.md} with this text
+    (\href{https://raw.githubusercontent.com/paultcochrane/git_course/refs/heads/master/git/examples/flatters-sour-cream-cheesecake.md}{\beamerbutton{link}}):
+    \inputminted[fontsize={\fontsize{5}{6}\selectfont}]{markdown}{examples/flatters-sour-cream-cheesecake.md}
+    {\footnotesize \emph{The New Zealand Flatters Cookbook}, 1995}
+\end{frame}
+% solution to fontsize needing to be smaller than \tiny found here:
+% https://tex.stackexchange.com/a/644823
+
+\begin{frame}{Pavlova}
+    Create a file called \code{pavlova.md} with this text
+    (\href{https://raw.githubusercontent.com/paultcochrane/git_course/refs/heads/master/git/examples/edmonds-pavlova.md}{\beamerbutton{link}}):
+    \inputminted[fontsize=\tiny]{markdown}{examples/edmonds-pavlova.md}
+    {\footnotesize \emph{Edmonds Cookery Book}, 51st De Luxe Edition, 2003.}
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Adding files or changes to the repository}
 \begin{itemize}
