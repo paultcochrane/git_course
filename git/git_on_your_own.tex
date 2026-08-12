@@ -801,6 +801,90 @@ Date:   Tue Aug 11 13:54:32 2026 +0000
     the \emph{staging area} are saved in the next commit.
 \end{frame}
 
+\subsection{Finding the difference between repository states}
+
+\begin{frame}[fragile]{Seeing change details in modified files}
+    Remember our modified files?
+    \begin{minted}[fontsize=\tiny]{output}
+        On branch main
+        Changes not staged for commit:
+          (use "git add <file>..." to update what will be committed)
+          (use "git restore <file>..." to discard changes in working directory)
+                modified:   chocolate-cake.md
+                modified:   pavlova.md
+                modified:   sour-cream-cheesecake.md
+
+        no changes added to commit (use "git add" and/or "git commit -a")
+    \end{minted}
+
+    We know that they were changed.  How can we see the details of those
+    changes?
+
+    The solution is to use \code{git diff}.
+\end{frame}
+
+\begin{frame}[fragile]{Seeing the change details in a specific file}
+    Let's try \code{git diff} out on a single file first:
+    \begin{minted}{shell}
+        git diff chocolate-cake.md
+    \end{minted}
+    \begin{minted}[fontsize=\tiny]{output}
+diff --git a/recipes/chocolate-cake.md b/recipes/chocolate-cake.md
+index a5b6604..919ddea 100644
+--- a/recipes/chocolate-cake.md
++++ b/recipes/chocolate-cake.md
+@@ -1,5 +1,7 @@
+ # Chocolate cake
+
++Source: Edmonds Cookery Book, 51st De Luxe Edition, 2003.
++
+ ## Ingredients
+
+ 175 g butter, softened
+    \end{minted}
+
+    This shows the differences between the state of the file in the
+    \emph{repository} (denoted by the path beginning with \code{a}) and the
+    state of the file in the \emph{working copy} (denoted by the path
+    beginning with \code{b}).
+\end{frame}
+
+\begin{frame}[fragile]{Seeing the change details in a specific file}
+    The output is in what is called \emph{unified diff} format.
+    \begin{minted}[fontsize=\tiny]{diff}
+diff --git a/recipes/chocolate-cake.md b/recipes/chocolate-cake.md
+index a5b6604..919ddea 100644
+--- a/recipes/chocolate-cake.md
++++ b/recipes/chocolate-cake.md
+@@ -1,5 +1,7 @@
+ # Chocolate cake
+
++Source: Edmonds Cookery Book, 51st De Luxe Edition, 2003.
++
+ ## Ingredients
+
+ 175 g butter, softened
+    \end{minted}
+    The lines prefixed with a \code{+} show lines added.  Deleted lines are
+    prefixed with a \code{-}.  Note: none are deleted in this case.
+
+    Lines starting with a space give context.  Usually three lines of
+    context are used.  This helps humans and automated tools understand what
+    has changed and where.
+\end{frame}
+
+\begin{frame}[fragile]{Seeing all change details}
+    To see the details of all changes between the repository and the working
+    copy, run \code{git diff} without a filename argument.
+
+    \begin{minted}{shell}
+        git diff
+    \end{minted}
+
+    What's the difference between this output and that we saw for the single
+    file?
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Adding files or changes to the repository}
 \begin{itemize}
