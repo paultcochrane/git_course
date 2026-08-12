@@ -777,6 +777,30 @@ Date:   Tue Aug 11 13:54:32 2026 +0000
     what you want.
 \end{frame}
 
+\subsection{Side note: the two faces of \texttt{git add}}
+
+\begin{frame}[fragile]{The two faces of \texttt{git add}}
+    The behaviour of \code{git add} depends subtly upon context.
+
+    \code{git add} has two uses:
+    \begin{itemize}
+        \item To tell Git to track a file.
+        \item To update the changes to be stored in the next commit.
+    \end{itemize}
+
+    These concepts \emph{seem} different, but are subtly related:
+    \begin{itemize}
+        \item Telling Git to track an untracked file updates what will be
+            stored in the next commit.
+        \item Updating changes to already-tracked files also updates what
+            will be stored in the next commit.
+    \end{itemize}
+
+    \code{git add} \emph{doesn't} ``add'' something to the repository; it
+    adds file changes to a \emph{staging area}.  All changes collected in
+    the \emph{staging area} are saved in the next commit.
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Adding files or changes to the repository}
 \begin{itemize}
