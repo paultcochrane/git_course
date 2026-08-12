@@ -471,6 +471,74 @@ You now have this directory structure:
     Yay! \emoji{partying-face} \emoji{tada}
 \end{frame}
 
+\subsection{Seeing progress and previous repository state}
+
+\begin{frame}[fragile]{Post-commit repository state}
+    Let's look at the state of the repository:
+    \begin{minted}{shell}
+        git status
+    \end{minted}
+    \begin{minted}{output}
+        On branch main
+        nothing to commit, working tree clean
+    \end{minted}
+    Git tells us:
+    \begin{itemize}
+        \item where we are: \code{On branch main}
+        \item what there is still to do (in this case nothing):
+            \code{nothing to commit}
+        \item the state of the working tree: \code{working tree clean}
+    \end{itemize}
+
+    Great!  This is our first major step towards our goal of storing our
+    café's cake recipes and any changes we make in the future.
+\end{frame}
+
+\begin{frame}[fragile]{Looking back at our progress}
+    Let's take look at what we've done.
+
+    Git has a command for this: \code{git log}.
+
+    It shows a summary of the commits we've made.
+
+    \begin{minted}{shell}
+        git log
+    \end{minted}
+    \begin{minted}[fontsize=\tiny, autogobble=false]{output}
+commit 98fb831533850408c8fb6fc637e4d2a05636011f (HEAD -> main)
+Author: Paul Cochrane <paul@peateasea.de>
+Date:   Tue Aug 11 13:54:32 2026 +0000
+
+    Add chocolate cake recipe from Edmonds Cookery Book
+
+    This is the classic recipe from the classic cookbook that every Kiwi owns.
+    \end{minted}
+
+    In this case, we have only one commit, so the output is short.
+\end{frame}
+
+\begin{frame}[fragile]{Log output details}
+    Take a look at the log output; there's a lot going on:
+    \begin{minted}[fontsize=\tiny, autogobble=false]{output}
+commit 98fb831533850408c8fb6fc637e4d2a05636011f (HEAD -> main)
+Author: Paul Cochrane <paul@peateasea.de>
+Date:   Tue Aug 11 13:54:32 2026 +0000
+
+    Add chocolate cake recipe from Edmonds Cookery Book
+
+    This is the classic recipe from the classic cookbook that every Kiwi owns.
+    \end{minted}
+
+    The elements are:
+    \begin{itemize}
+        \item Commit ID: \code{98fb8315...}
+        \item Branch information: \code{HEAD -> main}
+        \item Who the author was: \code{Author: Paul Cochrane <paul@peateasea.de>}
+        \item When the commit happened: \code{Date:   Tue Aug 11 13:54:32 2026 +0000}
+        \item The commit message text
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{Creating a new repository}
     Before we can add files and their content to a repository, we have to
     create/initialise one.
