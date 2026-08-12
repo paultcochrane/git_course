@@ -1,4 +1,0 @@
-$ mkdir blupp
-$ cd blupp/
-$ git init
-Initialized empty Git repository in /home/cochrane/blupp/.git/
