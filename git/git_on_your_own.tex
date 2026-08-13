@@ -999,6 +999,117 @@ index a5b6604..919ddea 100644
     \end{itemize}
 \end{frame}
 
+\subsection{Removing redundant repetition}
+
+\begin{frame}[fragile]{Remove redundant repetition with aliases}
+    We're using \code{commit}, \code{status}, and \code{diff} a lot.  It is
+    common to use these commands \emph{many} times a day when developing a
+    project.
+
+    Can we reduce how much we have to type?
+
+    Yes!  With aliases.
+
+    For example, alias to \code{git status} as \code{git st}, run:
+    \begin{minted}{text}
+        git config --global alias.st status
+    \end{minted}
+
+    Try it out!  Now run \code{git st}
+\end{frame}
+
+\begin{frame}[fragile]{Remove redundant repetition with aliases}
+    A synonym to the word \emph{commit} is \emph{check in}.  I.e.\ when you
+    commits your code, you are ``checking it in'' to the repository.
+
+    Hence, a common alias for \code{commit} is \code{ci}.
+
+    An obvious alias for \code{diff} is \code{di}.
+
+    Create these aliases now in your environment.
+\end{frame}
+
+\begin{frame}[fragile]{Remove redundant repetition with aliases}
+    How did you get on?
+
+    To alias \code{commit} as \code{ci}, and \code{diff} as \code{di} run:
+    \begin{minted}{shell}
+        git config --global alias.ci commit
+        git config --global alias.di diff
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{A quick aliased commit}
+    Let's try out our new aliases together.
+
+    The last sentence of the Chocolate cake recipe isn't clear.  What does
+    ``When cold ice with \ldots'' mean?  Oh!  It means ``When the cake is cold,
+    ice with \ldots''.  Let's fix that!
+
+    Open the file in your editor and change the start of the last sentence.
+
+    Well run:
+    \begin{itemize}
+        \item \code{git st} to see the status.
+        \item \code{git di} to see the detailed changes.
+        \item \code{git ci chocolate-cake.md} to commit the change.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{A quick aliased commit: seeing the status}
+    The status after the file modification:
+    \begin{shellcode}
+        git st
+    \end{shellcode}
+    \begin{outputcode}[autogobble=false]
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   chocolate-cake.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+    \end{outputcode}
+\end{frame}
+
+\begin{frame}[fragile]{A quick aliased commit: seeing the difference}
+    The detailed modification in \texttt{diff} format:
+    \begin{shellcode}
+        git di
+    \end{shellcode}
+    \begin{minted}[fontsize=\tiny,autogobble=false]{diff}
+diff --git a/recipes/chocolate-cake.md b/recipes/chocolate-cake.md
+index 919ddea..fd2163b 100644
+--- a/recipes/chocolate-cake.md
++++ b/recipes/chocolate-cake.md
+@@ -20,5 +20,5 @@ one at a time, beating well after each addition.  Sift cocoa, flour and
+ baking powder together.  Add to creamed mixture alternately with milk.  Pour
+ mixture into a greased and lined 22 cm round cake tin.  Bake at 180 degrees
+ C for 30 minutes or until cake springs back when lightly touched.  Leave in
+-tin for 10 minutes before turning out onto a wire rack.  When cold ice with
+-chocolate icing or dust with icing sugar if wished.
++tin for 10 minutes before turning out onto a wire rack.  When the cake is
++cold, ice with chocolate icing or dust with icing sugar if wished.
+    \end{minted}
+    Changing lines in a file is equivalent to deleting those lines and
+    adding the corrected versions.  Hence we have deletion (\code{-}) and
+    addition (\code{+}) here.
+\end{frame}
+
+\begin{frame}[fragile]{A quick aliased commit: committing the change}
+    Committing the change to the repository:
+    \begin{shellcode}
+        git ci chocolate-cake.md
+    \end{shellcode}
+    (enter commit message in editor and save)
+
+    We get this output from the commit:
+    \begin{outputcode}[autogobble=false]
+[main c0aa49a] Improve text clarity in chocolate cake recipe
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+    \end{outputcode}
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Adding files or changes to the repository}
 \begin{itemize}
