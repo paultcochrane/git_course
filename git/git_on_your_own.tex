@@ -780,6 +780,31 @@ Date:   Tue Aug 11 13:54:32 2026 +0000
 \subsection{Side note: the two faces of \texttt{git add}}
 
 \begin{frame}[fragile]{The two faces of \texttt{git add}}
+    The \code{git status} output also advised using \code{git add} in two
+    places:
+    \begin{minted}[fontsize=\tiny, escapeinside=||]{output}
+        On branch main
+        Changes not staged for commit:
+          (use "|\textcolor{PaulTolBrightGreen}{\textbf{git add <file>...}}|" to update what will be committed)
+          (use "git restore <file>..." to discard changes in working directory)
+                modified:   chocolate-cake.md
+                modified:   pavlova.md
+                modified:   sour-cream-cheesecake.md
+
+        no changes added to commit (use "|\textcolor{PaulTolBrightGreen}{\textbf{git add}}|" and/or "git commit -a")
+    \end{minted}
+
+    Note the text:
+    \begin{minted}{output}
+        use "git add <file>..." to update what will be committed
+    \end{minted}
+
+    Hang on: doesn't \code{git add} tell Git to \emph{track} files?  Correct!
+
+    It also tells Git to \emph{update} what will be committed.
+\end{frame}
+
+\begin{frame}[fragile]{The two faces of \texttt{git add}}
     The behaviour of \code{git add} depends subtly upon context.
 
     \code{git add} has two uses:
