@@ -910,6 +910,22 @@ index a5b6604..919ddea 100644
     file?  Try it out!
 \end{frame}
 
+\begin{frame}[fragile]{File changes with a common topic = a commit}
+    We see that the changes we made to the files follow a common theme.
+
+    Since we've finished making these changes, and because they share a
+    common idea/topic, it makes sense to bundle them into a single commit.
+
+    \begin{minted}{shell}
+        git commit chocolate-cake.md pavlova.md sour-cream-cheesecake.md
+    \end{minted}
+    (after entering commit message and closing editor)
+    \begin{minted}{output}
+        [main 6577b33] Add source information to recipes
+         3 files changed, 6 insertions(+)
+    \end{minted}
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Adding files or changes to the repository}
 \begin{itemize}
