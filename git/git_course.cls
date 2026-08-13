@@ -45,6 +45,16 @@
 \newcommand{\code}[1]{\mintinline{text}{#1}}
 \newcommand{\see}[1]{See: \resizebox{0.9\textwidth}{!}{\url{#1}}}
 
+% colour-blind safe "bright" colour scheme
+% (https://sronpersonalpages.nl/~pault/#fig:scheme_bright)
+\definecolor{PaulTolBrightBlue}{HTML}{4477AA}
+\definecolor{PaulTolBrightCyan}{HTML}{66CCEE}
+\definecolor{PaulTolBrightGreen}{HTML}{228833}
+\definecolor{PaulTolBrightYellow}{HTML}{CCBB44}
+\definecolor{PaulTolBrightRed}{HTML}{EE6677}
+\definecolor{PaulTolBrightPurple}{HTML}{AA3377}
+\definecolor{PaulTolBrightGrey}{HTML}{BBBBBB}
+
 \setminted{%
     autogobble=true,
     fontsize=\footnotesize,
