@@ -1029,82 +1029,6 @@ The add/commit cycle is like how a photographer creates a group photo.
 
 
 \begin{frame}
-\frametitle{Starting a new repository from scratch}
-\begin{itemize}
-    \item mkdir something
-    \item cd something
-    \item git init  (also ls -la)
-    \item git status
-    \item create file
-    \item git status (untracked)
-    \item git add
-    \item git status (staged)
-    \item git commit
-    \item git status (clean)
-    \item master is default branch
-    \item (normally don't have to run git status all the time)
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Starting a new repository (conceptual steps)}
-    \begin{itemize}
-        \item Create directory for repository (mkdir)
-        \item Initialise repository (git init)
-        \item Create file(s) (edit file)
-        \item Add file(s) to repository (git add)
-        \item Commit file(s) (git commit)
-    \end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Starting a new repository (conceptual steps)}
-\begin{itemize}
-    \item To create a repository, need to \ttt{init}ialise it
-        \begin{itemize}
-            \item \code{git init}
-        \end{itemize}
-    \item Repository is just a directory, with a \code{.git} directory
-        \begin{itemize}
-            \item \code{ls -la}
-        \end{itemize}
-    \item Things that go into a repository are just files
-        \begin{itemize}
-            \item \code{touch file}
-        \end{itemize}
-    \item To tell Git to track a file, one needs to \ttt{add} it
-        \begin{itemize}
-            \item \code{git add}
-        \end{itemize}
-    \item Tracked files and \emph{changes to tracked files} are put in
-        the \emph{staging area}
-        \begin{itemize}
-            \item \code{git status} (see staged files)
-        \end{itemize}
-    \item To record files and \emph{changes to files}, one \ttt{commit}s
-        them to the repository
-        \begin{itemize}
-            \item \code{git commit}
-        \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Exercise: Start a new repository}
-\begin{itemize}
-    \item Repeat the previous steps on your own computer
-    \item Create a directory and change into it
-    \item Initialise the repository
-    \item Run git status to see the current repository state
-    \item Create a file (untracked); see the repository state, what changed?
-    \item Add the file to the repository (track it); see the repository
-        state, what changed?
-    \item Commit the file to the repository; see the repository state, what
-        changed?
-\end{itemize}
-\end{frame}
-
-\begin{frame}
 \frametitle{Getting Help}
 \begin{itemize}
     \item man pages
@@ -1162,14 +1086,6 @@ The add/commit cycle is like how a photographer creates a group photo.
     \item Staging area: what will be committed next
     \item Repository: storage of snapshots
     \item Contrast with other systems, which store diffs between changes
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Basic workflow}
-\begin{itemize}
-    \item creation (mkdir, init, edit)
-    \item saving snapshots of work (add, commit, return to edit step)
 \end{itemize}
 \end{frame}
 
@@ -1295,13 +1211,6 @@ What should I write in a commit message?
         \item git rm
         \item git mv
     \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Explain SHAs}
-\begin{itemize}
-    \item in context of diff, show, log, etc.
 \end{itemize}
 \end{frame}
 
