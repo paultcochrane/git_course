@@ -1110,6 +1110,45 @@ index 919ddea..fd2163b 100644
     \end{outputcode}
 \end{frame}
 
+\begin{frame}[fragile]{Where are the aliases stored?}
+    We're able to use the new aliases, so they must be saved somewhere.
+    \begin{itemize}
+        \item Where could they be stored?
+        \item Where could we look to find out?
+        \item Is there a command we could use?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Where are the aliases stored?}
+    Due to the \code{--global} option, they're saved into the
+    \code{~/.gitconfig} file.  Have a look inside to see!
+    \begin{shellcode}
+        cat ~/.gitconfig
+    \end{shellcode}
+    \begin{outputcode}
+        [alias]
+                st = status
+                di = diff
+                ci = commit
+    \end{outputcode}
+
+    We can also see the aliases via the \code{git config} command:
+    \begin{shellcode}
+        git config --list
+    \end{shellcode}
+    \begin{outputcode}
+        alias.st=status
+        alias.di=diff
+        alias.ci=commit
+        core.repositoryformatversion=0
+        core.filemode=true
+        core.bare=false
+        core.logallrefupdates=true
+        user.name=Paul Cochrane
+        user.email=paul@peateasea.de
+    \end{outputcode}
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Adding files or changes to the repository}
 \begin{itemize}
