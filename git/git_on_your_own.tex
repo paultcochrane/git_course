@@ -930,6 +930,54 @@ git commit chocolate-cake.md pavlova.md \
     \end{minted}
 \end{frame}
 
+\subsection{Seeing details of a single commit}
+
+\begin{frame}[fragile]{Seeing details of a single commit}
+    I wrote more in the commit message than the command-line output from
+    \code{git commit} would suggest.
+
+    \begin{minted}[fontsize=\tiny]{output}
+        [main 6577b33] Add source information to recipes
+         3 files changed, 6 insertions(+)
+    \end{minted}
+
+    We learned earlier that we can see this extra information with \code{git
+    log}.  But that shows all commits.  We want to see the details of a
+    single commit.
+
+    The solution: \code{git show <commit-id>}.
+\end{frame}
+
+\begin{frame}[fragile]{Seeing details of a single commit}
+    For example:
+    \begin{minted}{shell}
+        git show 6577b33
+    \end{minted}
+    \begin{minted}[fontsize=\tiny]{output}
+commit 6577b337e7b91ac1b9486930060bc7ea3ff683ae (HEAD -> main)
+Author: Paul Cochrane <paul@peateasea.de>
+Date:   Thu Aug 13 11:09:25 2026 +0000
+
+    Add source information to recipes
+
+    Because these recipes are likely to change over time, it's a good idea
+    to make a note of where they originally came from, should we need to
+    clarify any details in ingredients or instructions in the future.
+
+diff --git a/recipes/chocolate-cake.md b/recipes/chocolate-cake.md
+index a5b6604..919ddea 100644
+--- a/recipes/chocolate-cake.md
++++ b/recipes/chocolate-cake.md
+@@ -1,5 +1,7 @@
+ # Chocolate cake
+
++Source: Edmonds Cookery Book, 51st De Luxe Edition, 2003.
++
+<snip>
+    \end{minted}
+    Try it out!  Note: your Git commit ID will be different.
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Adding files or changes to the repository}
 \begin{itemize}
