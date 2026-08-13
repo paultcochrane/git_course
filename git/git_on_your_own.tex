@@ -916,11 +916,15 @@ index a5b6604..919ddea 100644
     Since we've finished making these changes, and because they share a
     common idea/topic, it makes sense to bundle them into a single commit.
 
-    \begin{minted}{shell}
-        git commit chocolate-cake.md pavlova.md sour-cream-cheesecake.md
+    \begin{minted}[autogobble=false]{text}
+git commit chocolate-cake.md pavlova.md \
+    sour-cream-cheesecake.md
     \end{minted}
-    (after entering commit message and closing editor)
-    \begin{minted}{output}
+    Note: the trailing backslash continues the command on the next line.
+
+    Then, after entering commit message and closing editor, we see this
+    output:
+    \begin{minted}[fontsize=\tiny]{output}
         [main 6577b33] Add source information to recipes
          3 files changed, 6 insertions(+)
     \end{minted}
