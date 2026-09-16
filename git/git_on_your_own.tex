@@ -913,6 +913,48 @@ index a5b6604..919ddea 100644
     file?  Try it out!
 \end{frame}
 
+\begin{frame}[fragile]{Seeing all change details}
+    You should have seen output similar to this:
+    \begin{minted}[fontsize={\fontsize{4}{5}\selectfont}]{diff}
+diff --git a/recipes/chocolate-cake.md b/recipes/chocolate-cake.md
+index a5b6604..919ddea 100644
+--- a/recipes/chocolate-cake.md
++++ b/recipes/chocolate-cake.md
+@@ -1,5 +1,7 @@
+ # Chocolate cake
+
++Source: Edmonds Cookery Book, 51st De Luxe Edition, 2003.
++
+ ## Ingredients
+
+ 175 g butter, softened
+diff --git a/recipes/pavlova.md b/recipes/pavlova.md
+index 76c5bc7..ac5033b 100644
+--- a/recipes/pavlova.md
++++ b/recipes/pavlova.md
+@@ -1,5 +1,7 @@
+ # Pavlova
+
++Source: Edmonds Cookery Book, 51st De Luxe Edition, 2003.
++
+ ## Ingredients
+
+ 3 egg whites
+diff --git a/recipes/sour-cream-cheesecake.md b/recipes/sour-cream-cheesecake.md
+index 62ae3b7..5c0a40d 100644
+--- a/recipes/sour-cream-cheesecake.md
++++ b/recipes/sour-cream-cheesecake.md
+@@ -1,5 +1,7 @@
+ # Sour cream cheesecake
+
++Source: The New Zealand Flatters Cookbook, 1995.
++
+ ## Ingredients
+
+ ### Crust
+    \end{minted}
+\end{frame}
+
 \begin{frame}[fragile]{File changes with a common topic = a commit}
     We see that the changes we made to the files follow a common theme.
 
