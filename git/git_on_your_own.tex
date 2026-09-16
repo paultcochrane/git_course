@@ -1194,6 +1194,243 @@ index 919ddea..fd2163b 100644
     \end{outputcode}
 \end{frame}
 
+\subsection{Renaming files and directories}
+
+\begin{frame}[fragile]{Renaming a recipe}
+    Our chef has decided to add kiwifruit to the cheesecake to make it more
+    ``Kiwi''.  This decision has some consequences:
+    \begin{itemize}
+        \item It's now no longer a New York-style sour cream cheesecake;
+            it's more of a ``kiwi cheesecake''.
+        \item That means we want to change the recipe's name as well as the
+            name of the file containing the recipe.
+        \item Also, the ingredients list has changed and we need to extend
+            the instructions section.
+    \end{itemize}
+
+    Hence, there are many parts to this ostensibly simple change.
+
+    How do we handle these consequences?
+\end{frame}
+
+\begin{frame}[fragile]{Renaming a recipe}
+    There are a couple of ways of looking at these changes:
+    \begin{itemize}
+        \item It is a single conceptual change from a sour cream
+            cheesecake to a kiwi cheesecake.
+        \item It is a combination of smaller changes:
+            \begin{itemize}
+                \item Extend the ingredients list and instructions.
+                \item Rename the recipe and its associated file.
+            \end{itemize}
+    \end{itemize}
+
+    The first case requires a single commit;  the second case needs two
+    commits.
+
+    Which path you choose depends upon your project: neither is better or
+    worse than the other.
+
+    A good guiding principle is to think about what level of detail of
+    information would interest you in 3, 6, or 12 months in the future.
+\end{frame}
+
+\begin{frame}[fragile]{Renaming a recipe}
+    For our purposes here, let's consider this to be a single conceptual
+    change to the recipe.  I.e., we'll bundle everything into a single
+    commit.
+
+    Here are the recipe changes in detail:
+    \begin{itemize}
+        \item Replace the title with ``Kiwi cheesecake''.
+        \item Add a subsection under ``Ingredients'' called ``Topping'' and
+            add the single item ``2 kiwifruit, sliced''.
+        \item Add the following text to the end of the instructions:
+            \begin{quote}
+                Once the cake has cooled, arrange the kiwifruit slices around the cake's edge.
+            \end{quote}
+    \end{itemize}
+
+    Open the file \mintinline{text}{sour-cream-cheesecake.md} in your text
+    editor and make the above changes to it.
+\end{frame}
+
+\begin{frame}[fragile]{Renaming a recipe}
+    After you have finished editing the recipe file, save your changes and
+    exit the editor.
+
+    Check now the repository's status.  What \emph{two} commands could you
+    use to see this?
+
+    Check now the changes to the file.  What \emph{two} commands show you
+    this information?  Hint: in the last section we reduced how much we have
+    to type.
+\end{frame}
+
+\begin{frame}[fragile]{Renaming a recipe}
+    Running either \mintinline{shell}{git status} or \mintinline{shell}{git
+    st}, we see the repository's status, e.g.:
+
+    \begin{shellcode}
+        git st
+    \end{shellcode}
+    \begin{outputcode}
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   sour-cream-cheesecake.md
+
+no changes added to commit (use "git add" and/or "git commit -a")
+    \end{outputcode}
+\end{frame}
+
+\begin{frame}[fragile]{Renaming a recipe}
+    Running either \mintinline{shell}{git diff} or \mintinline{shell}{git di},
+    we see a diff of the changes to the file, e.g.:
+
+    \begin{shellcode}
+        git di
+    \end{shellcode}
+    \begin{minted}[fontsize={\fontsize{4}{5}\selectfont}]{diff}
+diff --git a/recipes/sour-cream-cheesecake.md b/recipes/sour-cream-cheesecake.md
+index 5c0a40d..42a0aeb 100644
+--- a/recipes/sour-cream-cheesecake.md
++++ b/recipes/sour-cream-cheesecake.md
+@@ -1,4 +1,4 @@
+-# Sour cream cheesecake
++# Kiwi cheesecake
+
+ Source: The New Zealand Flatters Cookbook, 1995.
+
+@@ -21,6 +21,10 @@ Source: The New Zealand Flatters Cookbook, 1995.
+ 0.5 teaspoons vanilla essence
+ 25 g butter, melted
+
++### Topping
++
++2 kiwifruit, sliced
++
+ ## Instructions
+
+ Combine the biscuit crumbs, sugar, cinnamon and melted butter, and press
+@@ -31,3 +35,5 @@ until it's creamy. Add the eggs, sugar, sour cream, flour, vanilla and the
+ 25 g melted butter. Pour onto the crumb base and bake at 160 degrees C for
+ 45-55 minutes. Check it after about 20 minutes, as you may want to put some
+ foil loosely over it if the top has already browned a bit.
++
++Once the cake has cooled, arrange the kiwifruit slices around the cake's edge.
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Renaming a recipe}
+    The final change to make is to rename the file containing the recipe.
+    We do this with the command \mintinline{shell}{git mv}.
+
+    The \mintinline{shell}{mv} part of \mintinline{shell}{git mv} quite
+    literally means ``move''.  In other words, we're \emph{moving} the file
+    from one name to another.
+
+    This is important to remember: in Git, moving a file from one
+    \emph{location} to another or from one \emph{name} to another is the
+    same conceptual process: \emph{move}.
+
+    Thus, renaming a file or moving a file between directories uses the same
+    command: \mintinline{shell}{git mv}.
+\end{frame}
+
+\begin{frame}[fragile]{Renaming a recipe}
+    Rename the recipe's file with the following command:
+    \begin{shellcode}
+        git mv sour-cream-cheesecake.md kiwi-cheesecake.md
+    \end{shellcode}
+
+    Now check the repository's status.
+
+    What do you see?  How is this different from the status information
+    we've previously seen?
+\end{frame}
+
+\begin{frame}[fragile]{Renaming a recipe}
+    Viewing the repository status, we see the following output:
+    \begin{shellcode}
+        git status
+    \end{shellcode}
+    \begin{minted}[fontsize=\tiny, escapeinside=||]{output}
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        |\textcolor{PaulTolBrightGreen}{\textbf{renamed: sour-cream-cheesecake.md -> kiwi-cheesecake.md}}|
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        |\textcolor{PaulTolBrightRed}{\textbf{modified: kiwi-cheesecake.md}}|
+    \end{minted}
+
+    Git has detected the file name change and has staged that to be included
+    in the next commit.
+
+    Git has also noticed file content changes, giving us a modified file.
+    However, these changes are not (yet) staged for inclusion in the next
+    commit.
+\end{frame}
+
+\begin{frame}[fragile]{Renaming a recipe}
+    As discussed earlier, we want the file content changes to be bundled
+    with the same commit as the filename change.  Thus, we update what will
+    be committed by running \mintinline{shell}{git add}:
+
+    \begin{shellcode}
+        git add kiwi-cheesecake.md
+    \end{shellcode}
+
+    The status will now only show the rename operation as what will be
+    committed.
+    \begin{shellcode}
+        git st
+    \end{shellcode}
+    \begin{outputcode}
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        renamed:    sour-cream-cheesecake.md -> kiwi-cheesecake.md
+    \end{outputcode}
+
+    Nevertheless, the file content changes will be committed along with the
+    rename operation.
+\end{frame}
+
+\begin{frame}[fragile]{Renaming a recipe}
+    All changes are staged and ready to commit.  Because we've defined an
+    alias for the commit operation, we can use either
+    \mintinline{shell}{git commit} or \mintinline{shell}{git ci} to commit
+    these changes.  For example:
+
+    \begin{shellcode}
+        git ci
+    \end{shellcode}
+
+    Writing this commit message:
+    \begin{outputcode}
+    Make our cheesecake recipe more "Kiwi"
+
+    ... by topping the cake with kiwifruit slices.  Let's see if our
+    customers like it!
+    \end{outputcode}
+
+    and then saving it and exiting the editor, we see this output:
+
+    \begin{outputcode}
+[main e7b93eb] Make our cheesecake recipe more "Kiwi"
+ Date: Wed Sep 16 12:52:00 2026 +0000
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+ rename recipes/{sour-cream-cheesecake.md => kiwi-cheesecake.md} (86%)
+    \end{outputcode}
+
+    Great!  We handled the consequences of our chef's recipe update.
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Adding files or changes to the repository}
 \begin{itemize}
