@@ -58,11 +58,11 @@ Where to start?
 
 \begin{frame}[fragile]{Project structure}
 Create the project directories by running the following commands:
-\begin{minted}{shell}
+\begin{shellcode}
     mkdir kiwi-cakes-and-coffee
     cd kiwi-cakes-and-coffee
     mkdir recipes
-\end{minted}
+\end{shellcode}
 
 You now have this directory structure:
 \begin{minted}{console}
@@ -81,9 +81,9 @@ You now have this directory structure:
 
     \begin{itemize}
         \item Enter the \code{recipes} directory
-        \begin{minted}{shell}
+        \begin{shellcode}
             cd recipes
-        \end{minted}
+        \end{shellcode}
         \item Open a new file in your text editor called \code{chocolate-cake.md}.
     \end{itemize}
 \end{frame}
@@ -138,10 +138,10 @@ You now have this directory structure:
     To create a Git repository, enter the project's base directory and run
     \code{git init}.
 
-    \begin{minted}{shell}
+    \begin{shellcode}
         cd kiwi-cakes-and-coffee
         git init
-    \end{minted}
+    \end{shellcode}
 
     You should see this output:
     \begin{minted}[fontsize=\tiny]{output}
@@ -181,9 +181,9 @@ You now have this directory structure:
     \end{itemize}
 
     Change the branch name to \code{main}:
-    \begin{minted}{shell}
+    \begin{shellcode}
         git branch -m main
-    \end{minted}
+    \end{shellcode}
 \end{frame}
 
 \subsection{Checking our surroundings}
@@ -216,9 +216,9 @@ You now have this directory structure:
         \item Files are added, changed, deleted, moved, renamed.
         \item Use \code{git status} to find the current repository state:
     \end{itemize}
-    \begin{minted}{shell}
+    \begin{shellcode}
         git status
-    \end{minted}
+    \end{shellcode}
     \begin{minted}[fontsize=\tiny]{output}
         On branch main
 
@@ -271,9 +271,9 @@ You now have this directory structure:
 
     We want to track the chocolate cake recipe, hence we follow the advice
     in the status output and use \code{git add} to track it:
-    \begin{minted}{shell}
+    \begin{shellcode}
         git add recipes/chocolate-cake.md
-    \end{minted}
+    \end{shellcode}
     This command produces no output; don't be surprised to see nothing
     appear on the console.
 \end{frame}
@@ -297,9 +297,9 @@ You now have this directory structure:
     \only<2->{Use the \code{git status} command.  Try it out!}
 
     \begin{onlyenv}<3>
-        \begin{minted}{shell}
+        \begin{shellcode}
             git status
-        \end{minted}
+        \end{shellcode}
         \begin{minted}{output}
             On branch main
 
@@ -345,9 +345,9 @@ You now have this directory structure:
     To save this change permanently, we commit it with \code{git commit},
     e.g.:
 
-    \begin{minted}{shell}
+    \begin{shellcode}
         git commit recipes/chocolate-cake.md
-    \end{minted}
+    \end{shellcode}
 
     This command will open a text editor with this content:
     \begin{minted}[fontsize=\tiny]{output}
@@ -414,9 +414,9 @@ You now have this directory structure:
     \end{itemize}
 
     To use Nano instead of Vim in Git-Bash on Windows, run this command:
-    \begin{minted}{shell}
+    \begin{shellcode}
         export EDITOR=nano
-    \end{minted}
+    \end{shellcode}
 \end{frame}
 
 \subsection{Committing our first recipe (cont.)}
@@ -477,9 +477,9 @@ You now have this directory structure:
 
 \begin{frame}[fragile]{Post-commit repository state}
     Let's look at the state of the repository:
-    \begin{minted}{shell}
+    \begin{shellcode}
         git status
-    \end{minted}
+    \end{shellcode}
     \begin{minted}{output}
         On branch main
         nothing to commit, working tree clean
@@ -503,9 +503,9 @@ You now have this directory structure:
 
     It shows a summary of the commits we've made.
 
-    \begin{minted}{shell}
+    \begin{shellcode}
         git log
-    \end{minted}
+    \end{shellcode}
     \begin{minted}[fontsize=\tiny, autogobble=false]{output}
 commit 98fb831533850408c8fb6fc637e4d2a05636011f (HEAD -> main)
 Author: Paul Cochrane <paul@peateasea.de>
@@ -607,15 +607,15 @@ Date:   Tue Aug 11 13:54:32 2026 +0000
 
 \begin{frame}[fragile]{Worked solution: add two new recipes to repository}
     Save recipe text to file
-    \begin{minted}{shell}
+    \begin{shellcode}
         vim sour-cream-cheesecake.md
         vim pavlova.md
-    \end{minted}
+    \end{shellcode}
 
     Check repository status
-    \begin{minted}{shell}
+    \begin{shellcode}
         git status
-    \end{minted}
+    \end{shellcode}
     \begin{minted}[fontsize=\tiny]{output}
         On branch main
         Untracked files:
@@ -629,14 +629,14 @@ Date:   Tue Aug 11 13:54:32 2026 +0000
 
 \begin{frame}[fragile]{Worked solution: add two new recipes to repository}
     Tell Git to track the files
-    \begin{minted}{shell}
+    \begin{shellcode}
         git add sour-cream-cheesecake.md pavlova.md
-    \end{minted}
+    \end{shellcode}
 
     Check repository status again
-    \begin{minted}{shell}
+    \begin{shellcode}
         git status
-    \end{minted}
+    \end{shellcode}
     \begin{minted}[fontsize=\tiny]{output}
         On branch main
         Changes to be committed:
@@ -648,9 +648,9 @@ Date:   Tue Aug 11 13:54:32 2026 +0000
 
 \begin{frame}[fragile]{Worked solution: add two new recipes to repository}
     Commit the repository changes
-    \begin{minted}{shell}
+    \begin{shellcode}
         git commit
-    \end{minted}
+    \end{shellcode}
     \begin{minted}[fontsize=\tiny]{output}
 Add remaining cake recipes to initial batch
 
@@ -678,9 +678,9 @@ lot of work but sure to be a stand-out in the cake selection.
 
 \begin{frame}[fragile]{Worked solution: add two new recipes to repository}
     See the log of commits
-    \begin{minted}{shell}
+    \begin{shellcode}
         git log
-    \end{minted}
+    \end{shellcode}
     \begin{minted}[fontsize=\tiny]{output}
 commit 666d837a88119015906bfcf07552de8a19682e6c (HEAD -> main)
 Author: Paul Cochrane <paul@peateasea.de>
@@ -742,9 +742,9 @@ Date:   Tue Aug 11 13:54:32 2026 +0000
     How can we find out what changed in the repository?
 
     One idea, check the status
-    \begin{minted}{shell}
+    \begin{shellcode}
         git status
-    \end{minted}
+    \end{shellcode}
     \begin{minted}[fontsize=\tiny]{output}
         On branch main
         Changes not staged for commit:
@@ -853,9 +853,9 @@ Date:   Tue Aug 11 13:54:32 2026 +0000
 
 \begin{frame}[fragile]{Seeing the change details in a specific file}
     Let's try \code{git diff} out on a single file first:
-    \begin{minted}{shell}
+    \begin{shellcode}
         git diff chocolate-cake.md
-    \end{minted}
+    \end{shellcode}
     \begin{minted}[fontsize=\tiny]{output}
 diff --git a/recipes/chocolate-cake.md b/recipes/chocolate-cake.md
 index a5b6604..919ddea 100644
@@ -905,9 +905,9 @@ index a5b6604..919ddea 100644
     To see the details of all changes between the repository and the working
     copy, run \code{git diff} without a filename argument.
 
-    \begin{minted}{shell}
+    \begin{shellcode}
         git diff
-    \end{minted}
+    \end{shellcode}
 
     What's the difference between this output and what we saw for the single
     file?  Try it out!
@@ -995,9 +995,9 @@ git commit chocolate-cake.md pavlova.md \
 
 \begin{frame}[fragile]{Seeing details of a single commit}
     For example:
-    \begin{minted}{shell}
+    \begin{shellcode}
         git show 6577b33
-    \end{minted}
+    \end{shellcode}
     \begin{minted}[fontsize=\tiny]{output}
 commit 6577b337e7b91ac1b9486930060bc7ea3ff683ae (HEAD -> main)
 Author: Paul Cochrane <paul@peateasea.de>
@@ -1078,10 +1078,10 @@ index a5b6604..919ddea 100644
     How did you get on?
 
     To alias \code{commit} as \code{ci}, and \code{diff} as \code{di} run:
-    \begin{minted}{shell}
+    \begin{shellcode}
         git config --global alias.ci commit
         git config --global alias.di diff
-    \end{minted}
+    \end{shellcode}
 \end{frame}
 
 \begin{frame}[fragile]{A quick aliased commit}
@@ -1209,12 +1209,12 @@ index 919ddea..fd2163b 100644
 \end{itemize}
 
 Let's add a file in tiny steps to see the process in detail:
-    \begin{minted}{shell}
+    \begin{shellcode}
     touch moo     # create a file
     git status    # check repo status (file is *untracked*)
     git add moo   # add file to the staging area
     git status    # file is now a change to be committed
-    \end{minted}
+    \end{shellcode}
 \end{frame}
 
 \begin{frame}
