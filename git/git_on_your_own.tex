@@ -1431,6 +1431,222 @@ Changes to be committed:
     Great!  We handled the consequences of our chef's recipe update.
 \end{frame}
 
+\subsection{Changing directory structure}
+
+\begin{frame}[fragile]{A savoury direction change}
+    Our customers have been asking for savoury cafe food options.
+
+    Consequently, our chef has come up with two new recipes (while trying
+    not to deviate from the cake theme too much) to meet this need:
+    \begin{itemize}
+        \item Cheese scones
+        \item Bacon and egg pie
+    \end{itemize}
+
+    We'd focussed only on sweet recipes up until this point.  How do we deal
+    with both savoury and sweet recipes?
+\end{frame}
+
+\begin{frame}[fragile]{Dealing with structural change}
+    Let's take a look at our directory structure:
+    \begin{minted}{console}
+        kiwi-cakes-and-coffee
+        └── recipes
+            ├── chocolate-cake.md
+            ├── kiwi-cheesecake.md
+            └── pavlova.md
+    \end{minted}
+    Looking at the \code{recipes/} directory name, we realise that it's much
+    too generic.  We need to be more specific.
+
+    The simple and direct solution is to add \code{sweet/} and
+    \code{savoury/} directories, and then to move the existing files into
+    the \code{sweet/} directory.  That way, we have a logical location for
+    our savoury newcomers.
+\end{frame}
+
+\begin{frame}[fragile]{Detailed structural changes}
+    At a detailed level, what do we need to do?
+
+    The steps are:
+    \begin{itemize}
+        \item Create new \code{sweet/} and \code{savoury/} recipe
+            subdirectories.
+        \item Move existing recipes into the \code{sweet/}
+            directory.
+        \item Commit the directory structure change.
+        \item Create the new recipe files under the \code{savoury/}
+            directory.
+        \item Add the new files and commit that change to the repository.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Make dirs; move files}
+    Let's make these changes now.  First, create the directories:
+    \begin{minted}{text}
+        cd recipes/
+        mkdir sweet
+        mkdir savoury
+    \end{minted}
+
+    Remember that renaming and moving are the same thing?  Thus, to move the
+    pre-existing files into the \code{sweet/} directory, we use
+    \mintinline{shell}{git mv}:
+    \begin{minted}[autogobble=false]{text}
+git mv \
+    chocolate-cake.md kiwi-cheesecake.md pavlova.md \
+    sweet/
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{Make dirs; move files}
+    The repository state should have changed.  Let's check:
+    \begin{shellcode}
+        git st
+    \end{shellcode}
+    \begin{outputcode}
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        renamed:    chocolate-cake.md -> sweet/chocolate-cake.md
+        renamed:    kiwi-cheesecake.md -> sweet/kiwi-cheesecake.md
+        renamed:    pavlova.md -> sweet/pavlova.md
+    \end{outputcode}
+    Although Git says the files were ``renamed'', really, we've moved them.
+
+    What's missing from this output?  Why might that be?
+
+    Answer: we've added a directory without content (\code{savoury/}: this
+    only structure and not content, hence not something that Git tracks
+    directly.
+\end{frame}
+
+\begin{frame}[fragile]{Make dirs; move files}
+    This change is in preparation for us to add the new recipes, hence it's
+    self-contained and deserves its own commit:
+    \begin{shellcode}
+        git ci
+    \end{shellcode}
+    Entering the commit message into the editor, saving the message and
+    exiting, we see:
+    \begin{outputcode}
+[main 8705e91] Move existing recipes into sweet/ subdir
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ rename recipes/{ => sweet}/chocolate-cake.md (100%)
+ rename recipes/{ => sweet}/kiwi-cheesecake.md (100%)
+ rename recipes/{ => sweet}/pavlova.md (100%)
+    \end{outputcode}
+
+    Looking good!
+\end{frame}
+
+\begin{frame}[fragile]{Exercise: add two new recipes to \texttt{savoury/} directory}
+    Practice makes perfect:
+    \begin{itemize}
+        \item Add the two new recipes (links below) to the \code{savoury/} directory.
+            \begin{itemize}
+                \item \href{https://raw.githubusercontent.com/paultcochrane/git_course/refs/heads/master/git/examples/cheese-scones.md}{\beamerbutton{\texttt{cheese-scones.md}}}
+                \item \href{https://raw.githubusercontent.com/paultcochrane/git_course/refs/heads/master/git/examples/bacon-and-egg-pie.md}{\beamerbutton{\texttt{bacon-and-egg-pie.md}}}
+            \end{itemize}
+        \item Commit them to the repository.
+        \item Before each step, check the repository status to see what
+            changes Git detects.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{A couple of savoury characters}
+    Here's the text for the \code{savoury/cheese-scones.md} recipe
+    (\href{https://raw.githubusercontent.com/paultcochrane/git_course/refs/heads/master/git/examples/cheese-scones.md}{\beamerbutton{link}}):
+
+    \inputminted[fontsize=\tiny]{markdown}{examples/cheese-scones.md}
+    {\footnotesize \emph{Edmonds Cookery Book}, 51st De Luxe Edition, 2003.}
+\end{frame}
+
+\begin{frame}[fragile]{A couple of savoury characters}
+    And here's the text for the \code{savoury/bacon-and-egg-pie.md} recipe
+    (\href{https://raw.githubusercontent.com/paultcochrane/git_course/refs/heads/master/git/examples/bacon-and-egg-pie.md}{\beamerbutton{link}}):
+
+    \inputminted[fontsize=\tiny]{markdown}{examples/bacon-and-egg-pie.md}
+    {\footnotesize \emph{Edmonds Cookery Book}, 51st De Luxe Edition, 2003.}
+\end{frame}
+
+\begin{frame}[fragile]{Worked solution: add savoury recipes to repository}
+    While in the \code{recipes/} directory, we check the repository status:
+    \begin{shellcode}
+        git st
+    \end{shellcode}
+    \begin{outputcode}
+On branch main
+nothing to commit, working tree clean
+    \end{outputcode}
+    The \code{savoury/} subdir doesn't appear because a directory is just
+    metadata, not content.  Remember: Git is the ``stupid contentt tracker''.
+
+    Create the files \code{savoury/cheese-scones.md} and
+    \code{savoury/bacon-and-egg-pie.md}.
+\end{frame}
+
+\begin{frame}[fragile]{Worked solution: add savoury recipes to repository}
+    We've changed the working copy.  Let's see the repository state:
+    \begin{shellcode}
+        git st
+    \end{shellcode}
+    \begin{outputcode}
+On branch main
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        savoury/
+
+nothing added to commit but untracked files present (use "git add" to track)
+    \end{outputcode}
+\end{frame}
+
+\begin{frame}[fragile]{Worked solution: add savoury recipes to repository}
+    The files under the \code{savoury/} directory will remain ``unseen'' by
+    Git until we add them:
+    \begin{shellcode}
+        git add savoury/cheese-scones.md savoury/bacon-and-egg-pie.md
+    \end{shellcode}
+
+    This produces no output on the terminal.  However, the repository state
+    has changed:
+    \begin{shellcode}
+        git st
+    \end{shellcode}
+    \begin{outputcode}
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   savoury/bacon-and-egg-pie.md
+        new file:   savoury/cheese-scones.md
+    \end{outputcode}
+
+    The new files are staged and ready to be committed to the repository.
+\end{frame}
+
+\begin{frame}[fragile]{Worked solution: add savoury recipes to repository}
+    Commit away!
+    \begin{shellcode}
+        git ci
+    \end{shellcode}
+    \begin{outputcode}
+[main 586c856] Add savoury recipes
+ 2 files changed, 41 insertions(+)
+ create mode 100644 recipes/savoury/bacon-and-egg-pie.md
+ create mode 100644 recipes/savoury/cheese-scones.md
+    \end{outputcode}
+
+    What's the repo state look like?
+    \begin{shellcode}
+        git st
+    \end{shellcode}
+    \begin{outputcode}
+On branch main
+nothing to commit, working tree clean
+    \end{outputcode}
+    Our working tree is clean again.  Nice!
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Adding files or changes to the repository}
 \begin{itemize}
