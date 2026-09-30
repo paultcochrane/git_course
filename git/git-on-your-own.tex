@@ -1647,6 +1647,79 @@ nothing to commit, working tree clean
     Our working tree is clean again.  Nice!
 \end{frame}
 
+\subsection{Getting help}
+
+\begin{frame}[fragile]{Getting help}
+    There are many places to get help in using Git:
+    \begin{itemize}
+        \item Books
+        \item Online
+        \item Git's built-in help
+        \item Unix/Linux man pages
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Book: Pro Git}
+    \begin{itemize}
+        \item Authors: Scott Chacon and Ben Straub
+        \item Excellent and in-depth explanation of Git, how it works, and
+            its commands.
+        \item Scott Chacon was one of the GitHub founders.
+        \item Available for free online at:
+            \url{https://git-scm.com/book/en/v2}
+    \end{itemize}
+    \centerline{%
+        \includegraphics[height=0.5\textheight]{images/progit-book-cover.png}
+    }
+\end{frame}
+
+\begin{frame}[fragile]{Book: How Git Works}
+    \begin{itemize}
+        \item Author: Julia Evans
+        \item Short, yet in-depth guide to Git and how it works internally
+        \item Discusses some basics, but mostly advanced topics.
+        \item Julia Evans writes zines about various tech-related topics.
+        \item Link: \url{https://wizardzines.com/zines/git/}
+    \end{itemize}
+    \centerline{%
+        \includegraphics[height=0.5\textheight]{images/how-git-works-book-cover.jpg}
+    }
+\end{frame}
+
+\begin{frame}[fragile]{Online resources}
+    This is a tiny selection of the wealth of information that exists online
+    about Git.
+    \begin{itemize}
+        \item Pro Git book: \url{https://git-scm.com/book/en/v2}
+        \item Git reference documentation: \url{https://git-scm.com/docs}
+        \item Cheat sheet: \url{https://git-scm.com/cheat-sheet}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Git's built-in help}
+    Git provides extensive documentation, included as part of the standard
+    installation.
+
+    Show basic usage information:
+    \begin{minted}{text}
+        git help
+    \end{minted}
+
+    Show detailed subcommand documentation, e.g.\ for the \code{commit}
+    subcommand:
+    \begin{minted}{text}
+        git help commit
+    \end{minted}
+
+    On Linux, or Windows via WSL, detailed subcommand documentation is
+    provided by the appropriate man page.
+
+    Windows via GitBash or PowerShell opens a web browser pointing to a
+    local web page of the same information.
+
+    Try it out!
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Adding files or changes to the repository}
 \begin{itemize}
