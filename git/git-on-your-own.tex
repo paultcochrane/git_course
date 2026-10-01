@@ -1735,6 +1735,90 @@ nothing to commit, working tree clean
     Your goal: get a feel for what the built-in documentation looks like.
 \end{frame}
 
+\subsection{Deleting files}
+
+\begin{frame}[fragile]{The pav' needs to go}
+    Unfortunately, the pavlova doesn't sell as well as we'd hoped.
+
+    Also, it's the cake that takes the most work to make.
+
+    We've discussed this with our chef and have decided to remove it from
+    our selection of cakes.
+
+    How do we do this?
+\end{frame}
+
+\begin{frame}[fragile]{The pav' needs to go}
+    In Git, we delete files with the \code{git rm} command.  The \code{rm}
+    part is short for \emph{remove}.
+
+    Let's try this now and remove the pavlova recipe file.
+    \begin{shellcode}
+        git rm sweet/pavlova.md
+    \end{shellcode}
+    \begin{outputcode}
+        rm 'recipes/sweet/pavlova.md'
+    \end{outputcode}
+
+    Git shows the operation it performed: the Unix-like \code{rm} command.
+
+    This changes the repository state:
+    \begin{shellcode}
+        git status
+    \end{shellcode}
+    \begin{outputcode}
+On branch main
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    sweet/pavlova.md
+    \end{outputcode}
+    Note: Git also shows us how to undo the deletion!
+\end{frame}
+
+\begin{frame}[fragile]{The pav' needs to go}
+    Running \code{git rm} only changed the repository state, we have to
+    commit that to make it permanent:
+    \begin{shellcode}
+        git commit
+    \end{shellcode}
+    \begin{outputcode}
+[main 49d1868] Remove now unnecessary pavlova recipe
+ 1 file changed, 23 deletions(-)
+ delete mode 100644 recipes/sweet/pavlova.md
+    \end{outputcode}
+    Where we also mentioned in the commit message \emph{why} this change was
+    necessary.
+
+    \begin{shellcode}
+        git log -1  # show log of last commit
+    \end{shellcode}
+    \begin{outputcode}
+commit 49d1868a9dd84bd838fa329b0c0c9f4aaab56a75 (HEAD -> main)
+Author: Paul Cochrane <paul@peateasea.de>
+Date:   Thu Oct 1 17:10:52 2026 +0000
+
+    Remove now unnecessary pavlova recipe
+
+    We found that this cake didn't sell so well and it's a lot of work to
+    make, hence we're removing it from our selection of cakes.
+    \end{outputcode}
+\end{frame}
+
+\begin{frame}[fragile]{Important points about \texttt{git rm}}
+    Note that \code{git rm} does \emph{not} remove the files from the
+    repository.  It only removes them from the working copy.  The file can
+    still be accessed by checking out an earlier commit.
+
+    \emoji{bomb} Be careful what you add to a repository!  Once committed,
+    it's always available!
+
+    \emoji{thumbs-up} This is great to retrieve old work or accidentally
+    deleted files.
+
+    \emoji{stop-sign} DO NOT add sensitive information such as passwords to
+    the repository!
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Adding files or changes to the repository}
 \begin{itemize}
