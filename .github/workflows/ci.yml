@@ -21,7 +21,7 @@ jobs:
         pre_compile: "cd git"
 
     - name: Release draft
-      uses: softprops/action-gh-release@v2.5.0
+      uses: softprops/action-gh-release@v3
       with:
         name: draft
         draft: true
