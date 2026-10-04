@@ -1819,6 +1819,157 @@ Date:   Thu Oct 1 17:10:52 2026 +0000
     the repository!
 \end{frame}
 
+\subsection{The three faces of a Git repository}
+
+\begin{frame}[fragile]{The three faces of a Git repository}
+    There are three aspects to a Git repository:
+    \begin{itemize}
+        \item the working copy
+        \item the staging area
+        \item the repository
+    \end{itemize}
+
+    The word ``repository'' is used in two senses here.
+
+    One is very specific: it is the \code{.git} directory where the content
+    is stored.
+
+    The other, more loose term, encompasses the working copy, staging area
+    and the \code{.git} directory repository.
+
+    The repository is really only the \code{.git} directory and its content.
+    However, we often say ``the repository'' when we mean the project
+    directory.
+\end{frame}
+
+\begin{frame}[fragile]{The working copy}
+    The files we see when we run \code{ls} (or \code{dir} in PowerShell) is
+    referred to as the \emph{working copy}.
+
+    This is where we make changes to project files that we later wish to
+    store in the repository as a commit.  I.e.\  they're the files that
+    we're ``working on'', hence the name \emph{working copy}.
+
+    For example, from our \code{kiwi-cakes-and-coffee} project:
+    \begin{outputcode}
+recipes
+├── savoury
+│   ├── bacon-and-egg-pie.md
+│   └── cheese-scones.md
+└── sweet
+    ├── chocolate-cake.md
+    └── kiwi-cheesecake.md
+    \end{outputcode}
+
+    Note: the working copy also called the \emph{working directory} or the
+    \emph{working tree}.  These are all terms for the same thing.
+\end{frame}
+
+\begin{frame}[fragile]{The staging area}
+    In general, before we commit changes to the repository, we move them
+    from the working copy into the \emph{staging area}.
+
+    Adding file changes to the staging area is called \emph{staging}.
+    Removing staged changes is called \emph{unstaging}.
+
+    We've seen the word \emph{staged} in the output from \code{git status}
+    after using e.g.\ \code{git add} or \code{git rm}.
+
+    For instance, from earlier:
+    \begin{minted}[fontsize=\tiny, escapeinside=||]{output}
+        On branch main
+        Changes not |\textbf{staged}| for commit:
+          (use "git add <file>..." to update what will be committed)
+          (use "git restore <file>..." to discard changes in working directory)
+                modified:   chocolate-cake.md
+                modified:   pavlova.md
+                modified:   sour-cream-cheesecake.md
+
+        no changes added to commit (use "git add" and/or "git commit -a")
+    \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]{The staging area}
+    Note: due to historical reasons, the staging area is also called the
+    \emph{index} or the \emph{cache}.
+
+    E.g.\ to see a diff of the changes in the staging area, one uses:
+    \begin{shellcode}
+        git diff --cached
+    \end{shellcode}
+
+    The \code{git status} output can even use both terms at once:
+    \begin{minted}[fontsize=\tiny, escapeinside=||]{output}
+        Changes to be committed:
+          (use "git rm --|\textbf{cached}| <file>..." to |\textbf{unstage}|)
+                new file:   recipes/chocolate-cake.md
+    \end{minted}
+
+    Yes, this can be confusing.  \emoji{confused-face}  Sorry about that!
+\end{frame}
+
+\begin{frame}[fragile]{The repository}
+    Where snapshots of project state (i.e.\ \emph{commits}) are stored.
+
+    It's just a directory with lots of files.
+
+    For example:
+    \begin{shellcode}
+        ls .git
+    \end{shellcode}
+    \begin{outputcode}
+COMMIT_EDITMSG
+HEAD
+branches/
+config
+description
+hooks/
+index
+info/
+logs/
+objects/
+refs/
+    \end{outputcode}
+
+    Simple!
+\end{frame}
+
+\begin{frame}[fragile]{Three components visually related}
+    tikz image...
+    working copy -> staging area -> repository
+\end{frame}
+
+\begin{frame}[fragile]{But why the separation?}
+    Why not just commit directly?
+
+    Why have the staging area at all?
+
+    It's possible to commit changes directly to the repository, and we've
+    already done that:
+    \begin{shellcode}
+        git commit <files>
+    \end{shellcode}
+
+    However, one often wishes to select a subset of changes from the working
+    copy and collect these into a commit.  This ``middle ground'' is used
+    to pre-select and organise changes before committing them.
+
+    The staging area is perfect for this use case and can be used if
+    one wants to.
+\end{frame}
+
+\subsection{Recap: the three stages of a commit}
+
+\begin{frame}[fragile]{Recap: the three stages of a commit}
+    \begin{enumerate}
+        \item Edit files in the working copy.
+        \item Move changes from the working copy to the staging area
+            (e.g.\ \code{git add}, \code{git rm}, \code{git mv}).
+        \item Save the collected changes from the staging area as a snapshot
+            in the repository (\code{git commit}).
+    \end{enumerate}
+\end{frame}
+
 \begin{frame}[fragile]
 \frametitle{Adding files or changes to the repository}
 \begin{itemize}
