@@ -2056,62 +2056,6 @@ refs/
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Adding files or changes to the repository}
-\begin{itemize}
-    \item To add files (or changes to files) to the repository's
-        staging area, we use the \code{git add} command.
-    \begin{itemize}
-        \item the \emph{staging area} is where changes to the repository
-            are kept before they are committed.
-    \end{itemize}
-    \item Git now knows to \emph{track} the file for future changes.
-    \item \emph{Staging}, \emph{tracking}, and \emph{adding} are all
-        roughly equivalent terms for the same process.
-\end{itemize}
-
-Let's add a file in tiny steps to see the process in detail:
-    \begin{shellcode}
-    touch moo     # create a file
-    git status    # check repo status (file is *untracked*)
-    git add moo   # add file to the staging area
-    git status    # file is now a change to be committed
-    \end{shellcode}
-\end{frame}
-
-\begin{frame}
-\frametitle{Add/commit cycle}
-The add/commit cycle is like how a photographer creates a group photo.
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Getting Help}
-\begin{itemize}
-    \item man pages
-    \item git help
-    \item books
-    \begin{itemize}
-        \item How Git Works; Julia Evans; \url{https://wizardzines.com/zines/git/}
-        \item Pro Git; Scott Chacon
-    \end{itemize}
-    \item online references
-    \begin{itemize}
-        \item Git book: \url{https://git-scm.com/doc}
-        \item Cheat sheet: \url{https://github.com/dasesu/git/blob/main/Git_quick_reference.pdf}
-    \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Exercise: git help}
-\begin{itemize}
-    \item Use \code{git help} on \code{init}, \code{add}, \code{commit} and
-        \code{config} commands
-    \item Open and browse on \url{https://git-scm.org}
-\end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
 \frametitle{Parts of a local Git repository}
 \begin{columns}[T]
     \begin{column}{0.5\textwidth}
@@ -2131,18 +2075,6 @@ The add/commit cycle is like how a photographer creates a group photo.
         \end{center}
     \end{column}
 \end{columns}
-\end{frame}
-
-\begin{frame}
-\frametitle{Snapshots and diffs}
-\begin{itemize}
-    \item Photograph analogy
-    \item Commits build on one another
-    \item Working directory: checked out version of local repository
-    \item Staging area: what will be committed next
-    \item Repository: storage of snapshots
-    \item Contrast with other systems, which store diffs between changes
-\end{itemize}
 \end{frame}
 
 \begin{frame}
@@ -2185,98 +2117,6 @@ also works with branch names:
     \item[\code{main~4}] great-great grandparent of tip of “\code{main}” branch
         experimental tip of “\code{experimental}” branch
 \end{description}
-\end{frame}
-
-\begin{frame}
-\frametitle{Detour: Commit advice}
-
-when, what, how to commit
-
-commit messages
-
-commit a single, focussed idea/concept
-
-small commits have small diffs and are easier for others to review
-
-Recommendations for commits:
-
-\begin{itemize}
-    \item A commit should contain a single, self contained idea.
-    \item The commit message should contain a short description
-        of the idea or change being made in this commit.
-    \item A one line subject line
-    \item An optional text describing more details of the change. The
-        why of the change is important. Remember: this is a
-        communication exercise.
-    \item Commits should be as small as possible (atomic commits).
-\end{itemize}
-
-    http://sethrobertson.github.io/GitBestPractices
-
-How often should I commit?
-\begin{itemize}
-    \item as often as possible
-    \item “release early, release often”
-    \item as soon as the changes belonging to a given idea are
-        ﬁnished
-    \item don’t be afraid to commit!
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}
-\frametitle{Commit advice (cont.)}
-
-\begin{itemize}
-    \item Each commit needs a “commit message” describing the
-    change
-    \item Commit messages document what was done in each
-    change and why
-    \item An important part of communication within a project:
-    \begin{itemize}
-        \item commit logs are messages to other people
-        \item \ldots and are messages to yourself in the future!
-    \end{itemize}
-\end{itemize}
-
-What should I write in a commit message?
-\begin{itemize}
-    \item a short description of the change
-    \item the description can sometimes be longer than the actual
-    change! The message describes the “why” of the change.
-    \item the message should be able to explain later what
-    happened in the change
-    \item note: when problems occur, this is where one looks ﬁrst for
-        information
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}
-\frametitle{Extending the sample project}
-\begin{itemize}
-    \item edit, add, commit
-    \item seeing what we've done
-    \begin{itemize}
-        \item git log (--graph)
-        \item git show
-        \item git diff
-    \end{itemize}
-    \item deleting/renaming files
-    \begin{itemize}
-        \item git rm
-        \item git mv
-    \end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Exercise: extend the sample project further}
-\begin{itemize}
-    \item recommended steps \ldots
-    \item practice git add/commit/rm/mv
-    \item practice git log/show/diff
-\end{itemize}
 \end{frame}
 
 \begin{frame}
