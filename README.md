@@ -1,6 +1,7 @@
-# Git Course
+# Git in detail
 
-A course in learning how to use the version control system [Git](http://git-scm.com/).
+A deep-dive example-based introduction to using the version control system
+[Git](http://git-scm.com/).
 
 ## Building the slides from source
 
