@@ -2,8 +2,8 @@
 
 default: slides
 
-overview-background-setup.pdf: overview-background-setup.tex
-	latexmk -pdflua -shell-escape overview-background-setup.tex
+%.pdf: %.tex
+	latexmk -pdflua -shell-escape $<
 
 slides:
 	latexmk -pdflua -shell-escape git.tex
