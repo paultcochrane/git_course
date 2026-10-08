@@ -61,4 +61,7 @@
     bgcolor=Beige,
 }
 
+\newminted{shell}{}
+\newminted{output}{fontsize=\tiny}
+
 % vim: expandtab shiftwidth=4
