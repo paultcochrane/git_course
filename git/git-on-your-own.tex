@@ -1,6 +1,6 @@
 \part{Using Git on your own}
 
-\section{Using Git on your own}
+\section{Why use Git on your own?}
 
 \begin{frame}
 \frametitle{Using Git on your own}
@@ -74,7 +74,7 @@ You now have this directory structure:
     need to add some recipes.
 \end{frame}
 
-\subsection{A first recipe}
+\section{A first recipe}
 
 \begin{frame}[fragile]{A first recipe}
     Let's start with a classic that works anywhere: chocolate cake.
@@ -560,7 +560,7 @@ Date:   Tue Aug 11 13:54:32 2026 +0000
     \end{itemize}
 \end{frame}
 
-\subsection{Basic Git workflow}
+\section{Basic Git workflow}
 
 \begin{frame}[fragile]{Basic Git workflow}
     \begin{enumerate}
@@ -574,7 +574,7 @@ Date:   Tue Aug 11 13:54:32 2026 +0000
     \end{enumerate}
 \end{frame}
 
-\subsection{Exercise: two new recipes}
+\section{Exercise: two new recipes}
 
 \begin{frame}[fragile]{Exercise: add two new recipes to the repository}
     Using what you've learned so far, create two new recipes, one file for
@@ -709,7 +709,9 @@ Date:   Tue Aug 11 13:54:32 2026 +0000
     \end{minted}
 \end{frame}
 
-\subsection{Adding source information to recipes}
+\section{Adding source information to recipes}
+
+\subsection{Where did that recipe come from?}
 
 \begin{frame}[fragile]{Where did that recipe come from, again?}
     Few recipes are completely new creations; most come from a cookbook,
@@ -1049,7 +1051,7 @@ index a5b6604..919ddea 100644
     \end{itemize}
 \end{frame}
 
-\subsection{Removing redundant repetition}
+\section{Removing redundant repetition}
 
 \begin{frame}[fragile]{Remove redundant repetition with aliases}
     We're using \code{commit}, \code{status}, and \code{diff} a lot.  It is
@@ -1198,6 +1200,8 @@ index 919ddea..fd2163b 100644
         user.email=paul@peateasea.de
     \end{outputcode}
 \end{frame}
+
+\section{Renaming recipes}
 
 \subsection{Renaming files}
 
@@ -1652,7 +1656,7 @@ nothing to commit, working tree clean
     Our working tree is clean again.  Nice!
 \end{frame}
 
-\subsection{Getting help}
+\section{Getting help about Git}
 
 \begin{frame}[fragile]{Getting help}
     There are many places to get help in using Git:
@@ -1663,6 +1667,8 @@ nothing to commit, working tree clean
         \item Unix/Linux man pages
     \end{itemize}
 \end{frame}
+
+\subsection{Books}
 
 \begin{frame}[fragile]{Book: Pro Git}
     \begin{itemize}
@@ -1691,6 +1697,8 @@ nothing to commit, working tree clean
     }
 \end{frame}
 
+\subsection{Online resources}
+
 \begin{frame}[fragile]{Online resources}
     This is a tiny selection of the wealth of information that exists online
     about Git.
@@ -1700,6 +1708,8 @@ nothing to commit, working tree clean
         \item Cheat sheet: \url{https://git-scm.com/cheat-sheet}
     \end{itemize}
 \end{frame}
+
+\subsection{Built-in help}
 
 \begin{frame}[fragile]{Git's built-in help}
     Git provides extensive documentation, included as part of the standard
@@ -1740,7 +1750,7 @@ nothing to commit, working tree clean
     Your goal: get a feel for what the built-in documentation looks like.
 \end{frame}
 
-\subsection{Deleting files}
+\section{Removing recipes}
 
 \begin{frame}[fragile]{The pav' needs to go}
     Unfortunately, the pavlova doesn't sell as well as we'd hoped.
@@ -1824,7 +1834,9 @@ Date:   Thu Oct 1 17:10:52 2026 +0000
     the repository!
 \end{frame}
 
-\subsection{The three faces of a Git repository}
+\section{Git project repository structure}
+
+\subsection{The three parts of a Git project repository}
 
 \begin{frame}[fragile]{The three faces of a Git repository}
     There are three aspects to a Git repository:
@@ -2099,7 +2111,7 @@ refs/
     \end{enumerate}
 \end{frame}
 
-\subsection{Commits and commit messages}
+\section{Commits and commit messages}
 
 \begin{frame}[fragile]{What goes into a commit?}
     A common question: \emph{what goes into a commit?}
