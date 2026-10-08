@@ -2,11 +2,39 @@
 
 \input{title-preamble.tex}
 
+\usepackage{etoolbox}
+
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip1.0em}{}{}
+\makeatother
+
 \begin{document}
 
 \maketitle
 
 \part{Using Git on your own}
+
+\begin{frame}
+    \partpage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Outline: Using Git on your own}
+    \begin{columns}[T]
+        \begin{column}{0.45\textwidth}
+            \tableofcontents[
+                currentsection, sectionstyle=show, hideallsubsections,
+                sections={1-7}
+            ]
+        \end{column}
+        \begin{column}{0.45\textwidth}
+            \tableofcontents[
+                currentsection, sectionstyle=show, hideallsubsections,
+                sections={8-}
+            ]
+        \end{column}
+    \end{columns}
+\end{frame}
 
 \section{Why use Git on your own?}
 
