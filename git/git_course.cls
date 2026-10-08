@@ -26,6 +26,7 @@
 \usepackage{FiraSans}
 \usepackage{FiraMono}
 
+\usepackage{etoolbox}
 \usepackage{multicol}
 \usepackage{setspace}
 \usepackage{minted}
