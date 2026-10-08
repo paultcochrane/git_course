@@ -14,7 +14,9 @@ jobs:
     - name: Build slides
       uses: xu-cheng/latex-action@v4
       with:
-        root_file: git.tex
+        root_file: |
+          git.tex
+          overview-background-setup.tex
         texlive_version: 2025
         latexmk_use_lualatex: true
         latexmk_shell_escape: true
@@ -25,7 +27,9 @@ jobs:
       with:
         name: draft
         draft: true
-        files: git/git.pdf
+        files: |
+          git/git.pdf
+          git/overview-background-setup.pdf
 
     - name: Archive built PDF document
       uses: actions/upload-artifact@v7
