@@ -4,6 +4,8 @@
 
 \usepackage{etoolbox}
 
+% solution to reduce spacing in table of contents found on StackOverflow:
+% https://tex.stackexchange.com/a/51458
 \makeatletter
 \patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip1.0em}{}{}
 \makeatother
