@@ -2,6 +2,11 @@
 
 \input{title-preamble.tex}
 
+% Set part number to match part in course, not the part that LaTeX thinks
+% this is.  Note: this seems to be 0-based indexing, hence 1 maps to the
+% number 2 when displayed.
+\setcounter{part}{1}
+
 % solution to reduce spacing in table of contents found on StackOverflow:
 % https://tex.stackexchange.com/a/51458
 \makeatletter
