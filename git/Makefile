@@ -9,7 +9,8 @@ slides:
 	latexmk -pdflua -shell-escape git.tex
 
 all: \
-	overview-background-setup.pdf
+	overview-background-setup.pdf \
+	git-on-your-own.pdf
 
 clean:
 	latexmk -c
