@@ -17,6 +17,7 @@ jobs:
         root_file: |
           git.tex
           overview-background-setup.tex
+          git-on-your-own.tex
         texlive_version: 2025
         latexmk_use_lualatex: true
         latexmk_shell_escape: true
@@ -30,6 +31,7 @@ jobs:
         files: |
           git/git.pdf
           git/overview-background-setup.pdf
+          git/git-on-your-own.pdf
 
     - name: Archive built PDF document
       uses: actions/upload-artifact@v7
