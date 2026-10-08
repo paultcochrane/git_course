@@ -2055,70 +2055,6 @@ refs/
     write good commit messages!
 \end{frame}
 
-\begin{frame}[fragile]
-\frametitle{Parts of a local Git repository}
-\begin{columns}[T]
-    \begin{column}{0.5\textwidth}
-        \begin{itemize}
-            \item Working directory
-            \item Staging area
-            \item Repository
-            \item Very important for understanding operations
-        \end{itemize}
-    \end{column}
-
-    \begin{column}{0.5\textwidth}
-        \begin{center}
-            \resizebox{!}{0.7\textheight}{%
-                \input{figures/working_dir_staging_repo.tex}
-            }
-        \end{center}
-    \end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}
-\frametitle{Workﬂow}
-
-Preparation:
-\begin{itemize}
-    \item \code{git init} (only once)
-    \item \code{git checkout}
-    \item \code{git config}
-\end{itemize}
-
-Main steps:
-\begin{itemize}
-    \item \code{git add} (before committing a file)
-    \item \code{git mv}
-    \item \code{git status}
-    \item \code{git diff}
-    \item \code{git rm}
-    \item \code{git log}
-    \item \code{git show}
-    \item \code{git commit}
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Specifying commits}
-\begin{description}
-    \item[\code{c82a22c39c}] SHA hash
-    \item[\code{HEAD}] name of the commit
-    \item[\code{HEAD\^}] parent of \code{HEAD}
-    \item[\code{HEAD\^\^}] grandparent of \code{HEAD}
-    \item[\code{HEAD~2}] also grandparent of \code{HEAD}
-    \item[\code{HEAD~4}] great-great grandparent of \code{HEAD}
-\end{description}
-
-also works with branch names:
-\begin{description}
-    \item[\code{main\^}] parent of tip of “\code{main}” branch
-    \item[\code{main~4}] great-great grandparent of tip of “\code{main}” branch
-        experimental tip of “\code{experimental}” branch
-\end{description}
-\end{frame}
-
 \begin{frame}
 \frametitle{Ignoring files}
 
@@ -2143,18 +2079,6 @@ it:
 \end{frame}
 
 \begin{frame}[fragile]
-\frametitle{Showing branches}
-\code{git show-branch}
-
-\begin{itemize}
-    \item shows the available branches
-    \item shows with an asterisk \code{*} which is the current branch
-\end{itemize}
-
-    \inputminted{bash}{git-show-branch-output.txt}
-\end{frame}
-
-\begin{frame}[fragile]
 \frametitle{Showing branches (cont.)}
 \code{git branch} shows available branches and which branch is
 current.
@@ -2167,32 +2091,4 @@ message of the most recent commit.
 TODO need more expansive examples here with multiple branches.
 
     \inputminted{bash}{git-branch-v-output.txt}
-\end{frame}
-
-\begin{frame}
-\frametitle{Import existing project}
-\begin{itemize}
-    \item git init, git add, git commit
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Aliasing commands}
-\begin{itemize}
-    \item reduce typing, use alias
-    \item handy aliases: st, di, ci, co
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Staging and unstaging files}
-\begin{itemize}
-    \item staging area in more depth
-    \item unstage files one doesn't want to track
-    \item git reset (just moves pointer/label)
-\end{itemize}
-\end{frame}
-
-\begin{frame}
-\frametitle{Exercise!}
 \end{frame}
