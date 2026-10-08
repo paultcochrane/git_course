@@ -1963,6 +1963,129 @@ refs/
     one wants to.
 \end{frame}
 
+\subsection{Photos as an analogy for staging and committing}
+
+\begin{frame}[fragile]{The wedding photographer analogy}
+    Imagine a wedding photographer, about to take photos of the bride, groom
+    and various family members and friends.
+
+    Before each photo, she thinks about what should be in the photo and,
+    potentially, what should be removed.
+
+    A photo is a snapshot of a particular group of people at a point in
+    time: it is analogous to a commit.
+
+    Preparing the scene for a photograph is analogous to staging or
+    unstaging files or changes prior to a commit.
+\end{frame}
+
+\begin{frame}[fragile]{The wedding photographer analogy}
+    Let's consider this process in detail.
+
+    Before the first photo is taken, the field of view is empty.
+
+    IMAGE (empty scene)
+
+    This is like a repository just after running \code{git init}.  The
+    repository, staging area and working copy are all empty.
+\end{frame}
+
+\begin{frame}[fragile]{The wedding photographer analogy}
+    Next, she adds the bride and groom to the camera's field of view,
+    setting the stage for the first photo.
+
+    IMAGE (people being added to scene)
+
+    Git equivalent: two changes are added to the staging area.
+
+    Happy with how the scene looks, she takes the photo, preserving this
+    state.
+
+    IMAGE (people in scene)
+
+    Git equivalent: the staged changes are committed to the repository.
+\end{frame}
+
+\begin{frame}[fragile]{The wedding photographer analogy}
+    Next, she adds the bride and groom to the camera's field of view,
+    setting the stage for the first photo.
+
+    IMAGE (people being added to scene)
+
+    Git equivalent: two changes are added to the staging area.
+
+    Happy with how the scene looks, she takes the photo, preserving this
+    state.
+
+    IMAGE (people in scene)
+
+    Git equivalent: the staged changes are committed to the repository.
+\end{frame}
+
+\begin{frame}[fragile]{The wedding photographer analogy}
+    The next photo is to include the bride and groom's parents as well as
+    the marriage witnesses.
+
+    She adds the new people to the scene, positioning them how she wants
+    them to look.
+
+    IMAGE (people being added to scene)
+
+    Git equivalent: changes are staged with \code{git add}
+
+    With everyone in position, she takes the photo.
+
+    IMAGE (people in scene)
+
+    Git equivalent: staged changes are committed with \code{git commit}
+\end{frame}
+
+\begin{frame}[fragile]{The wedding photographer analogy}
+    She decides the next photo should only include the bride, groom and the
+    bride's parents.  This will require some rearrangement of the scene.
+
+    She removes the extra people from the scene.
+
+    IMAGE (people being removed from the scene)
+
+    Git equivalent: removing files and staging that change with \code{git rm}
+\end{frame}
+
+\begin{frame}[fragile]{The wedding photographer analogy}
+    She reorganises the people in the photo.
+
+    Git equivalent: editing files and staging the changes with \code{git add}
+
+    Happy with the scene, she takes the photo
+
+    IMAGE (people in scene)
+
+    Git equivalent: staged changes are committed with \code{git commit}
+\end{frame}
+
+\begin{frame}[fragile]{Rinse and repeat}
+    This process is repeated, slowly building a series of known good states.
+    The series of states tells a story of how we got to where we are today.
+
+    In Git, each commit builds upon the last.  Yet each is in itself a
+    standalone snapshot (like a photo) of the repository state at that time.
+
+    Images of photos with arrows between them, showing direction of time
+\end{frame}
+
+\begin{frame}[fragile]{Snapshots have IDs}
+    Each snapshot has its own ID.
+
+    Images of photos with arrows between them.  Each photo has a
+    corresponding SHA-like ID.
+
+    By referring to an ID, we can ``go back in time'' to the state of the
+    repository at that commit.
+
+    Thus, we can access and view old versions of files.  This is useful when
+    understanding how a bug appeared in a system.
+\end{frame}
+
 \subsection{Recap: the three stages of a commit}
 
 \begin{frame}[fragile]{Recap: the three stages of a commit}
