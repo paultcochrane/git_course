@@ -1,6 +1,6 @@
 .PHONY: clean
 
-default: all
+default: slides
 
 slides:
 	latexmk -pdflua -shell-escape git.tex
