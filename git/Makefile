@@ -2,7 +2,7 @@
 
 default: slides
 
-%.pdf: %.tex
+%.pdf: %.tex git_course.cls
 	latexmk -pdflua -shell-escape $<
 
 slides:
