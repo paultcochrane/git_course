@@ -2,7 +2,7 @@
 
 default: slides
 
-%.pdf: %.tex git_course.cls
+%.pdf: %.tex git_course.cls title-preamble.tex
 	latexmk -pdflua -shell-escape $<
 
 slides:
