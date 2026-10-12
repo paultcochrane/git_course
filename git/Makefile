@@ -8,6 +8,8 @@ default: slides
 slides:
 	latexmk -pdflua -shell-escape git.tex
 
+overview-background-setup.pdf: installing_git.tex
+
 all: \
 	overview-background-setup.pdf \
 	git-on-your-own.pdf
