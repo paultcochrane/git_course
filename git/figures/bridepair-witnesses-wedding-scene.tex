@@ -1,0 +1,106 @@
+% Based on the texample.net example:
+% Drawing a tree several times using the PGF 3.0 pic feature
+% Authors: Kate, Ignasi
+% Original source: https://texample.net/tree-pic/
+\documentclass[tikz]{standalone}
+\usetikzlibrary{tikzlings}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{ext.transformations.mirror}
+\usetikzlibrary{decorations.pathmorphing,calc,shapes,shapes.geometric,patterns}
+\tikzset{%
+  treetop/.style = {decoration={random steps, segment length=0.4mm}, decorate},
+  trunk/.style   = {decoration={random steps, segment length=2mm,
+                    amplitude=0.2mm}, decorate}}
+
+\tikzset{%
+   my tree/.pic={%
+     \foreach \w/\f in {0.3/30,0.2/50,0.1/70} {%
+       \fill [brown!\f!black, trunk] (-\w/2,0) rectangle +(\w,3);
+     }
+     \foreach \n/\f in {1.4/40,1.2/50,1/60,0.8/70,0.6/80,0.4/90} {%
+       \fill [green!\f!black, treetop](0,3) ellipse (\n/1.5 and \n);
+     }
+   }
+}
+
+\tikzset{%
+    lefttrees/.pic={%
+        \draw (0, 1.0) pic{my tree};
+        \draw (2, 1.5) pic{my tree};
+    }
+}
+
+\tikzset{%
+    righttrees/.pic={%
+        \draw (0, 1.5) pic{my tree};
+        \draw (2, 1.0) pic{my tree};
+    }
+}
+
+\tikzset{%
+    basescene/.pic={%
+        \shade[bottom color=cyan!60!black, top color=blue!20!white] (3.2,0) rectangle (12.8,9);
+        \draw (0,0) rectangle (16,9);
+        \pic at (4.5, 0) {lefttrees};
+        \pic at (9.5, 0) {righttrees};
+    }
+}
+
+\tikzset{%
+    leftpointingarrow/.pic={%
+        \draw [-{Stealth[round]}, very thick] (1, 0) -- (-1, 0);
+    }
+}
+
+\tikzset{%
+    rightpointingarrow/.pic={%
+        \draw [-{Stealth[round]}, very thick] (-1, 0) -- (1, 0);
+    }
+}
+
+\def\pairsep{0.6}
+
+\tikzset{%
+    bridepair/.pic={%
+        \draw (-\pairsep, 0) pic[thing/tophat=black]{penguin};
+        \draw (\pairsep, 0) pic[thing/crown=yellow!50!orange]{bear};
+    }
+}
+
+\tikzset{%
+    groomparents/.pic={%
+        \draw (\pairsep, 0) pic{chicken};
+        \draw (-\pairsep, 0) pic{owl};
+    }
+}
+
+\tikzset{%
+    brideparents/.pic={%
+        \draw (-\pairsep, 0) pic{koala};
+        \draw (\pairsep, 0) pic{panda};
+    }
+}
+
+% mirror marmot through y-axis to put tail on other side
+\tikzset{%
+    bridewitness/.pic={%
+        \pic[ext/xMirror=0]{marmot};
+    }
+}
+
+\tikzset{%
+    groomwitness/.pic={%
+        \pic{moles};
+    }
+}
+
+\begin{document}
+\begin{tikzpicture}
+    \pic at (0, 0) {basescene};
+
+    \pic at (5.7, 0.5) {groomwitness};
+    \pic at (10.3, 0.5) {bridewitness};
+
+    \pic at (8, 0.5) {bridepair};
+\end{tikzpicture}
+\end{document}
