@@ -45,15 +45,6 @@
     }
 }
 
-\def\pairsep{0.6}
-
-\tikzset{%
-    bridepair/.pic={%
-        \draw (-\pairsep, 0) pic[thing/tophat=black]{penguin};
-        \draw (\pairsep, 0) pic[thing/crown=yellow!50!orange]{bear};
-    }
-}
-
 \tikzset{%
     leftpointingarrow/.pic={%
         \draw [-{Stealth[round]}, very thick] (1, 0) -- (-1, 0);
@@ -63,6 +54,15 @@
 \tikzset{%
     rightpointingarrow/.pic={%
         \draw [-{Stealth[round]}, very thick] (-1, 0) -- (1, 0);
+    }
+}
+
+\def\pairsep{0.6}
+
+\tikzset{%
+    bridepair/.pic={%
+        \draw (-\pairsep, 0) pic[thing/tophat=black]{penguin};
+        \draw (\pairsep, 0) pic[thing/crown=yellow!50!orange]{bear};
     }
 }
 
