@@ -4,7 +4,8 @@ FILES := \
 	 initial-wedding-scene.pdf \
 	 add-bridepair-wedding-scene.pdf \
 	 bridepair-wedding-scene.pdf \
-	 add-parents-bridepair-wedding-scene.pdf
+	 add-parents-bridepair-wedding-scene.pdf \
+	 remove-parents-bridepair-wedding-scene.pdf
 
 all: $(FILES)
 
