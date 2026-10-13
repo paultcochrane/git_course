@@ -1,4 +1,4 @@
-.PHONY: clean
+.PHONY: clean figures
 
 default: slides
 
@@ -8,7 +8,10 @@ default: slides
 slides:
 	latexmk -pdflua -shell-escape git.tex
 
-overview-background-setup.pdf: installing_git.tex
+figures:
+	$(MAKE) --directory=$@
+
+overview-background-setup.pdf: figures installing_git.tex
 
 all: \
 	overview-background-setup.pdf \
