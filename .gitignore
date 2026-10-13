@@ -11,6 +11,8 @@
 *.swp
 .vagrant/
 git.pdf
+overview-background-setup.pdf
+git-on-your-own.pdf
 .sass-cache/
 _minted-git/
 _minted/
