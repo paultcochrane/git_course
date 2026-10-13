@@ -15,6 +15,14 @@ jobs:
       uses: xu-cheng/latex-action@v4
       with:
         root_file: |
+          figures/initial-wedding-scene.tex
+          figures/add-bridepair-wedding-scene.tex
+          figures/bridepair-wedding-scene.tex
+          figures/add-parents-bridepair-wedding-scene.tex
+          figures/bridepair-parents-wedding-scene.tex
+          figures/remove-parents-bridepair-wedding-scene.tex
+          figures/add-witnesses-bridepair-wedding-scene.tex
+          figures/bridepair-witnesses-wedding-scene.tex
           git.tex
           overview-background-setup.tex
           git-on-your-own.tex
