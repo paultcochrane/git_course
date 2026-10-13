@@ -11,7 +11,9 @@ slides:
 figures:
 	$(MAKE) --directory=$@
 
-overview-background-setup.pdf: figures installing_git.tex
+overview-background-setup.pdf: installing_git.tex
+
+git-on-your-own.pdf: figures
 
 all: \
 	overview-background-setup.pdf \
