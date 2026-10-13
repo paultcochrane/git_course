@@ -2035,90 +2035,138 @@ refs/
 \begin{frame}[fragile]{The wedding photographer analogy}
     Let's consider this process in detail.
 
-    Before the first photo is taken, the field of view is empty.
+    Before the first photo is taken, the field of view is empty of people to
+    photograph.
 
-    IMAGE (empty scene)
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{figures/initial-wedding-scene.pdf}
+    }
+\end{frame}
 
+\begin{frame}[fragile]{The wedding photographer analogy}
     This is like a repository just after running \code{git init}.  The
     repository, staging area and working copy are all empty.
+
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{figures/initial-wedding-scene.pdf}
+    }
 \end{frame}
 
 \begin{frame}[fragile]{The wedding photographer analogy}
-    Next, she adds the bride and groom to the camera's field of view,
-    setting the stage for the first photo.
+    Next, she adds the bride and groom to the scene, setting the stage for
+    the first photo.
 
-    IMAGE (people being added to scene)
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{figures/add-bridepair-wedding-scene.pdf}
+    }
 
     Git equivalent: two changes are added to the staging area.
 
-    Happy with how the scene looks, she takes the photo, preserving this
-    state.
-
-    IMAGE (people in scene)
-
-    Git equivalent: the staged changes are committed to the repository.
+    E.g.: \code{git add bride.txt groom.txt}
 \end{frame}
 
 \begin{frame}[fragile]{The wedding photographer analogy}
-    Next, she adds the bride and groom to the camera's field of view,
-    setting the stage for the first photo.
-
-    IMAGE (people being added to scene)
-
     Git equivalent: two changes are added to the staging area.
 
-    Happy with how the scene looks, she takes the photo, preserving this
-    state.
-
-    IMAGE (people in scene)
-
-    Git equivalent: the staged changes are committed to the repository.
+    E.g.: \code{git add bride.txt groom.txt}
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{figures/add-bridepair-wedding-scene.pdf}
+    }
 \end{frame}
 
 \begin{frame}[fragile]{The wedding photographer analogy}
-    The next photo is to include the bride and groom's parents as well as
-    the marriage witnesses.
+    Happy with how the scene looks, she takes the photo, preserving this
+    state.
 
-    She adds the new people to the scene, positioning them how she wants
-    them to look.
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{figures/bridepair-wedding-scene.pdf}
+    }
+\end{frame}
 
-    IMAGE (people being added to scene)
+\begin{frame}[fragile]{The wedding photographer analogy}
+    Git equivalent: the staged changes are committed to the repository.
 
-    Git equivalent: changes are staged with \code{git add}
+    E.g.: \code{git commit}
 
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{figures/bridepair-wedding-scene.pdf}
+    }
+\end{frame}
+
+\begin{frame}[fragile]{The wedding photographer analogy}
+    The next photo is to include the bride and groom's parents.  She adds
+    the new people to the scene, positioning them how she wants them to
+    look.
+
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{figures/add-parents-bridepair-wedding-scene.pdf}
+    }
+\end{frame}
+
+\begin{frame}[fragile]{The wedding photographer analogy}
+    Git equivalent: changes are staged with \code{git add bride-parents.txt groom-parents.txt}
+
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{figures/add-parents-bridepair-wedding-scene.pdf}
+    }
+\end{frame}
+
+\begin{frame}[fragile]{The wedding photographer analogy}
     With everyone in position, she takes the photo.
 
-    IMAGE (people in scene)
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{figures/bridepair-parents-wedding-scene.pdf}
+    }
 
     Git equivalent: staged changes are committed with \code{git commit}
 \end{frame}
 
 \begin{frame}[fragile]{The wedding photographer analogy}
     She decides the next photo should only include the bride, groom and the
-    bride's parents.  This will require some rearrangement of the scene.
+    marriage witnesses.
 
-    She removes the extra people from the scene.
+    This rearrangement is more involved.  She has to:
+    \begin{itemize}
+        \item remove people from the scene
+        \item and add new ones to it.
+    \end{itemize}
+\end{frame}
 
-    IMAGE (people being removed from the scene)
+\begin{frame}[fragile]{The wedding photographer analogy}
+    First, she removes the extra people from the scene.
+
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{figures/remove-parents-bridepair-wedding-scene.pdf}
+    }
 
     Git equivalent: removing files and staging that change with \code{git rm}
 \end{frame}
 
 \begin{frame}[fragile]{The wedding photographer analogy}
-    She reorganises the people in the photo.
+    Then she adds the new people to the scene.
+
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{figures/add-witnesses-bridepair-wedding-scene.pdf}
+    }
 
     Git equivalent: editing files and staging the changes with \code{git add}
+\end{frame}
 
-    Happy with the scene, she takes the photo
+\begin{frame}[fragile]{The wedding photographer analogy}
+    Happy with the final scene, she takes the photo.
 
-    IMAGE (people in scene)
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{figures/bridepair-witnesses-wedding-scene.pdf}
+    }
 
     Git equivalent: staged changes are committed with \code{git commit}
 \end{frame}
 
 \begin{frame}[fragile]{Rinse and repeat}
-    This process is repeated, slowly building a series of known good states.
-    The series of states tells a story of how we got to where we are today.
+    This process of adding and removing elements from the staging area is
+    repeated, resulting in commits which slowly build a series of known good
+    states.  The series of states tells a story of how we got to where we
+    are today.
 
     In Git, each commit builds upon the last.  Yet each is in itself a
     standalone snapshot (like a photo) of the repository state at that time.
