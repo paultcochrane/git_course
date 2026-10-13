@@ -35,6 +35,7 @@
 \usepackage{tikz}
 \usepackage{standalone}
 \usepackage{emoji}
+\usepackage{tabularray}
 
 \usetikzlibrary{positioning}
 \usetikzlibrary{calc}

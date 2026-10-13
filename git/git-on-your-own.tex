@@ -2163,8 +2163,27 @@ refs/
 \begin{frame}[fragile]{Snapshots have IDs}
     Each snapshot has its own ID.
 
-    Images of photos with arrows between them.  Each photo has a
-    corresponding SHA-like ID.
+    \begin{center}
+        \begin{tblr}{%
+            width = 0.5\textwidth,
+            colspec = {X[c,h]X[c,m]},
+            stretch = 0,
+            rowsep = 2pt,
+        }
+            \includegraphics[height=0.14\textheight]{figures/initial-wedding-scene.pdf}
+                & ID: \texttt{abcd1234}\\
+            $\Downarrow$ & $\Downarrow$\\
+            \includegraphics[height=0.14\textheight]{figures/bridepair-wedding-scene.pdf}
+                & ID: \texttt{9c6b31be}\\
+            $\Downarrow$ & $\Downarrow$\\
+            \includegraphics[height=0.14\textheight]{figures/bridepair-parents-wedding-scene.pdf}
+                & ID: \texttt{ef987654}\\
+            $\Downarrow$ & $\Downarrow$\\
+            \includegraphics[height=0.14\textheight]{figures/bridepair-witnesses-wedding-scene.pdf}
+                & ID: \texttt{7b83d08c}
+        \end{tblr}
+    \end{center}
+\end{frame}
 
     By referring to an ID, we can ``go back in time'' to the state of the
     repository at that commit.
