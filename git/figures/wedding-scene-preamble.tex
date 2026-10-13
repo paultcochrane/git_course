@@ -40,7 +40,7 @@
 \tikzset{%
     basescene/.pic={%
         \shade[bottom color=cyan!60!black, top color=blue!20!white] (3.2,0) rectangle (12.8,9);
-        \draw (0,0) rectangle (16,9);
+        \draw[draw=none] (0,0) rectangle (16,9);
         \pic at (4.5, 0) {lefttrees};
         \pic at (9.5, 0) {righttrees};
     }
