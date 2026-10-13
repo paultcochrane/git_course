@@ -2185,11 +2185,15 @@ refs/
     \end{center}
 \end{frame}
 
+\begin{frame}[fragile]{Snapshots have IDs}
     By referring to an ID, we can ``go back in time'' to the state of the
     repository at that commit.
 
     Thus, we can access and view old versions of files.  This is useful when
     understanding how a bug appeared in a system.
+
+    See e.g.\ the \code{git log} output to see previous IDs and descriptions
+    of what they point to.
 \end{frame}
 
 \subsection{Recap: the three stages of a commit}
