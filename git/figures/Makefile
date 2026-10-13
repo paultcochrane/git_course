@@ -12,7 +12,7 @@ FILES := \
 
 all: $(FILES)
 
-%.pdf: %.tex
+%.pdf: %.tex wedding-scene-preamble.tex
 	latexmk $<
 
 clean:
