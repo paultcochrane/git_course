@@ -55,4 +55,8 @@ jobs:
       uses: actions/upload-artifact@v7
       with:
         name: git-pdf
-        path: git/git.pdf
+        path: |
+          git/git.pdf
+          git/overview-background-setup.pdf
+          git/git-on-your-own.pdf
+          git/git-with-others.pdf
