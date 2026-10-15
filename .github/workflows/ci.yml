@@ -23,7 +23,7 @@ jobs:
           remove-parents-bridepair-wedding-scene.tex
           add-witnesses-bridepair-wedding-scene.tex
           bridepair-witnesses-wedding-scene.tex
-        texlive_version: 2025
+        texlive_version: 2026
         latexmk_use_lualatex: true
         pre_compile: "cd git/figures"
 
@@ -35,7 +35,7 @@ jobs:
           git-on-your-own.tex
           git-with-others.tex
           tips-and-tricks.tex
-        texlive_version: 2025
+        texlive_version: 2026
         latexmk_use_lualatex: true
         latexmk_shell_escape: true
         pre_compile: "cd git"
