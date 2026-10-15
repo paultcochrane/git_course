@@ -1,12 +1,9 @@
 .PHONY: clean figures
 
-default: slides
+default: all
 
 %.pdf: %.tex git_course.cls title-preamble.tex
 	latexmk -pdflua -shell-escape $<
-
-slides:
-	latexmk -pdflua -shell-escape git.tex
 
 figures:
 	$(MAKE) --directory=$@
@@ -36,4 +33,4 @@ clean:
 	rm -f git.pdf
 
 help:
-	@echo "Possible targets: all, slides, clean"
+	@echo "Possible targets: all, clean"

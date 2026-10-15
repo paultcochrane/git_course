@@ -31,7 +31,6 @@ jobs:
       uses: xu-cheng/latex-action@v4
       with:
         root_file: |
-          git.tex
           overview-background-setup.tex
           git-on-your-own.tex
           git-with-others.tex
@@ -47,7 +46,6 @@ jobs:
         name: draft
         draft: true
         files: |
-          git/git.pdf
           git/overview-background-setup.pdf
           git/git-on-your-own.pdf
           git/git-with-others.pdf
@@ -58,7 +56,6 @@ jobs:
       with:
         name: git-pdf
         path: |
-          git/git.pdf
           git/overview-background-setup.pdf
           git/git-on-your-own.pdf
           git/git-with-others.pdf
