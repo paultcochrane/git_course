@@ -1,4 +1,27 @@
+\documentclass{git_course}
+
+\input{title-preamble.tex}
+
+% Set part number to match part in course, not the part that LaTeX thinks
+% this is.  Note: this seems to be 0-based indexing, hence 2 maps to the
+% number 3 when displayed.
+\setcounter{part}{2}
+
+% solution to reduce spacing in table of contents found on StackOverflow:
+% https://tex.stackexchange.com/a/51458
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip1.0em}{}{}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
 \part{Using Git with others}
+
+\begin{frame}
+    \partpage
+\end{frame}
 
 \section{Using Git with others}
 
@@ -359,3 +382,5 @@ and signed off on.
 \ldots the image from above (of the pull request flow) thus becomes more of a
 triangle, because people are working from a central point of reference.
 \end{frame}
+
+\end{document}
