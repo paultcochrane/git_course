@@ -1,6 +1,27 @@
+\documentclass{git_course}
+
+\input{title-preamble.tex}
+
+% Set part number to match part in course, not the part that LaTeX thinks
+% this is.  Note: this seems to be 0-based indexing, hence 3 maps to the
+% number 4 when displayed.
+\setcounter{part}{3}
+
+% solution to reduce spacing in table of contents found on StackOverflow:
+% https://tex.stackexchange.com/a/51458
+\makeatletter
+\patchcmd{\beamer@sectionintoc}{\vskip1.5em}{\vskip1.0em}{}{}
+\makeatother
+
+\begin{document}
+
+\maketitle
+
 \part{Tips and tricks}
 
-\section{Tips and tricks}
+\begin{frame}
+    \partpage
+\end{frame}
 
 \begin{frame}[fragile]
     \frametitle{Splitting commits}
@@ -485,3 +506,5 @@ If you wish to set tracking information for this branch you can do so with:
     Git fetch docs:
     \see{https://git-scm.com/docs/git-fetch}
 \end{frame}
+
+\end{document}

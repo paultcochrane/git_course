@@ -35,6 +35,7 @@ jobs:
           overview-background-setup.tex
           git-on-your-own.tex
           git-with-others.tex
+          tips-and-tricks.tex
         texlive_version: 2025
         latexmk_use_lualatex: true
         latexmk_shell_escape: true
@@ -50,6 +51,7 @@ jobs:
           git/overview-background-setup.pdf
           git/git-on-your-own.pdf
           git/git-with-others.pdf
+          git/tips-and-tricks.pdf
 
     - name: Archive built PDF document
       uses: actions/upload-artifact@v7
@@ -60,3 +62,4 @@ jobs:
           git/overview-background-setup.pdf
           git/git-on-your-own.pdf
           git/git-with-others.pdf
+          git/tips-and-tricks.pdf
