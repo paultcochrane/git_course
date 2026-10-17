@@ -14,6 +14,7 @@ git/git.pdf
 git/overview-background-setup.pdf
 git/git-on-your-own.pdf
 git/figures/*.pdf
+git/figures/project-repo-parts/*.pdf
 .sass-cache/
 _minted-git/
 _minted/

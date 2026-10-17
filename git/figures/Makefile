@@ -1,4 +1,4 @@
-.PHONY: clean
+.PHONY: clean project-repo-parts
 
 FILES := \
 	 initial-wedding-scene.pdf \
@@ -10,7 +10,10 @@ FILES := \
 	 add-witnesses-bridepair-wedding-scene.pdf \
 	 bridepair-witnesses-wedding-scene.pdf
 
-all: $(FILES)
+all: $(FILES) project-repo-parts
+
+project-repo-parts:
+	$(MAKE) --directory=$@
 
 %.pdf: %.tex wedding-scene-preamble.tex
 	latexmk $<
