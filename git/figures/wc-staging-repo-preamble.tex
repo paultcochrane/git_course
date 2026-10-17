@@ -1,0 +1,98 @@
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{backgrounds}
+
+\usepackage[T1]{fontenc}
+\usepackage[sfdefault]{FiraSans}
+\usepackage{FiraMono}
+
+% colour-blind safe "bright" colour scheme
+% (https://sronpersonalpages.nl/~pault/#fig:scheme_bright)
+\definecolor{PaulTolBrightBlue}{HTML}{4477AA}
+\definecolor{PaulTolBrightCyan}{HTML}{66CCEE}
+\definecolor{PaulTolBrightGreen}{HTML}{228833}
+\definecolor{PaulTolBrightYellow}{HTML}{CCBB44}
+\definecolor{PaulTolBrightRed}{HTML}{EE6677}
+\definecolor{PaulTolBrightPurple}{HTML}{AA3377}
+\definecolor{PaulTolBrightGrey}{HTML}{BBBBBB}
+
+% \colorlet{bluefill}{blue!20!white}
+% \colorlet{bluedraw}{blue!50!black}
+
+\tikzset{%
+    link/.style={%
+        -{Stealth[round]}, very thick
+    },
+    filenamebox/.style={%
+        rectangle,
+        rounded corners,
+        thick,
+        draw,
+        node distance=8mm,
+    },
+    basebox/.style={%
+        draw,
+        rounded corners,
+        very thick,
+        minimum width=5cm,
+        minimum height=4.5cm,
+        node distance=2cm,
+    },
+    basediag/.pic={%
+        \node (working copy) [basebox] {};
+        \node[anchor=north] at ($(working copy.north) - (0, 0.1)$) {\Large working copy};
+        \draw[-] ($(working copy.north west) - (0, 1)$) -- ($(working copy.north east) - (0, 1)$);
+
+        \node (staging) [basebox, right=of working copy, anchor=west] {};
+        \node[anchor=north] at ($(staging.north) - (0, 0.1)$) {\Large staging area};
+        \draw[-] ($(staging.north west) - (0, 1)$) -- ($(staging.north east) - (0, 1)$);
+
+        \node (repo) [basebox, right=of staging, anchor=west] {};
+        \node[anchor=north] at ($(repo.north) - (0, 0.1)$) {\Large repository (\texttt{.git/})};
+        \draw[-] ($(repo.north west) - (0, 1)$) -- ($(repo.north east) - (0, 1)$);
+
+        % pad diagram with whitespace so it always has the same height in each
+        % version
+        \path ($(current bounding box.south west) - (0, 3)$)
+            rectangle
+            ($(current bounding box.north east) + (0, 3)$);
+    },
+    filesplain/.pic={%
+        \node (choc) [filenamebox, anchor=west] {\texttt{chocolate-cake.md}};
+        \node (cheese) [filenamebox, below=of choc.west, anchor=west] {\texttt{cheesecake.md}};
+        \node (pavlova) [filenamebox, below=of cheese.west, anchor=west] {\texttt{pavlova.md}};
+        \node (scones) [filenamebox, below=of pavlova.west, anchor=west] {\texttt{cheese-scones.md}};
+    },
+    fileschocedited/.pic={%
+        \node (choc) [
+            filenamebox,
+            anchor=west,
+            color=PaulTolBrightRed,
+            very thick,
+        ] {\textbf{\texttt{chocolate-cake.md}}};
+        \node (cheese) [filenamebox, below=of choc.west, anchor=west] {\texttt{cheesecake.md}};
+        \node (pavlova) [filenamebox, below=of cheese.west, anchor=west] {\texttt{pavlova.md}};
+        \node (scones) [filenamebox, below=of pavlova.west, anchor=west] {\texttt{cheese-scones.md}};
+    },
+    fileschocstaged/.pic={%
+        \node (choc) [
+            filenamebox,
+            anchor=west,
+            color=PaulTolBrightGreen,
+            very thick,
+        ] {\textbf{\texttt{chocolate-cake.md}}};
+    },
+    fileschoccommitted/.pic={%
+        \node (choc) [
+            filenamebox,
+            anchor=west,
+            color=PaulTolBrightBlue,
+            very thick,
+        ] {\textbf{\texttt{chocolate-cake.md}}};
+        \node (cheese) [filenamebox, below=of choc.west, anchor=west] {\texttt{cheesecake.md}};
+        \node (pavlova) [filenamebox, below=of cheese.west, anchor=west] {\texttt{pavlova.md}};
+        \node (scones) [filenamebox, below=of pavlova.west, anchor=west] {\texttt{cheese-scones.md}};
+    },
+}
