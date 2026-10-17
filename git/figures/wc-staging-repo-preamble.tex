@@ -21,6 +21,14 @@
 % \colorlet{bluefill}{blue!20!white}
 % \colorlet{bluedraw}{blue!50!black}
 
+\usepackage[svgnames]{xcolor}
+\usepackage{minted}
+\setminted{%
+    fontsize=\footnotesize,
+    bgcolor=Beige,
+}
+\newcommand{\code}[1]{\mintinline{text}{#1}}
+
 \tikzset{%
     link/.style={%
         -{Stealth[round]}, very thick
