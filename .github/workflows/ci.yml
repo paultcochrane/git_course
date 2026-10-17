@@ -11,6 +11,21 @@ jobs:
     steps:
     - uses: actions/checkout@v7
 
+    - name: Build project repo part figures
+      uses: xu-cheng/latex-action@v4
+      with:
+        root_file: |
+          working-copy-staging-repo-choc-cake-direct-commit.tex
+          working-copy-staging-repo-commit-staged-files.tex
+          working-copy-staging-repo-edit-choc-cake.tex
+          working-copy-staging-repo-edit-pavlova.tex
+          working-copy-staging-repo-initial-state.tex
+          working-copy-staging-repo-stage-choc-cake.tex
+          working-copy-staging-repo-stage-pavlova.tex
+        texlive_version: 2026
+        latexmk_use_lualatex: true
+        pre_compile: "cd git/figures/project-repo-parts"
+
     - name: Build figures
       uses: xu-cheng/latex-action@v4
       with:
