@@ -2232,8 +2232,9 @@ refs/
     standalone snapshot (like a photo) of the repository state at that time.
 \end{frame}
 
-\begin{frame}[fragile]{Snapshots have IDs}
-    Each snapshot has its own ID.
+\begin{frame}[fragile]{Commits have IDs}
+    Each commit (i.e.\ snapshot) has its own unique ID.  As commits build
+    upon the last, we imagine a process like this:
 
     \begin{center}
         \begin{tblr}{%
@@ -2242,24 +2243,52 @@ refs/
             stretch = 0,
             rowsep = 2pt,
         }
-            \includegraphics[height=0.14\textheight]{figures/initial-wedding-scene.pdf}
+            \includegraphics[height=0.12\textheight]{figures/initial-wedding-scene.pdf}
                 & ID: \texttt{abcd1234}\\
             $\Downarrow$ & $\Downarrow$\\
-            \includegraphics[height=0.14\textheight]{figures/bridepair-wedding-scene.pdf}
+            \includegraphics[height=0.12\textheight]{figures/bridepair-wedding-scene.pdf}
                 & ID: \texttt{9c6b31be}\\
             $\Downarrow$ & $\Downarrow$\\
-            \includegraphics[height=0.14\textheight]{figures/bridepair-parents-wedding-scene.pdf}
+            \includegraphics[height=0.12\textheight]{figures/bridepair-parents-wedding-scene.pdf}
                 & ID: \texttt{ef987654}\\
             $\Downarrow$ & $\Downarrow$\\
-            \includegraphics[height=0.14\textheight]{figures/bridepair-witnesses-wedding-scene.pdf}
+            \includegraphics[height=0.12\textheight]{figures/bridepair-witnesses-wedding-scene.pdf}
                 & ID: \texttt{7b83d08c}
         \end{tblr}
     \end{center}
 \end{frame}
 
-\begin{frame}[fragile]{Snapshots have IDs}
+\begin{frame}[fragile]{Commits have IDs}
+    \emph{However}, each commit references its \emph{parent}, hence the
+    arrows really point back to the previous commit:
+    \begin{center}
+        \begin{tblr}{%
+            width = 0.5\textwidth,
+            colspec = {X[c,h]X[c,m]},
+            stretch = 0,
+            rowsep = 2pt,
+        }
+            \includegraphics[height=0.12\textheight]{figures/initial-wedding-scene.pdf}
+                & ID: \texttt{abcd1234}\\
+            $\Uparrow$ & $\Uparrow$\\
+            \includegraphics[height=0.12\textheight]{figures/bridepair-wedding-scene.pdf}
+                & ID: \texttt{9c6b31be}\\
+            $\Uparrow$ & $\Uparrow$\\
+            \includegraphics[height=0.12\textheight]{figures/bridepair-parents-wedding-scene.pdf}
+                & ID: \texttt{ef987654}\\
+            $\Uparrow$ & $\Uparrow$\\
+            \includegraphics[height=0.12\textheight]{figures/bridepair-witnesses-wedding-scene.pdf}
+                & ID: \texttt{7b83d08c}
+        \end{tblr}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Commits have IDs}
     By referring to an ID, we can ``go back in time'' to the state of the
     repository at that commit.
+
+    Each commit in a repository can be found by travelling the path back
+    through the ``ancenstry'' of linked commits.
 
     Thus, we can access and view old versions of files.  This is useful when
     understanding how a bug appeared in a system.
