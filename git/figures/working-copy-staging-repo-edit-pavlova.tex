@@ -1,0 +1,13 @@
+\documentclass{standalone}
+\input{wc-staging-repo-preamble.tex}
+
+\begin{document}
+\begin{tikzpicture}
+    \pic {basediag};
+
+    \pic at ($(working copy.north west) + (0.3, -1.5)$) {filespavlovaedited};
+    \pic at ($(staging.north west) + (0.3, -1.5)$) {fileschocstaged};
+    \pic at ($(repo.north west) + (0.3, -1.5)$) {filesplain};
+\end{tikzpicture}
+
+\end{document}
