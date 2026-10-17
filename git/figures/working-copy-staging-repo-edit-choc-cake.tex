@@ -5,8 +5,11 @@
 \begin{tikzpicture}
     \pic {basediag};
 
-    \pic at ($(working copy.north west) + (0.3, -1.5)$) {fileschocedited};
+    \pic (chocedited) at ($(working copy.north west) + (0.3, -1.5)$) {fileschocedited};
     \pic at ($(repo.north west) + (0.3, -1.5)$) {filesplain};
+
+    \draw [link, line width=4pt]
+        ($(chocedited-choc) + (0.4, 2)$) -- ($(chocedited-choc) + (0.4, 0)$);
 \end{tikzpicture}
 
 \end{document}

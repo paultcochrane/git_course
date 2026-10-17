@@ -5,9 +5,12 @@
 \begin{tikzpicture}
     \pic {basediag};
 
-    \pic at ($(working copy.north west) + (0.3, -1.5)$) {filespavlovaedited};
+    \pic (pavlovaedited) at ($(working copy.north west) + (0.3, -1.5)$) {filespavlovaedited};
     \pic at ($(staging.north west) + (0.3, -1.5)$) {fileschocstaged};
     \pic at ($(repo.north west) + (0.3, -1.5)$) {filesplain};
+
+    \draw [link, line width=4pt]
+        ($(pavlovaedited-pavlova) + (0.4, 3.5)$) -- ($(pavlovaedited-pavlova) + (0.4, 0)$);
 \end{tikzpicture}
 
 \end{document}

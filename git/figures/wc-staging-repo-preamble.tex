@@ -80,6 +80,7 @@
             color=PaulTolBrightRed,
             very thick,
         ] {\textbf{\texttt{chocolate-cake.md}}};
+        \coordinate (-choc) at (choc.north west);
         \node (cheese) [filenamebox, below=of choc.west, anchor=west] {\texttt{cheesecake.md}};
         \node (pavlova) [filenamebox, below=of cheese.west, anchor=west] {\texttt{pavlova.md}};
         \node (scones) [filenamebox, below=of pavlova.west, anchor=west] {\texttt{cheese-scones.md}};
@@ -113,6 +114,7 @@
             color=PaulTolBrightRed,
             very thick,
         ] {\textbf{\texttt{pavlova.md}}};
+        \coordinate (-pavlova) at (pavlova.north west);
         \node (scones) [filenamebox, below=of pavlova.west, anchor=west] {\texttt{cheese-scones.md}};
     },
     fileschocpavlovastaged/.pic={%
