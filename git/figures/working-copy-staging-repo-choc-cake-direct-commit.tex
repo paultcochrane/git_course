@@ -1,0 +1,14 @@
+\documentclass{standalone}
+\input{wc-staging-repo-preamble.tex}
+
+\begin{document}
+\begin{tikzpicture}
+    \pic {basediag};
+
+    \pic at ($(working copy.north west) + (0.3, -1.5)$) {filesplain};
+    \pic at ($(repo.north west) + (0.3, -1.5)$) {fileschoccommitted};
+
+    \draw [link] (working copy.south) to [bend right=45] node[below] {\code{git commit chocolate-cake.md}} (repo.south);
+\end{tikzpicture}
+
+\end{document}
