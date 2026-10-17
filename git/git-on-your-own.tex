@@ -2232,6 +2232,22 @@ refs/
     standalone snapshot (like a photo) of the repository state at that time.
 \end{frame}
 
+\section{Recap: three steps to a commit}
+
+\begin{frame}[fragile]{Recap: three steps to a commit; a common Git workflow}
+    A common workflow when working with Git:
+    \begin{enumerate}
+        \item Edit files in the working copy.
+        \item Move changes from the working copy to the staging area
+            (e.g.\ \code{git add}, \code{git rm}, \code{git mv}).
+        \item Save the collected changes from the staging area as a snapshot
+            in the repository (\code{git commit}).
+        \item Repeat from step 1.
+    \end{enumerate}
+\end{frame}
+
+\section{Commits have IDs}
+
 \begin{frame}[fragile]{Commits have IDs}
     Each commit (i.e.\ snapshot) has its own unique ID.  As commits build
     upon the last, we imagine a process like this:
@@ -2295,20 +2311,6 @@ refs/
 
     See e.g.\ the \code{git log} output to see previous IDs and descriptions
     of what they point to.
-\end{frame}
-
-\section{Recap: three steps to a commit}
-
-\begin{frame}[fragile]{Recap: three steps to a commit; a common Git workflow}
-    A common workflow when working with Git:
-    \begin{enumerate}
-        \item Edit files in the working copy.
-        \item Move changes from the working copy to the staging area
-            (e.g.\ \code{git add}, \code{git rm}, \code{git mv}).
-        \item Save the collected changes from the staging area as a snapshot
-            in the repository (\code{git commit}).
-        \item Repeat from step 1.
-    \end{enumerate}
 \end{frame}
 
 \section{Commits and commit messages}
