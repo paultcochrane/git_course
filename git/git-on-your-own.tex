@@ -1978,11 +1978,6 @@ refs/
     Simple!
 \end{frame}
 
-\begin{frame}[fragile]{Three components visually related}
-    tikz image...
-    working copy -> staging area -> repository
-\end{frame}
-
 \begin{frame}[fragile]{But why the separation?}
     Why not just commit directly?
 
@@ -2146,6 +2141,83 @@ refs/
     }
 
     Git equivalent: staged changes are committed with \code{git commit}
+\end{frame}
+
+\subsection{Visualising editing, staging and committing}
+
+\begin{frame}[fragile]{Initial project state}
+    Let's be more concrete and visualise using each part of a Git project
+    repository in the context of our café example.
+
+    Here's the initial project state with files already in the repository
+    and their current versions checked out in the working copy:
+
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{%
+            figures/project-repo-parts/working-copy-staging-repo-initial-state.pdf
+        }
+    }
+\end{frame}
+
+\begin{frame}[fragile]{Edit the chocolate cake recipe}
+    Let's edit the chocolate cake recipe.  Now the file is changed within
+    the working copy.
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{%
+            figures/project-repo-parts/working-copy-staging-repo-edit-choc-cake.pdf
+        }
+    }
+\end{frame}
+
+\begin{frame}[fragile]{Stage the chocolate cake recipe changes}
+    We stage the changes to the chocolate cake recipe with \code{git add}.
+    These changes are now present in the staging area.
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{%
+            figures/project-repo-parts/working-copy-staging-repo-stage-choc-cake.pdf
+        }
+    }
+\end{frame}
+
+\begin{frame}[fragile]{Edit the pavlova recipe}
+    Now we edit the pavlova recipe.  It's file has been changed in the
+    working copy.
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{%
+            figures/project-repo-parts/working-copy-staging-repo-edit-pavlova.pdf
+        }
+    }
+\end{frame}
+
+\begin{frame}[fragile]{Stage the pavlova recipe changes}
+    With the pavlova recipe updated how we want, we stage these changes with
+    \code{git add}.  We've collected related changes for two files in the
+    staging area.
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{%
+            figures/project-repo-parts/working-copy-staging-repo-stage-pavlova.pdf
+        }
+    }
+\end{frame}
+
+\begin{frame}[fragile]{Commit the staged changes}
+    With our desired changes collected in the staging area, we commit them
+    in one go via \code{git commit}:
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{%
+            figures/project-repo-parts/working-copy-staging-repo-commit-staged-files.pdf
+        }
+    }
+\end{frame}
+
+\begin{frame}[fragile]{Directly committing changes is also possible}
+    If we want, we could commit file changes directly, skipping the staging
+    process.
+    \centerline{%
+        \includegraphics[width=0.7\textwidth]{%
+            figures/project-repo-parts/working-copy-staging-repo-choc-cake-direct-commit.pdf
+        }
+    }
 \end{frame}
 
 \begin{frame}[fragile]{Rinse and repeat}
