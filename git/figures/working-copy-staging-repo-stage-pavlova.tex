@@ -1,0 +1,16 @@
+\documentclass{standalone}
+\input{wc-staging-repo-preamble.tex}
+
+\begin{document}
+\begin{tikzpicture}
+    \pic {basediag};
+
+    \pic at ($(working copy.north west) + (0.3, -1.5)$) {filesplain};
+    \pic at ($(staging.north west) + (0.3, -1.5)$) {fileschocstaged};
+    \pic at ($(staging.north west) + (0.3, -1.5)$) {fileschocpavlovastaged};
+    \pic at ($(repo.north west) + (0.3, -1.5)$) {filesplain};
+
+    \draw [link] (working copy.north) to [bend left=45] node[above] {\code{git add pavlova.md}} (staging.north);
+\end{tikzpicture}
+
+\end{document}
