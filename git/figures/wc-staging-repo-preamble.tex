@@ -130,4 +130,21 @@
             very thick,
         ] {\textbf{\texttt{pavlova.md}}};
     },
+    fileschocpavlovacommitted/.pic={%
+        \node (choc) [
+            filenamebox,
+            anchor=west,
+            color=PaulTolBrightBlue,
+            very thick,
+        ] {\textbf{\texttt{chocolate-cake.md}}};
+        \node (cheese) [filenamebox, below=of choc.west, anchor=west] {\texttt{cheesecake.md}};
+        \node (pavlova) [
+            filenamebox,
+            below=of cheese.west,
+            anchor=west,
+            color=PaulTolBrightBlue,
+            very thick,
+        ] {\textbf{\texttt{pavlova.md}}};
+        \node (scones) [filenamebox, below=of pavlova.west, anchor=west] {\texttt{cheese-scones.md}};
+    },
 }

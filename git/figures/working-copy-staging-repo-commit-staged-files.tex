@@ -1,0 +1,14 @@
+\documentclass{standalone}
+\input{wc-staging-repo-preamble.tex}
+
+\begin{document}
+\begin{tikzpicture}
+    \pic {basediag};
+
+    \pic at ($(working copy.north west) + (0.3, -1.5)$) {filesplain};
+    \pic at ($(repo.north west) + (0.3, -1.5)$) {fileschocpavlovacommitted};
+
+    \draw [link] (staging.north) to [bend left=45] node[above] {\code{git commit}} (repo.north);
+\end{tikzpicture}
+
+\end{document}
