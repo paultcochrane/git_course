@@ -12,6 +12,8 @@
 .vagrant/
 git/overview-background-setup.pdf
 git/git-on-your-own.pdf
+git/git-with-others.pdf
+git/tips-and-tricks.pdf
 git/figures/*.pdf
 git/figures/wedding-photographer-analogy/*.pdf
 git/figures/project-repo-parts/*.pdf
