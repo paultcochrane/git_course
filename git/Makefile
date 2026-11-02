@@ -22,15 +22,17 @@ tips-and-tricks.pdf: \
 	extract-subdir-into-own-repo-with-filter-branch.txt \
 	extract-subdir-into-own-repo-with-git-subtree.txt
 
-all: \
+FILES := \
 	overview-background-setup.pdf \
 	git-on-your-own.pdf \
 	git-with-others.pdf \
 	tips-and-tricks.pdf
 
+all: $(FILES)
+
 clean:
 	latexmk -c
-	rm -f git.pdf
+	rm -f $(FILES)
 
 help:
 	@echo "Possible targets: all, clean"
