@@ -40,7 +40,7 @@ jobs:
           bridepair-witnesses-wedding-scene.tex
         texlive_version: 2026
         latexmk_use_lualatex: true
-        pre_compile: "cd git/figures"
+        pre_compile: "cd git/figures/wedding-photographer-analogy"
 
     - name: Build slides
       uses: xu-cheng/latex-action@v4
